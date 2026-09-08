@@ -1,0 +1,71 @@
+/* _content/Orca.UI/CanSignal_8x8.razor.rz.scp.css */
+.signal-table[b-4qr1dkdt8t] {
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.horz-axis-label[b-4qr1dkdt8t] {
+    text-align: center;
+    font-weight: bold;
+}
+
+.vert-axis-label[b-4qr1dkdt8t] {
+    font-weight: bold;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+}
+
+.bit-header[b-4qr1dkdt8t] {
+    width: 20px;
+    height: 20px;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+
+.byte-header[b-4qr1dkdt8t] {
+    width: 20px;
+    height: 20px;
+    border-right: 1px solid black;
+    font-weight: bold;
+}
+
+.unallocated-bit[b-4qr1dkdt8t] {
+    border: 1px solid lightgray;
+    background-color: white;
+}
+
+.start-bit[b-4qr1dkdt8t] {
+    border: 1px solid lightgray;
+    background-color: orange;
+}
+
+.selected-signal-bit[b-4qr1dkdt8t] {
+    border: 1px solid lightgray;
+    background-color: blue;
+    color: white;
+}
+
+.other-signal-bit[b-4qr1dkdt8t] {
+    border: 1px solid lightgray;
+    background-color: lightgray;
+}
+.overlap-bit[b-4qr1dkdt8t] {
+    border: 1px solid lightgray;
+    background-color: red;
+}
+/* _content/Orca.UI/ConvertUnits.razor.rz.scp.css */
+body[b-zzscvjslhn] {
+
+}
+/* _content/Orca.UI/Layout/MainLayout.razor.rz.scp.css */
+/* Scoped CSS (CSS isolation):  global rules go in
+   the host's wwwroot/css/app.css. */
+
+.orca-main[b-zf38lnyln9] {
+    min-height: calc(100vh - 56px); /* ~ nav bar height */
+}
+
+.content[b-zf38lnyln9] {
+    padding: 1.5rem 2rem;
+    max-width: 900px;
+}
