@@ -1,0 +1,230 @@
+/* The dock (Blazor Blueprint's BbDock, MainLayout). Load before blazorblueprint.css, so the layer order below is set first */
+
+/* blazorblueprint.css resets every element in layer "base" (Tailwind preflight). orca-unreset comes right after it and
+   undoes that outside the dock's own parts, so pages keep their Bootstrap/Syncfusion look.
+   Only the properties the reset sets: "all: revert" would also drop SVG attributes (fill, transform) and blank the diagrams */
+@layer properties, theme, base, orca-unreset, components, bb-utilities, utilities, bb;
+
+@layer orca-unreset {
+    @scope (html, .orca-dock-content) to ([data-dock-root], .blazorblueprint-portal) {
+        *, ::before, ::after, ::backdrop, ::file-selector-button {
+            box-sizing: revert;
+            border: revert;
+            margin: revert;
+            padding: revert;
+        }
+
+        html {
+            line-height: revert;
+            font-family: revert;
+            font-feature-settings: revert;
+            font-variation-settings: revert;
+            tab-size: revert;
+            -webkit-text-size-adjust: revert;
+            -webkit-tap-highlight-color: revert;
+        }
+
+        body {
+            background-color: revert;
+            color: revert;
+            font-family: revert;
+            letter-spacing: revert;
+        }
+
+        hr {
+            height: revert;
+            color: revert;
+            border-top-width: revert;
+        }
+
+        abbr:where([title]) {
+            text-decoration: revert;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-size: revert;
+            font-weight: revert;
+        }
+
+        a {
+            color: revert;
+            text-decoration: revert;
+        }
+
+        b, strong {
+            font-weight: revert;
+        }
+
+        code, kbd, samp, pre {
+            font-family: revert;
+            font-feature-settings: revert;
+            font-variation-settings: revert;
+            font-size: revert;
+        }
+
+        small {
+            font-size: revert;
+        }
+
+        sub, sup {
+            vertical-align: revert;
+            font-size: revert;
+            line-height: revert;
+            position: revert;
+            top: revert;
+            bottom: revert;
+        }
+
+        table {
+            text-indent: revert;
+            border-collapse: revert;
+        }
+
+        progress {
+            vertical-align: revert;
+        }
+
+        summary {
+            display: revert;
+        }
+
+        ol, ul, menu {
+            list-style: revert;
+        }
+
+        img, svg, video, canvas, audio, iframe, embed, object {
+            vertical-align: revert;
+            display: revert;
+        }
+
+        img, video {
+            max-width: revert;
+        }
+
+        button, input, select, optgroup, textarea, ::file-selector-button {
+            font: revert;
+            font-feature-settings: revert;
+            font-variation-settings: revert;
+            letter-spacing: revert;
+            color: revert;
+            opacity: revert;
+            background-color: revert;
+            border-radius: revert;
+        }
+
+        button, input:where([type=button], [type=reset], [type=submit]), ::file-selector-button {
+            appearance: revert;
+        }
+
+        ::placeholder {
+            opacity: revert;
+            color: revert;
+        }
+
+        textarea {
+            resize: revert;
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: revert;
+        }
+
+        ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+            height: revert;
+        }
+    }
+}
+
+/* Blazor Blueprint's colour names, from the Orca palette */
+:root {
+    --background: var(--orca-color-bg);
+    --foreground: var(--orca-color-text);
+    --card: var(--orca-color-bg);
+    --card-foreground: var(--orca-color-text);
+    --popover: var(--orca-color-bg);
+    --popover-foreground: var(--orca-color-text);
+    --primary: var(--orca-color-primary);
+    --primary-foreground: var(--orca-color-text-on-primary);
+    --secondary: var(--orca-color-surface);
+    --secondary-foreground: var(--orca-color-text);
+    --muted: var(--orca-color-surface);
+    --muted-foreground: var(--orca-color-text-muted);
+    --accent: var(--orca-color-faded-light);
+    --accent-foreground: var(--orca-color-text);
+    --destructive: var(--orca-color-error-text);
+    --destructive-foreground: var(--orca-color-text-on-primary);
+    --border: var(--orca-color-border);
+    --input: var(--orca-color-border);
+    --ring: var(--orca-color-primary);
+    --radius: var(--orca-border-radius);
+}
+
+.orca-dock {
+    font-family: var(--orca-font-nav);
+}
+
+/* A tool window's title bar (OrcaDockTabGroup), like Visual Studio's: name, then v and x */
+.orca-dock-caption {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 0 4px 0 10px;
+    background: var(--orca-color-surface);
+    border-bottom: 1px solid var(--orca-color-border);
+    font-size: 12px;
+    color: var(--orca-color-text);
+    cursor: default;
+}
+
+.orca-dock-caption-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.orca-dock-caption-buttons {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.orca-dock-caption-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--orca-border-radius);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-dock-caption-button:hover {
+    background: var(--orca-color-faded-light);
+    color: var(--orca-color-text);
+}
+
+/* A click in a panel focuses it (role tabpanel, tabindex 0); its tab already shows which one is in use */
+[data-dock-root] [role=tabpanel]:focus {
+    outline: none;
+}
+
+/* A tool window (Explorer): fills its panel */
+.orca-dock-tool {
+    height: 100%;
+}
+
+/* The dock turns off text selection; pages need it. It also scrolls the page itself, so sticky parts start at its top */
+.orca-dock-content {
+    font-family: var(--orca-font-content);
+    user-select: text;
+    --orca-nav-height: 0px;
+}
+
+/* While a button is held down (orca-dock.js), so dragging a window or splitter over a web page doesn't stop there */
+html.orca-pointer-down iframe {
+    pointer-events: none;
+}

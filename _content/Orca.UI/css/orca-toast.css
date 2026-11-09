@@ -1,0 +1,200 @@
+/* The issue toasts (IssueToastHost): Syncfusion's toast in Orca's card look. Global, not scoped: Syncfusion moves
+   the toasts to the page body, where a component's scoped styles can't reach them */
+
+/* Just under the nav bar (--orca-nav-height, orca-layout.js); above floating windows (2000 and up, FloatingWindowService) */
+.e-toast-container.e-toast-top-right:has(> .orca-issue-toast) {
+    top: calc(var(--orca-nav-height, 56px) + 12px) !important;
+    right: 16px !important;
+    z-index: 9000 !important;
+}
+
+/* Bug colours; a user error (orca-issue-toast-user) swaps them for the warning ones */
+.e-toast-container .e-toast.orca-issue-toast {
+    --orca-toast-accent: var(--orca-color-error-text);
+    --orca-toast-tint: color-mix(in srgb, var(--orca-color-error-text) 10%, var(--orca-color-bg));
+    box-sizing: border-box;
+    max-width: calc(100vw - 32px);
+    align-items: flex-start;
+    gap: 4px;
+    margin: 0 0 10px;
+    padding: 14px 10px 14px 14px;
+    font-family: var(--orca-font-nav);
+    color: var(--orca-color-text);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 10px;
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--orca-color-text) 16%, transparent),
+                0 2px 6px color-mix(in srgb, var(--orca-color-text) 8%, transparent);
+}
+
+/* Syncfusion changes the colours on hover; the card stays as it is */
+.e-toast-container .e-toast.orca-issue-toast:hover {
+    background: var(--orca-color-bg);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--orca-color-text) 16%, transparent),
+                0 2px 6px color-mix(in srgb, var(--orca-color-text) 8%, transparent);
+}
+
+.e-toast-container .e-toast.orca-issue-toast-user {
+    --orca-toast-accent: color-mix(in srgb, var(--orca-color-warning) 60%, black); /* the plain warning orange is too light to read */
+    --orca-toast-tint: color-mix(in srgb, var(--orca-color-warning) 14%, var(--orca-color-bg));
+}
+
+/* "It worked" toasts (IssueToastService.ShowInfo), e.g. a clean Validate */
+.e-toast-container .e-toast.orca-issue-toast-info {
+    --orca-toast-accent: color-mix(in srgb, var(--orca-color-success) 65%, black); /* the plain success teal is too light to read */
+    --orca-toast-tint: color-mix(in srgb, var(--orca-color-success) 14%, var(--orca-color-bg));
+}
+
+/* Syncfusion's wrappers around our content: full width, no padding of their own */
+.e-toast-container .e-toast.orca-issue-toast .e-toast-message {
+    flex: 1;
+    min-width: 0;
+    align-self: stretch;
+}
+
+.e-toast-container .e-toast.orca-issue-toast .e-toast-message .e-toast-content {
+    padding: 0;
+    overflow: visible;
+    color: inherit;
+}
+
+.e-toast-container .e-toast.orca-issue-toast .e-toast-close-icon {
+    position: static;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    font-size: 14px;
+    color: var(--orca-color-text-muted);
+    border-radius: 6px;
+}
+
+.e-toast-container .e-toast.orca-issue-toast .e-toast-close-icon:hover,
+.e-toast-container .e-toast.orca-issue-toast .e-toast-close-icon:focus {
+    color: var(--orca-color-text);
+    background-color: var(--orca-color-faded-light);
+}
+
+/* The time left, along the bottom edge */
+.e-toast-container .e-toast.orca-issue-toast .e-toast-progress {
+    height: 3px;
+    background-color: var(--orca-toast-accent);
+}
+
+/* Our content (IssueToastHost.GetContent): icon | title, text, reference, then the buttons */
+.orca-toast {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.orca-toast-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: var(--orca-toast-accent);
+    background: var(--orca-toast-tint);
+    box-shadow: inset 0 0 0 1.5px var(--orca-toast-accent);
+}
+
+.orca-toast-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.orca-toast-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.orca-toast-text {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--orca-color-text-muted);
+}
+
+/* "Reference ORC-6842": on its own line, so the buttons below get the whole width */
+.orca-toast-reference-line {
+    font-size: 12px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-toast-reference {
+    margin-left: 4px;
+    padding: 1px 7px;
+    font-family: var(--orca-font-content);
+    font-weight: 600;
+    color: var(--orca-color-text);
+    background: var(--orca-color-faded-light);
+    border-radius: var(--orca-border-radius);
+    user-select: all; /* one click selects it all, to copy by hand */
+}
+
+/* A row of buttons, like Visual Studio's exception pop-up; wraps on a narrow window */
+.orca-toast-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.orca-toast-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: nowrap;
+    color: var(--orca-color-text);
+    background: var(--orca-color-surface);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    cursor: pointer;
+}
+
+.orca-toast-btn:hover {
+    background: var(--orca-color-faded-light);
+}
+
+/* The one we need most (the error file) leads, filled */
+.orca-toast-btn-main {
+    color: var(--orca-color-text-on-primary);
+    background: var(--orca-color-primary-dark);
+    border-color: var(--orca-color-primary-dark);
+}
+
+.orca-toast-btn-main:hover {
+    background: var(--orca-color-primary);
+    border-color: var(--orca-color-primary);
+}
+
+/* Dev builds only (AppInfo.IsDevBuild) */
+.orca-toast-dev {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-toast-dev summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.orca-toast-dev pre {
+    max-height: 120px;
+    margin: 6px 0 0;
+    padding: 8px;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-family: var(--orca-font-content);
+    font-size: 11px;
+    background: var(--orca-color-surface);
+    border-radius: 6px;
+}

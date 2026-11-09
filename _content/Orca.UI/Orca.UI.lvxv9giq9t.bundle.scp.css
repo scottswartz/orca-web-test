@@ -1,0 +1,5493 @@
+/* _content/Orca.UI/Calculator.razor.rz.scp.css */
+/* CSS for Calculator component */
+
+.orca-base-list[b-yjyt9w0j3g] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.orca-base-row[b-yjyt9w0j3g] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    cursor: text;
+}
+
+.orca-base-name[b-yjyt9w0j3g] {
+    position: absolute;
+    z-index: 1;
+    top: .3rem;
+    left: .55rem;
+    font-size: .875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.orca-base-name small[b-yjyt9w0j3g] {
+    margin-left: .15rem;
+    padding: .05rem .35rem;
+    border-radius: var(--orca-border-radius);
+    background: var(--orca-color-primary-dark);
+    color: var(--orca-color-text-on-primary);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: .8125rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.orca-base-field[b-yjyt9w0j3g] {
+    position: relative;
+    display: block;
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: 1.35rem;
+}
+
+.orca-base-value[b-yjyt9w0j3g] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    /* Equal side padding keeps the number centred and clear of the copy icon */
+    padding: 1.95rem 2.25rem .35rem;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    outline: 0;
+    background: color-mix(in srgb, var(--orca-color-border) 40%, var(--orca-color-bg));
+    color: inherit;
+    font: inherit;
+    text-align: center;
+}
+
+.orca-base-row:hover .orca-base-value[b-yjyt9w0j3g] {
+    border-color: var(--orca-color-primary-light);
+}
+
+.orca-base-value:focus[b-yjyt9w0j3g],
+.orca-base-row:hover .orca-base-value:focus[b-yjyt9w0j3g] {
+    border-color: var(--orca-color-primary);
+    background: var(--orca-color-bg);
+    box-shadow: 0 0 0 1px var(--orca-color-primary);
+}
+
+.orca-base-value[b-yjyt9w0j3g]::placeholder {
+    color: var(--orca-color-faded);
+    opacity: 1;
+}
+
+.orca-base-note[b-yjyt9w0j3g] {
+    text-align: center;
+    color: var(--orca-color-text-muted);
+    font-family: Consolas, "Cascadia Mono", monospace;
+}
+
+.orca-base-note:empty[b-yjyt9w0j3g] {
+    display: none;
+}
+
+/* Dark so it reads as a calculator rather than another number row */
+.orca-base-expression[b-yjyt9w0j3g] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: .5rem;
+    border-radius: var(--orca-border-radius);
+    background: #4a4a4a;
+    color: #fff;
+}
+
+.orca-base-expression .orca-base-value[b-yjyt9w0j3g],
+.orca-base-expression .orca-base-value:focus[b-yjyt9w0j3g],
+.orca-base-expression .orca-base-row:hover .orca-base-value:focus[b-yjyt9w0j3g] {
+    background: #383838;
+}
+
+.orca-base-expression .orca-base-value[b-yjyt9w0j3g]::placeholder,
+.orca-base-expression .orca-base-note[b-yjyt9w0j3g] {
+    color: #d9d9d9;
+}
+
+.orca-base-expression-format[b-yjyt9w0j3g] {
+    position: absolute;
+    z-index: 2;
+    top: .75rem;
+    right: .75rem;
+    padding: .1rem;
+    border-radius: var(--orca-border-radius);
+    background: var(--orca-color-bg);
+    color: #212529;
+}
+
+.orca-base-expression .orca-base-expression-message[b-yjyt9w0j3g] {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* A square button centred at the box's right edge; the value's side padding leaves room for it */
+.orca-base-copy[b-yjyt9w0j3g] {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: .5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--orca-border-radius);
+    background: color-mix(in srgb, var(--orca-color-primary) 20%, var(--orca-color-bg));
+    color: var(--orca-color-primary-dark);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.orca-base-row:hover .orca-base-copy[b-yjyt9w0j3g] {
+    visibility: visible;
+}
+
+/* The grid display above would otherwise override the hidden attribute on empty rows */
+.orca-base-copy[hidden][b-yjyt9w0j3g] {
+    display: none;
+}
+
+.orca-base-copy:hover[b-yjyt9w0j3g] {
+    background: color-mix(in srgb, var(--orca-color-primary) 35%, var(--orca-color-bg));
+}
+
+.orca-base-copy span[b-yjyt9w0j3g] {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+/* _content/Orca.UI/CAN/CanBusDetail.razor.rz.scp.css */
+/* Fills Explorer's content pane (a flex column, see Explorer.razor.css); fields, health and tabs scroll as one page */
+.orca-canbus-detail[b-jv8jmf7wzc] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* Fixed height so the diagram (Network tab) doesn't collapse inside the scrolling page */
+.orca-canbus-detail[b-jv8jmf7wzc]  .orca-canbus-diagram {
+    height: 420px;
+    min-height: 320px;
+}
+/* _content/Orca.UI/CAN/CanBusDeviceMatrix.razor.rz.scp.css */
+/* Solid blue dot for a device's only CAN Node (the name, usually "CAN1", would just crowd the grid) */
+.orca-matrix-dot[b-lqrm15wurg] {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--orca-color-primary);
+    vertical-align: middle;
+}
+/* _content/Orca.UI/CAN/CanBusDiagram.razor.rz.scp.css */
+/* Same height as before when used on its own; the CAN Bus page stretches it to fill instead */
+.orca-canbus-diagram[b-d6k8ny0m9k] {
+    height: 400px;
+}
+/* _content/Orca.UI/CAN/CanBusHealthDashboard.razor.rz.scp.css */
+.orca-bus-dash[b-hxdilanb3f] {
+    /* Scott's slide colours: blue, orange, green */
+    --orca-bits-utilized: var(--orca-color-primary);
+    --orca-bits-not-allocated: #e8743b;
+    --orca-bits-not-utilized: #1f7a3a;
+    --orca-dist-1: #8e5cd9;
+    --orca-dist-2: #3d85c6;
+    --orca-dist-3: #2e9e5b;
+    --orca-dist-4: #d9a400;
+    --orca-dist-5: #d0473d;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: .75rem;
+    min-width: 0;
+}
+
+/* Columns follow the space the dashboard has (Explorer pane or grid row), not the window */
+.orca-bus-dash-wrap[b-hxdilanb3f] {
+    container-type: inline-size;
+}
+
+@container (min-width: 560px) {
+    .orca-bus-dash[b-hxdilanb3f] {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .orca-bus-dash-full[b-hxdilanb3f] {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    }
+}
+
+/* Compact: load card widest, so its bar has room */
+@container (min-width: 860px) {
+    .orca-bus-dash-compact[b-hxdilanb3f] {
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+.orca-bus-dash-bar[b-hxdilanb3f] {
+    grid-column: 1 / -1;
+    padding-bottom: .25rem;
+}
+
+/* Health and Load on the first row, Speed / Devices / Messages on the second.
+   The two rows share the pie card's height, so tiles and pie line up top and bottom. */
+.orca-bus-dash-tiles[b-hxdilanb3f] {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: .75rem;
+    min-width: 0;
+}
+
+.orca-bus-dash-tile[b-hxdilanb3f] {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: .6rem .5rem;
+    border-radius: 6px;
+    background: var(--orca-color-faded-light);
+}
+
+.orca-bus-dash-tile-wide[b-hxdilanb3f] {
+    grid-column: span 3;
+}
+
+    .orca-bus-dash-tile span[b-hxdilanb3f] {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        color: var(--orca-color-text-muted);
+    }
+
+    .orca-bus-dash-tile b[b-hxdilanb3f] {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        font-variant-numeric: tabular-nums;
+    }
+
+        .orca-bus-dash-tile b.orca-bus-dash-health[b-hxdilanb3f] {
+            font-size: 1.9rem;
+            color: var(--orca-health-color);
+        }
+
+.orca-bus-dash-full .orca-bus-dash-bits-card[b-hxdilanb3f] {
+    justify-content: center;
+}
+
+.orca-bus-dash-full .orca-bus-dash-bits[b-hxdilanb3f] {
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.orca-bus-dash-full .orca-bus-dash-pie[b-hxdilanb3f] {
+    width: 160px;
+    height: 160px;
+}
+
+.orca-bus-dash-card[b-hxdilanb3f] {
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    min-width: 0;
+    padding: .85rem 1rem;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 6px;
+    background: var(--orca-color-surface);
+}
+
+.orca-bus-dash-compact .orca-bus-dash-card[b-hxdilanb3f] {
+    padding: .6rem .8rem;
+}
+
+.orca-bus-dash-heading[b-hxdilanb3f] {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--orca-color-text-muted);
+}
+
+/* Small title, big readout */
+.orca-bus-dash-load[b-hxdilanb3f] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+    .orca-bus-dash-load b[b-hxdilanb3f] {
+        font-size: 2rem;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-health-color);
+    }
+
+.orca-bus-dash-compact .orca-bus-dash-load b[b-hxdilanb3f] {
+    font-size: 1.5rem;
+}
+
+.orca-bus-dash-note[b-hxdilanb3f] {
+    margin: 0;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Rounded bars with no axes: label, bar, value */
+.orca-bus-dash-row[b-hxdilanb3f] {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) 52px;
+    align-items: center;
+    gap: .6rem;
+    font-size: var(--orca-font-size-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+.orca-bus-dash-row-label[b-hxdilanb3f] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-bus-dash-row-value[b-hxdilanb3f] {
+    text-align: right;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-bus-dash-track[b-hxdilanb3f] {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--orca-color-faded-light);
+    overflow: hidden;
+}
+
+    .orca-bus-dash-track div[b-hxdilanb3f] {
+        height: 100%;
+        border-radius: 999px;
+    }
+
+.orca-bus-dash-bits[b-hxdilanb3f] {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.orca-bus-dash-pie[b-hxdilanb3f] {
+    flex: none;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+}
+
+.orca-bus-dash-compact .orca-bus-dash-pie[b-hxdilanb3f] {
+    width: 64px;
+    height: 64px;
+}
+
+.orca-bus-dash-legend[b-hxdilanb3f] {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+    .orca-bus-dash-legend i[b-hxdilanb3f] {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: .4rem;
+        border-radius: 2px;
+        vertical-align: -1px;
+    }
+
+    .orca-bus-dash-legend b[b-hxdilanb3f] {
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-color-text);
+    }
+
+.orca-bits-utilized[b-hxdilanb3f] { background: var(--orca-bits-utilized); }
+.orca-bits-not-utilized[b-hxdilanb3f] { background: var(--orca-bits-not-utilized); }
+.orca-bits-not-allocated[b-hxdilanb3f] { background: var(--orca-bits-not-allocated); }
+/* _content/Orca.UI/CAN/CanBusHealthPanel.razor.rz.scp.css */
+.orca-bus-health[b-r5ibk5qdzf] {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    min-width: 0;
+}
+
+.orca-bus-health-title[b-r5ibk5qdzf] {
+    margin: 0;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-bus-health-tab[b-r5ibk5qdzf] {
+    min-width: 0;
+}
+
+.orca-bus-health-empty[b-r5ibk5qdzf] {
+    margin: .5rem 0;
+    color: var(--orca-color-text-muted);
+}
+
+/* Chart / Grid switch at the right end of the tab strip */
+.orca-bus-health-view[b-r5ibk5qdzf] {
+    display: inline-flex;
+    margin: 0 0 .3rem auto;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+    .orca-bus-health-view button[b-r5ibk5qdzf] {
+        padding: .1rem .8rem;
+        font-family: inherit;
+        font-size: var(--orca-font-size-sm);
+        color: var(--orca-color-text-muted);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+        .orca-bus-health-view button:focus-visible[b-r5ibk5qdzf] {
+            outline: 2px solid var(--orca-color-primary);
+            outline-offset: -2px;
+        }
+
+    .orca-bus-health-view .orca-bus-health-view-on[b-r5ibk5qdzf] {
+        color: var(--orca-color-text-on-primary);
+        background: var(--orca-color-primary);
+    }
+
+.orca-bus-health-chart[b-r5ibk5qdzf] {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    padding-top: .5rem;
+}
+
+/* Arrow, label, rounded bar, load */
+.orca-bus-health-chart-row[b-r5ibk5qdzf] {
+    display: grid;
+    grid-template-columns: 28px minmax(120px, 260px) minmax(80px, 1fr) 60px;
+    align-items: center;
+    gap: .6rem;
+    font-size: var(--orca-font-size-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+.orca-bus-health-chart-label[b-r5ibk5qdzf] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-bus-health-chart-track[b-r5ibk5qdzf] {
+    height: 12px;
+    border-radius: 999px;
+    background: var(--orca-color-faded-light);
+    overflow: hidden;
+}
+
+    .orca-bus-health-chart-track div[b-r5ibk5qdzf] {
+        height: 100%;
+        border-radius: 999px;
+        background: var(--orca-color-primary);
+    }
+
+.orca-bus-health-chart-value[b-r5ibk5qdzf] {
+    text-align: right;
+    font-weight: 600;
+}
+/* _content/Orca.UI/CAN/CanBusLoadBar.razor.rz.scp.css */
+.orca-load-bar[b-xvd89p1el5] {
+    min-width: 80px;
+}
+
+.orca-load-bar-track[b-xvd89p1el5] {
+    position: relative;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--orca-color-faded-light);
+    overflow: hidden;
+}
+
+.orca-load-bar-large .orca-load-bar-track[b-xvd89p1el5] {
+    height: 14px;
+}
+
+.orca-load-bar-fill[b-xvd89p1el5] {
+    position: absolute;
+    inset: 0 auto 0 0;
+    border-radius: 999px;
+    background: var(--orca-health-color);
+}
+
+/* Thin gaps in the bar at each health level */
+.orca-load-bar-tick[b-xvd89p1el5] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--orca-color-bg);
+}
+
+.orca-load-bar-ranges[b-xvd89p1el5] {
+    position: relative;
+    height: 1rem;
+    font-size: 11px;
+    color: var(--orca-color-faded);
+}
+
+    .orca-load-bar-ranges span[b-xvd89p1el5] {
+        position: absolute;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+/* _content/Orca.UI/CAN/CanBusSummary.razor.rz.scp.css */
+/* Fills Explorer's content pane; the grid, its open rows and the bus bars scroll as one page */
+.orca-bus-summary[b-ya1o6fg7xz] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.orca-bus-load-rows[b-ya1o6fg7xz] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-top: .5rem;
+}
+
+/* Arrow, name, bar, load, health, counts; the bar takes the spare width */
+.orca-bus-load-row[b-ya1o6fg7xz] {
+    display: grid;
+    grid-template-columns: 28px minmax(90px, 160px) minmax(120px, 1fr) 60px 80px minmax(0, 190px);
+    align-items: center;
+    gap: .75rem;
+}
+
+.orca-bus-load-name[b-ya1o6fg7xz],
+.orca-bus-load-meta[b-ya1o6fg7xz] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-bus-load-value[b-ya1o6fg7xz] {
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.orca-bus-load-meta[b-ya1o6fg7xz] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-bus-load-error[b-ya1o6fg7xz] {
+    grid-column: 3 / -1;
+    color: var(--orca-color-error-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-bus-summary-empty[b-ya1o6fg7xz] {
+    margin: .5rem 0;
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/CAN/CanBusSummaryHealth.razor.rz.scp.css */
+.orca-bus-summary-health[b-y9cn9kifov] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .5rem .25rem .75rem;
+}
+
+.orca-bus-summary-open[b-y9cn9kifov] {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/CAN/CanMessageLinkTxDetail.razor.rz.scp.css */
+/* CSS for CanMessageLinkTxDetail component */
+/* _content/Orca.UI/CAN/CanNodeDetail.razor.rz.scp.css */
+/* Scoped CSS (CSS isolation): page-specific tweaks go here. */
+
+.orca-page-header[b-jftopestqa] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.orca-page-title[b-jftopestqa] {
+    text-align: center;
+    margin: 0 0 .5rem;
+}
+
+.orca-status-bar[b-jftopestqa] {
+    text-align: center;
+    color: #6c757d;
+    font-size: .85rem;
+    margin: 0;
+}
+
+/* Tree/org-chart style connector lines running Node -> Message -> Signal ->
+   8x8 layout. */
+.orca-hierarchy-branch[b-jftopestqa] {
+    position: relative;
+    margin-left: 1rem;
+    padding-left: 1.25rem;
+}
+
+.orca-hierarchy-branch[b-jftopestqa]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--orca-color-border);
+}
+
+.orca-hierarchy-branch:has(> .orca-hierarchy-level:only-child)[b-jftopestqa]::before {
+    bottom: auto;
+    height: calc(.9rem + 1px);
+}
+
+.orca-hierarchy-branch > .orca-hierarchy-level[b-jftopestqa] {
+    position: relative;
+    margin-bottom: .6rem;
+}
+
+.orca-hierarchy-branch > .orca-hierarchy-level[b-jftopestqa]::before {
+    content: "";
+    position: absolute;
+    left: -1.25rem;
+    top: .9rem;
+    width: 1.25rem;
+    height: 2px;
+    background: var(--orca-color-border);
+}
+
+.orca-hierarchy-branch > .orca-hierarchy-level:last-child[b-jftopestqa] {
+    margin-bottom: 0;
+}
+/* _content/Orca.UI/CAN/CanSignalScalingCalculator.razor.rz.scp.css */
+/* Two cards side by side, stacked when the window is narrow */
+.orca-calc[b-4ie3i6v0xp] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.orca-calc-card[b-4ie3i6v0xp] {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1rem 1.1rem;
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 8px;
+}
+
+.orca-calc-card-title[b-4ie3i6v0xp] {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--orca-color-text);
+}
+
+.orca-calc-formula[b-4ie3i6v0xp] {
+    margin-top: -.4rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Value full width, Factor and Offset side by side (Scott) */
+.orca-calc-fields[b-4ie3i6v0xp] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem .75rem;
+}
+
+    .orca-calc-fields .orca-node-field[b-4ie3i6v0xp] {
+        min-width: 0;
+    }
+
+.orca-calc-wide[b-4ie3i6v0xp] {
+    grid-column: 1 / -1;
+}
+
+/* Raw Value fills its row like the fields below it (HexOrDecEditor is 140px on a page) */
+.orca-calc-fields[b-4ie3i6v0xp]  .orca-hexdec {
+    display: flex;
+    width: 100%;
+}
+
+.orca-calc-fields[b-4ie3i6v0xp]  .orca-hexdec-page .orca-hexdec-input {
+    flex: 1;
+    width: auto;
+}
+
+.orca-calc-result[b-4ie3i6v0xp] {
+    display: flex;
+    margin-top: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: .15rem;
+    padding: .75rem;
+    background: var(--orca-color-bg);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 8px;
+}
+
+.orca-calc-result-label[b-4ie3i6v0xp] {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+/* Success colour darkened so the big number stays readable on white */
+.orca-calc-result-value[b-4ie3i6v0xp] {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--orca-color-success) 70%, #000);
+    font-variant-numeric: tabular-nums;
+}
+
+.orca-calc-result-sub[b-4ie3i6v0xp] {
+    min-height: 1.2em;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/CAN/CanSignal_Matrix.razor.rz.scp.css */
+.orca-signal-panel[b-scsje8ckyn] {
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    padding: 1rem 1.25rem;
+    background: var(--orca-color-bg);
+}
+
+.orca-signal-panel .orca-grid-heading[b-scsje8ckyn] {
+    margin-bottom: .75rem;
+}
+
+/* Right of the matrix: the orientation row starts level with the matrix top, the legend follows */
+.orca-signal-side[b-scsje8ckyn] {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    min-width: 0;
+}
+
+.orca-signal-toolbar[b-scsje8ckyn] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem;
+    /* Lines up with the legend's swatches, which sit inside the items' padding */
+    padding-left: 6px;
+}
+
+.orca-signal-toolbar-label[b-scsje8ckyn] {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-weight: 500;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-signal-toolbar-label .orca-info-icon[b-scsje8ckyn] {
+    display: inline-flex;
+    color: var(--orca-color-faded);
+    cursor: help;
+}
+
+    .orca-signal-toolbar-label .orca-info-icon:hover[b-scsje8ckyn],
+    .orca-signal-toolbar-label .orca-info-icon:focus-visible[b-scsje8ckyn] {
+        color: var(--orca-color-primary);
+        outline: none;
+    }
+
+.orca-signal-toolbar[b-scsje8ckyn]  .orca-signal-orientation-dropdown.e-input-group {
+    height: 28px;
+    min-height: 0;
+}
+
+    .orca-signal-toolbar[b-scsje8ckyn]  .orca-signal-orientation-dropdown .e-input {
+        font-family: inherit;
+        font-size: var(--orca-font-size-sm);
+    }
+
+/* Legend sits to the right of the matrix, where there's spare space (R68); wraps below on narrow screens */
+.orca-signal-matrix-row[b-scsje8ckyn] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem 2rem;
+}
+
+/* Bit matrix - horizontal scroll is a safety net on narrow viewports, not
+   the expected case (8 x 24px columns comfortably fits). */
+.orca-signal-matrix-wrap[b-scsje8ckyn] {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--orca-color-primary) var(--orca-color-faded-light);
+}
+
+.orca-signal-matrix[b-scsje8ckyn] {
+    border-collapse: collapse;
+    text-align: center;
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-signal-axis-label-horz[b-scsje8ckyn] {
+    text-align: center;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--orca-color-faded);
+    padding-bottom: 2px;
+}
+
+.orca-signal-axis-label-vert[b-scsje8ckyn] {
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--orca-color-faded);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding-right: 2px;
+}
+
+.orca-signal-bit-header[b-scsje8ckyn],
+.orca-signal-byte-header[b-scsje8ckyn] {
+    width: 24px;
+    height: 24px;
+    font-weight: 700;
+    color: var(--orca-color-primary-dark);
+    background: linear-gradient(180deg, #eef5fb 0%, #dfebf6 100%);
+}
+
+.orca-signal-bit-header[b-scsje8ckyn] {
+    border-bottom: 1px solid #cbdcec;
+}
+
+.orca-signal-byte-header[b-scsje8ckyn] {
+    border-right: 1px solid #cbdcec;
+}
+
+.orca-signal-bit[b-scsje8ckyn] {
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border: 1px solid var(--orca-color-border);
+}
+
+.unallocated-bit[b-scsje8ckyn] {
+    background: #fff;
+    color: var(--orca-color-faded);
+}
+
+.least-significant-bit[b-scsje8ckyn] {
+    background: var(--orca-color-warning);
+    color: #fff;
+    font-weight: 700;
+}
+
+.selected-signal-bit[b-scsje8ckyn] {
+    background: var(--orca-color-primary-dark);
+    color: #fff;
+}
+
+/* Darker than faded-light so other signals' bits stand out from unallocated white (R67) */
+.other-signal-bit[b-scsje8ckyn] {
+    background: #c4c4c4;
+    color: var(--orca-color-text-muted);
+}
+
+.overlap-bit[b-scsje8ckyn] {
+    background: var(--orca-color-error);
+    color: #fff;
+}
+
+/* Legend - same swatch classes as the matrix cells above, so the colors can
+   never drift out of sync with what's actually shown in the grid. */
+.orca-signal-legend[b-scsje8ckyn] {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Full-width rows so every count lines up on the right */
+.orca-signal-legend-item[b-scsje8ckyn] {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: default;
+}
+
+.orca-signal-legend-label[b-scsje8ckyn] {
+    flex: 1;
+}
+
+.orca-signal-legend-count[b-scsje8ckyn] {
+    min-width: 3ch;
+    margin-left: 1rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--orca-color-text);
+}
+
+    .orca-signal-legend-item:hover[b-scsje8ckyn],
+    .orca-signal-legend-item:focus-visible[b-scsje8ckyn] {
+        background: var(--orca-color-faded-light);
+        color: var(--orca-color-text);
+        outline: none;
+    }
+
+.dimmed-bit[b-scsje8ckyn] {
+    opacity: .25;
+}
+
+.orca-signal-legend-swatch[b-scsje8ckyn] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid var(--orca-color-border);
+}
+
+.orca-signal-formula[b-scsje8ckyn] {
+    margin: .85rem 0 0;
+    padding: .5rem .75rem;
+    background: var(--orca-color-faded-light);
+    border-radius: var(--orca-border-radius);
+    color: var(--orca-color-primary-dark);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+}
+
+.orca-signal-formula-buttons[b-scsje8ckyn] {
+    flex: none;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+/* _content/Orca.UI/CAN/CanSignal_MatrixBig.razor.rz.scp.css */
+.orca-big-matrix-wrap[b-ewqndjnxsw] {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    padding: .75rem;
+    overflow: hidden;
+}
+
+.orca-big-layout[b-ewqndjnxsw] {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.orca-big-matrix-pane[b-ewqndjnxsw] {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: auto;
+}
+
+/* Fixed layout so every bit cell is the same width; the name's span (--orca-run) relies on it */
+.orca-big-matrix[b-ewqndjnxsw] {
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-big-matrix-corner[b-ewqndjnxsw] {
+    width: 64px;
+}
+
+.orca-big-matrix-header[b-ewqndjnxsw] {
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #cbdcec;
+    background: linear-gradient(180deg, #eef5fb 0%, #dfebf6 100%);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--orca-color-primary-dark);
+    white-space: nowrap;
+}
+
+.orca-big-bit[b-ewqndjnxsw] {
+    position: relative;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid var(--orca-color-border);
+    color: #1f2933;
+}
+
+.orca-big-bit-free[b-ewqndjnxsw] {
+    background: #fff;
+    color: var(--orca-color-faded);
+}
+
+/* Stripes, so an overlap never looks like the salmon first signal colour */
+.orca-big-bit-overlap[b-ewqndjnxsw] {
+    background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .35) 0 4px, transparent 4px 9px), var(--orca-color-error);
+    color: #fff;
+}
+
+/* Bit number in the top-left corner, so the middle is free for the name */
+.orca-big-bit-index[b-ewqndjnxsw] {
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    font-size: 10px;
+    line-height: 1;
+    opacity: .75;
+}
+
+/* Spans the signal's cells on this row (--orca-run) and sits above the neighbouring cells */
+.orca-big-bit-name[b-ewqndjnxsw] {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--orca-run) * 100% - 8px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.orca-big-bit-name-left[b-ewqndjnxsw] {
+    left: 4px;
+    text-align: left;
+}
+
+.orca-big-bit-name-right[b-ewqndjnxsw] {
+    right: 4px;
+    text-align: right;
+}
+
+/* The LSB row's name stays the strong one */
+.orca-big-bit-name-repeat[b-ewqndjnxsw] {
+    font-weight: 500;
+    opacity: .55;
+}
+
+.orca-big-bit-dimmed[b-ewqndjnxsw] {
+    opacity: .25;
+}
+
+.orca-big-legend[b-ewqndjnxsw] {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    flex: 0 0 auto;
+    max-width: 280px;
+    max-height: calc(100% - 28px);
+    margin-top: 28px;
+    padding-right: 6px;
+    overflow-y: auto;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-big-legend-item[b-ewqndjnxsw] {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: default;
+}
+
+    .orca-big-legend-item:hover[b-ewqndjnxsw],
+    .orca-big-legend-item:focus-visible[b-ewqndjnxsw] {
+        background: var(--orca-color-faded-light);
+        color: var(--orca-color-text);
+        outline: none;
+    }
+
+.orca-big-legend-swatch[b-ewqndjnxsw] {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid var(--orca-color-border);
+}
+
+.orca-big-legend-label[b-ewqndjnxsw] {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-big-legend-count[b-ewqndjnxsw] {
+    min-width: 3ch;
+    margin-left: 1rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--orca-color-text);
+}
+/* _content/Orca.UI/CAN/DBC/DbcImport_MapUnits.razor.rz.scp.css */
+.orca-map-units-progress[b-zqtp5r3hyz] {
+    margin: 0 0 .5rem;
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-map-units[b-zqtp5r3hyz] {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.orca-map-units-grid[b-zqtp5r3hyz] {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.orca-map-units-panel[b-zqtp5r3hyz] {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.orca-map-units-section[b-zqtp5r3hyz] {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding: .6rem;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 4px;
+}
+
+.orca-map-units-heading[b-zqtp5r3hyz] {
+    margin: 0;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-map-units-hint[b-zqtp5r3hyz],
+.orca-map-units-status[b-zqtp5r3hyz] {
+    margin: 0;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-map-units-toggle[b-zqtp5r3hyz] {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-map-units-dev[b-zqtp5r3hyz] {
+    align-self: flex-start;
+    padding: 0;
+    font-size: var(--orca-font-size-sm);
+}
+/* _content/Orca.UI/CAN/DBC/DbcImport_MapUnitsGrid.razor.rz.scp.css */
+.orca-map-units-group[b-lx39uwsd2v] {
+    font-weight: 600;
+}
+
+.orca-map-units-group-count[b-lx39uwsd2v] {
+    margin-left: .75rem;
+    color: var(--orca-color-text-muted);
+}
+
+/* Group caption rows (one per message) stand out from the signal rows */
+.orca-map-units-grid-wrap[b-lx39uwsd2v]  .e-groupcaption,
+.orca-map-units-grid-wrap[b-lx39uwsd2v]  .e-recordplusexpand,
+.orca-map-units-grid-wrap[b-lx39uwsd2v]  .e-recordpluscollapse {
+    background: #e8f0f8;
+}
+/* _content/Orca.UI/CAN/DBC/DbcImport_OpenFile.razor.rz.scp.css */
+.orca-dbc-file-row[b-qz1clwhxq2] {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .25rem;
+}
+
+.orca-dbc-file-path[b-qz1clwhxq2] {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.orca-dbc-file-status[b-qz1clwhxq2] {
+    margin: .4rem 0 0;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/CAN/DBC/DbcImport_Wizard.razor.rz.scp.css */
+/* Scoped CSS (CSS isolation): page-specific tweaks go here. */
+
+.orca-wizard-steps[b-fpmne4aq0a] {
+    display: flex;
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+.orca-wizard-step[b-fpmne4aq0a] {
+    position: relative;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-wizard-step:not(:first-child)[b-fpmne4aq0a]::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: calc(50% + 20px);
+    left: calc(-50% + 20px);
+    height: 2px;
+    background: var(--orca-color-border);
+}
+
+.orca-wizard-step-dot[b-fpmne4aq0a] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--orca-color-border);
+    border-radius: 50%;
+    background: #fff;
+    font-weight: 600;
+}
+
+.orca-wizard-step-done[b-fpmne4aq0a],
+.orca-wizard-step-active[b-fpmne4aq0a] {
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-wizard-step-done .orca-wizard-step-dot[b-fpmne4aq0a],
+.orca-wizard-step-active .orca-wizard-step-dot[b-fpmne4aq0a] {
+    border-color: var(--orca-color-primary-dark);
+    background: var(--orca-color-primary-dark);
+    color: #fff;
+}
+
+.orca-wizard-step-active .orca-wizard-step-dot[b-fpmne4aq0a] {
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--orca-color-primary-dark);
+}
+
+.orca-wizard-step-done:not(:first-child)[b-fpmne4aq0a]::before,
+.orca-wizard-step-active:not(:first-child)[b-fpmne4aq0a]::before {
+    background: var(--orca-color-primary-dark);
+}
+
+.orca-wizard-step-active .orca-wizard-step-label[b-fpmne4aq0a] {
+    font-weight: 600;
+}
+
+.orca-dbc-import-summary[b-fpmne4aq0a] {
+    color: #6c757d;
+    font-size: .85rem;
+    margin: 0 0 1rem;
+}
+/* _content/Orca.UI/Components/HexOrDecEditor.razor.rz.scp.css */
+.orca-hexdec[b-bwvk69ugab] {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+}
+
+/* Fill the grid cell */
+.orca-hexdec-cell[b-bwvk69ugab] {
+    display: flex;
+    width: 100%;
+}
+
+/* Monospace so hex lines up */
+.orca-hexdec-input[b-bwvk69ugab] {
+    min-width: 0;
+    font-family: Consolas, "Cascadia Mono", monospace;
+}
+
+.orca-hexdec-page .orca-hexdec-input[b-bwvk69ugab] {
+    width: 140px;
+}
+
+.orca-hexdec-cell .orca-hexdec-input[b-bwvk69ugab] {
+    flex: 1;
+}
+
+/* Same red as other field errors */
+.orca-hexdec-input.orca-hexdec-invalid[b-bwvk69ugab],
+.orca-hexdec-input.orca-hexdec-invalid:focus[b-bwvk69ugab] {
+    border-color: var(--orca-color-error);
+    background-color: #fff5f5;
+    box-shadow: 0 0 0 2px rgba(255, 102, 102, .2);
+}
+/* _content/Orca.UI/Components/HexOrDecToggle.razor.rz.scp.css */
+.orca-hexdec-toggle[b-aeayk6c20a] {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+/* _content/Orca.UI/Components/OrcaCollapsibleSection.razor.rz.scp.css */
+/* Same card and tinted header strip as the help editor's sections */
+.orca-collapsible[b-yd4stmh2zq] {
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 8px;
+    background: var(--orca-color-bg);
+    overflow: clip;
+}
+
+.orca-collapsible-bar[b-yd4stmh2zq] {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px 2px 2px;
+    background: color-mix(in srgb, var(--orca-color-primary) 7%, var(--orca-color-bg));
+}
+
+/* Only the open section has a line under its bar */
+.orca-collapsible:not(.orca-collapsible-collapsed) > .orca-collapsible-bar[b-yd4stmh2zq] {
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+/* The whole title area folds it, not just the chevron; min-width: 0 lets the summary shorten with "..." */
+.orca-collapsible-toggle[b-yd4stmh2zq] {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    font: inherit;
+    text-align: left;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.orca-collapsible-toggle:focus-visible[b-yd4stmh2zq] {
+    outline: 2px solid var(--orca-color-primary);
+    outline-offset: -2px;
+}
+
+.orca-collapsible-chevron[b-yd4stmh2zq] {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--orca-color-text-muted);
+    transition: transform 0.15s ease;
+}
+
+.orca-collapsible-chevron.open[b-yd4stmh2zq] {
+    transform: rotate(90deg);
+}
+
+.orca-collapsible-title[b-yd4stmh2zq] {
+    flex: none;
+    font-weight: 600;
+}
+
+.orca-collapsible-summary[b-yd4stmh2zq] {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-collapsible-actions[b-yd4stmh2zq] {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.orca-collapsible-body[b-yd4stmh2zq] {
+    padding: 12px 16px;
+}
+/* _content/Orca.UI/Components/OrcaIcon.razor.rz.scp.css */
+/* Sits on the text line like a letter, and never gets squeezed in a flex row */
+.orca-icon[b-qr57j9eseo] {
+    display: inline-flex;
+    position: relative;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+/* The icon file's shape filled with the text colour, so icons follow hover, selected rows and the theme */
+.orca-icon-mask[b-qr57j9eseo] {
+    display: block;
+    height: 100%;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+/* Ring style: the ring and the icon stacked in the same box */
+.orca-icon-layer[b-qr57j9eseo] {
+    position: absolute;
+    inset: 0;
+}
+
+/* 5.5 of 24 units on each side: the icon shrunk to fit inside the ring */
+.orca-icon-inner[b-qr57j9eseo] {
+    inset: 22.9%;
+}
+/* _content/Orca.UI/Components/ResizableContainer.razor.rz.scp.css */
+.orca-resizable[b-qeqen20zii] {
+    position: relative;
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    overflow: hidden;
+    margin-bottom: .6rem;
+}
+
+/* The toolbar already carries its own top/side border for standalone (non-
+   resizable) usages like dialog grids; inside a resizable container the
+   outer border above already frames everything, so suppress the inner one
+   to avoid a doubled edge. */
+.orca-resizable-toolbar[b-qeqen20zii]  .orca-grid-toolbar {
+    border: none;
+}
+
+.orca-resizable-body[b-qeqen20zii] {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.orca-resizable-toolbar[b-qeqen20zii] {
+    flex: 0 0 auto;
+}
+
+.orca-resizable-content[b-qeqen20zii] {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Thin bottom-only hit-area, overlapping the last few pixels of the body
+   rather than adding extra layout height - same "no visible padding" rule
+   used for the floating window's resize edges. */
+.orca-resizable-handle[b-qeqen20zii] {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+    cursor: ns-resize;
+    touch-action: none;
+    z-index: 1;
+}
+
+.orca-resizable-grip[b-qeqen20zii] {
+    position: absolute;
+    right: 4px;
+    bottom: 1px;
+    width: 10px;
+    height: 6px;
+    opacity: .5;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg, transparent 42%, #8a95a1 42%, #8a95a1 52%, transparent 52%),
+        linear-gradient(135deg, transparent 64%, #8a95a1 64%, #8a95a1 74%, transparent 74%);
+}
+
+.orca-resizable-handle:hover .orca-resizable-grip[b-qeqen20zii],
+.orca-resizable-handle:active .orca-resizable-grip[b-qeqen20zii] {
+    opacity: .9;
+}
+
+/* Full-viewport transparent catcher shown only while dragging, so fast
+   pointer movement is never lost to whatever element is underneath. */
+.orca-resizable-overlay[b-qeqen20zii] {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    cursor: ns-resize;
+    background: transparent;
+}
+/* _content/Orca.UI/Components/SplitPane.razor.rz.scp.css */
+.orca-split-pane[b-fqi7v6rw3y] {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.orca-split-pane-first[b-fqi7v6rw3y] {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+    background: var(--orca-color-surface);
+    overflow: auto;
+}
+
+/* Drag handle between the two panes. */
+.orca-split-pane-divider[b-fqi7v6rw3y] {
+    flex: 0 0 6px;
+    cursor: col-resize;
+    touch-action: none;
+    background: var(--orca-color-border);
+}
+
+    .orca-split-pane-divider:hover[b-fqi7v6rw3y],
+    .orca-split-pane-divider:active[b-fqi7v6rw3y] {
+        background: var(--orca-color-primary);
+    }
+
+/* Full-viewport transparent catcher shown only while dragging, so fast
+   pointer movement is never lost to whatever element is underneath - same
+   technique as ResizableContainer.razor.css/orca-floating-window.css. */
+.orca-split-pane-resize-overlay[b-fqi7v6rw3y] {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    cursor: col-resize;
+    background: transparent;
+}
+
+.orca-split-pane-second[b-fqi7v6rw3y] {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+}
+/* _content/Orca.UI/Components/TreePathBar.razor.rz.scp.css */
+/* Fits the width it's given, measured on the bar itself (container queries), not the window: wherever it sits.
+   Narrower: smaller text, then the middle folds into "...", then only "... > open item". Names end in "..." with
+   the full name on hover */
+.orca-path-bar[b-9l0wc02wq7] {
+    container-type: inline-size;
+    width: 100%;
+    min-width: 0;
+}
+
+.orca-path-list[b-9l0wc02wq7] {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+}
+
+.orca-path-part[b-9l0wc02wq7] {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+    flex: 0 1 auto;
+}
+
+/* The open item never shrinks; the parts before it give way first */
+.orca-path-open[b-9l0wc02wq7] {
+    flex-shrink: 0;
+}
+
+/* Only when something is hidden (rules below) */
+.orca-path-more[b-9l0wc02wq7] {
+    display: none;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* The menu lists only hidden parts: middle ones here, root and parent too on a narrow bar */
+.orca-path-menu > .orca-path-root[b-9l0wc02wq7],
+.orca-path-menu > .orca-path-parent[b-9l0wc02wq7] {
+    display: none;
+}
+
+/* Deep path: middle folded at any width */
+.orca-path-deep .orca-path-list > .orca-path-middle[b-9l0wc02wq7] {
+    display: none;
+}
+
+.orca-path-deep .orca-path-more[b-9l0wc02wq7] {
+    display: inline-flex;
+}
+
+.orca-path-link[b-9l0wc02wq7],
+.orca-path-current[b-9l0wc02wq7],
+.orca-path-more-btn[b-9l0wc02wq7] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 2px 6px;
+    font-size: inherit;
+    border-radius: 4px;
+}
+
+.orca-path-link[b-9l0wc02wq7] {
+    max-width: 160px;
+}
+
+.orca-path-current[b-9l0wc02wq7] {
+    max-width: 260px;
+    color: var(--orca-color-text);
+    font-weight: 600;
+}
+
+.orca-path-link[b-9l0wc02wq7],
+.orca-path-more-btn[b-9l0wc02wq7] {
+    color: var(--orca-color-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.orca-path-link:hover[b-9l0wc02wq7],
+.orca-path-more-btn:hover[b-9l0wc02wq7] {
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, transparent);
+}
+
+.orca-path-link:focus-visible[b-9l0wc02wq7],
+.orca-path-more-btn:focus-visible[b-9l0wc02wq7],
+.orca-path-menu-item:focus-visible[b-9l0wc02wq7] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: 1px;
+}
+
+.orca-path-separator[b-9l0wc02wq7] {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--orca-color-text-muted);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* "..." menu: every part above the open item, one per row */
+.orca-path-menu[b-9l0wc02wq7] {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 20;
+    min-width: 180px;
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+}
+
+.orca-path-menu-item[b-9l0wc02wq7] {
+    display: block;
+    width: 100%;
+    padding: 5px 12px;
+    font-size: 13px;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.orca-path-menu-item:hover[b-9l0wc02wq7] {
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+}
+
+/* Medium: smaller text, middle folded */
+@container (max-width: 520px) {
+    .orca-path-list[b-9l0wc02wq7] {
+        font-size: 12px;
+    }
+
+    .orca-path-list > .orca-path-middle[b-9l0wc02wq7] {
+        display: none;
+    }
+
+    .orca-path-has-middle .orca-path-more[b-9l0wc02wq7] {
+        display: inline-flex;
+    }
+
+    .orca-path-link[b-9l0wc02wq7] {
+        max-width: 110px;
+    }
+
+    .orca-path-current[b-9l0wc02wq7] {
+        max-width: 180px;
+    }
+}
+
+/* Narrow: just "... > open item" */
+@container (max-width: 300px) {
+    .orca-path-list[b-9l0wc02wq7] {
+        font-size: 11px;
+    }
+
+    .orca-path-list > .orca-path-root[b-9l0wc02wq7],
+    .orca-path-list > .orca-path-parent[b-9l0wc02wq7] {
+        display: none;
+    }
+
+    .orca-path-menu > .orca-path-root[b-9l0wc02wq7],
+    .orca-path-menu > .orca-path-parent[b-9l0wc02wq7] {
+        display: list-item;
+    }
+
+    .orca-path-more[b-9l0wc02wq7] {
+        display: inline-flex;
+    }
+
+    /* Now first in the row, so no separator before it */
+    .orca-path-more > .orca-path-separator[b-9l0wc02wq7] {
+        display: none;
+    }
+
+    /* The only name left, so it may shrink to fit */
+    .orca-path-open[b-9l0wc02wq7] {
+        flex-shrink: 1;
+    }
+
+    .orca-path-current[b-9l0wc02wq7] {
+        max-width: none;
+    }
+}
+/* _content/Orca.UI/DataTypes.razor.rz.scp.css */
+/* Scoped CSS (CSS isolation): page-specific grid tweaks go here (::deep is
+   required to reach SfGrid's own internal markup). The general grid look -
+   row height, alt-row shading, header color - lives in the shared
+   wwwroot/css/orca-grid.css since it applies to every grid in the app. */
+
+.orca-page-header[b-k0a4xpek9s] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.orca-page-header h3[b-k0a4xpek9s] {
+    margin: 0;
+}
+
+.orca-search-group[b-k0a4xpek9s] {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.orca-search-label[b-k0a4xpek9s] {
+    font-size: .8rem;
+    color: #6c757d;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.orca-search-box[b-k0a4xpek9s] {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.orca-search-icon[b-k0a4xpek9s] {
+    position: absolute;
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    fill: #9aa4ae;
+    pointer-events: none;
+}
+
+.orca-search-input[b-k0a4xpek9s] {
+    width: 240px;
+    padding: 6px 12px 6px 32px;
+    border: 1px solid #d7dde3;
+    border-radius: 999px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.orca-search-input:focus[b-k0a4xpek9s] {
+    border-color: var(--orca-color-primary);
+    box-shadow: 0 0 0 3px rgba(61, 133, 198, 0.15);
+}
+
+.orca-search-input[b-k0a4xpek9s]::placeholder {
+    color: #adb5bd;
+}
+
+@media (max-width: 700px) {
+    .orca-search-group[b-k0a4xpek9s] {
+        width: 100%;
+    }
+
+    .orca-search-input[b-k0a4xpek9s] {
+        flex: 1;
+        width: auto;
+    }
+}
+/* _content/Orca.UI/DocumentationLinkDetail.razor.rz.scp.css */
+/* Fills whatever vertical space Explorer's content pane actually has, instead
+   of guessing a fixed viewport offset - relies on .orca-explorer-content-body
+   (Explorer.razor.css) being a flex column with min-height:0 so this can grow
+   into it. */
+.orca-doclink-detail[b-1ewiygqxis] {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    gap: .75rem;
+}
+
+.orca-doclink-detail .orca-node-panel[b-1ewiygqxis] {
+    flex: 0 0 auto;
+}
+
+.orca-doclink-iframe-container[b-1ewiygqxis] {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.orca-doclink-iframe-container iframe[b-1ewiygqxis] {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* _content/Orca.UI/Documentation/DocumentationWindow.razor.rz.scp.css */
+.orca-docs[b-jdgrtsy9aj] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: var(--orca-font-nav);
+    font-size: 12px;
+    background: var(--orca-color-surface);
+}
+
+/* Like the Problems window's toolbar (IssueSummary), so the two look alike */
+/* In a narrow window (floating, or docked thin) the search and buttons move to a second line instead of squeezing */
+.orca-docs-toolbar[b-jdgrtsy9aj] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+/* One row; buttons past the end scroll (v lists them all), so the toolbar keeps its height */
+.orca-docs-open[b-jdgrtsy9aj] {
+    display: flex;
+    flex: 1 1 160px;
+    min-width: 0;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.orca-docs-item[b-jdgrtsy9aj] {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    border: var(--orca-border-size) solid transparent;
+    border-radius: 3px;
+}
+
+.orca-docs-item:hover[b-jdgrtsy9aj] {
+    background: var(--orca-color-faded-light);
+}
+
+.orca-docs-item.on[b-jdgrtsy9aj] {
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+    border-color: color-mix(in srgb, var(--orca-color-primary) 40%, var(--orca-color-bg));
+}
+
+.orca-docs-item-name[b-jdgrtsy9aj],
+.orca-docs-item-close[b-jdgrtsy9aj],
+.orca-docs-tool[b-jdgrtsy9aj] {
+    display: inline-flex;
+    align-items: center;
+    font: inherit;
+    color: var(--orca-color-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.orca-docs-item-name[b-jdgrtsy9aj] {
+    max-width: 220px;
+    padding: 2px 2px 2px 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.orca-docs-item-close[b-jdgrtsy9aj] {
+    padding: 2px 5px;
+    color: var(--orca-color-faded);
+}
+
+.orca-docs-item-close:hover[b-jdgrtsy9aj] {
+    color: var(--orca-color-text);
+}
+
+.orca-docs-tool[b-jdgrtsy9aj] {
+    justify-content: center;
+    width: 24px;
+    height: 22px;
+    flex: none;
+    border-radius: 3px;
+}
+
+.orca-docs-tool:hover:not(:disabled)[b-jdgrtsy9aj] {
+    background: var(--orca-color-faded-light);
+}
+
+.orca-docs-tool:disabled[b-jdgrtsy9aj] {
+    color: var(--orca-color-faded);
+    cursor: default;
+}
+
+.orca-docs-search[b-jdgrtsy9aj] {
+    position: relative;
+    flex: 1 1 180px;
+    max-width: 240px;
+}
+
+.orca-docs-search-input[b-jdgrtsy9aj] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1px 22px 1px 6px;
+    font: inherit;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 3px;
+}
+
+.orca-docs-search[b-jdgrtsy9aj]  .orca-docs-search-icon {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    color: var(--orca-color-faded);
+    pointer-events: none;
+}
+
+.orca-docs-results[b-jdgrtsy9aj] {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    z-index: 20;
+    width: 280px;
+    max-height: 260px;
+    margin: 0;
+    padding: 2px 0;
+    overflow-y: auto;
+    list-style: none;
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+}
+
+.orca-docs-result[b-jdgrtsy9aj],
+.orca-docs-result-none[b-jdgrtsy9aj] {
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.orca-docs-result[b-jdgrtsy9aj] {
+    cursor: pointer;
+}
+
+.orca-docs-result:hover[b-jdgrtsy9aj],
+.orca-docs-result.active[b-jdgrtsy9aj] {
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+.orca-docs-result-none[b-jdgrtsy9aj] {
+    color: var(--orca-color-faded);
+}
+
+/* In the v menu: drawn in the portal, but written in this file, so this still applies */
+.orca-docs-menu-close[b-jdgrtsy9aj] {
+    display: inline-flex;
+    margin-left: 8px;
+    padding: 0 2px;
+    color: inherit;
+    background: none;
+    border: none;
+    opacity: .6;
+    cursor: pointer;
+}
+
+.orca-docs-pages[b-jdgrtsy9aj] {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    background: var(--orca-color-bg);
+}
+
+.orca-docs-page[b-jdgrtsy9aj] {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.orca-docs-page[hidden][b-jdgrtsy9aj] {
+    display: none;
+}
+
+.orca-docs-empty[b-jdgrtsy9aj] {
+    margin: 16px;
+    color: var(--orca-color-faded);
+}
+/* _content/Orca.UI/Explorer.razor.rz.scp.css */
+/* The item picked in Explorer's tree (ExplorerTree): its path, name and page */
+.orca-explorer[b-kjq5fzvte2] {
+    /* The content header's height */
+    --orca-explorer-header-height: 44px;
+    display: flex;
+    flex-direction: column;
+    /* Nav bar, action bar (29px) and the page's padding above and below */
+    height: calc(100vh - 107px);
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    overflow: hidden;
+}
+
+.orca-explorer-placeholder[b-kjq5fzvte2] {
+    margin: auto;
+    color: var(--orca-color-text-muted);
+}
+
+/* Three columns: Back/Forward | title pill | Help + Node/Details. Equal side columns keep the pill
+   centred however wide the sides are (and when there's no toggle). */
+.orca-explorer-content-header[b-kjq5fzvte2] {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, auto) 1fr;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+    height: var(--orca-explorer-header-height);
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--orca-color-border);
+    background: var(--orca-color-surface);
+}
+
+/* The whole space left of the chip, so the chip stays centred: the path fits itself to this width (TreePathBar) */
+.orca-explorer-content-path[b-kjq5fzvte2] {
+    grid-column: 1;
+    min-width: 0;
+}
+
+/* Tinted pill so the open object stands out from the page below */
+.orca-explorer-content-chip[b-kjq5fzvte2] {
+    grid-column: 2;
+    min-width: 0;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .2rem .9rem;
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, var(--orca-color-surface));
+    border: 1px solid color-mix(in srgb, var(--orca-color-primary) 28%, transparent);
+    border-radius: 999px;
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--orca-color-primary) 18%, transparent);
+}
+
+/* Small type label ("CAN MESSAGE") before the name, with a divider */
+.orca-explorer-content-type[b-kjq5fzvte2] {
+    flex: 0 0 auto;
+    padding-right: .5rem;
+    border-right: 1px solid color-mix(in srgb, var(--orca-color-primary) 35%, transparent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    /* Solid primary (not faded), so it reads clearly next to the name */
+    color: var(--orca-color-primary);
+}
+
+.orca-explorer-content-title[b-kjq5fzvte2] {
+    min-width: 0;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Help icon and Node/Details toggle on the right */
+.orca-explorer-content-actions[b-kjq5fzvte2] {
+    grid-column: 3;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* Only the page scrolls, so the header (path, title, Node/Details) stays in place */
+.orca-explorer-content-body[b-kjq5fzvte2] {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+    /* A page's parts keep their full height and the body scrolls, same as opening the page from
+       the menu. Without this the column squeezes them to fit, and parts that hide overflow (e.g. the
+       Loom diagram) shrink to zero and vanish. The listener is display: contents, so these are the
+       page's own top-level elements. */
+    .orca-explorer-content-body[b-kjq5fzvte2]  .orca-live-validation-listener > * {
+        flex-shrink: 0;
+    }
+/* _content/Orca.UI/ExplorerTree.razor.rz.scp.css */
+/* Explorer's tool window: the filter and search, then the project tree. The item picked shows on the Explorer page */
+.orca-explorer-tree[b-rgm7p7fzfe] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--orca-color-surface);
+}
+
+/* Filter (35%) and search (65%) on one row - the filter only needs to show "All" */
+.orca-explorer-tree-tools[b-rgm7p7fzfe] {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid var(--orca-color-border);
+}
+
+.orca-explorer-tree-filter[b-rgm7p7fzfe] {
+    flex: 0 0 35%;
+    min-width: 0;
+}
+
+    /* Same text size as the search box beside it, and less right padding, so "Embedded" fits */
+    .orca-explorer-tree-filter select[b-rgm7p7fzfe] {
+        width: 100%;
+        padding-right: 4px;
+        font-size: var(--orca-font-size-sm);
+    }
+
+/* Same look as the grids' search box (pill, magnifier), at the filter's height so the row lines up */
+.orca-explorer-tree-search[b-rgm7p7fzfe] {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+.orca-explorer-tree-search-icon[b-rgm7p7fzfe] {
+    position: absolute;
+    left: 10px;
+    width: 13px;
+    height: 13px;
+    fill: #9aa4ae;
+    pointer-events: none;
+}
+
+.orca-explorer-tree-search-input[b-rgm7p7fzfe] {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    padding: 0 28px 0 30px;
+    font-family: inherit;
+    font-size: var(--orca-font-size-sm);
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--orca-color-faded-medium);
+    border-radius: 999px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+    .orca-explorer-tree-search-input:hover[b-rgm7p7fzfe] {
+        border-color: var(--orca-color-faded);
+    }
+
+    .orca-explorer-tree-search-input:focus[b-rgm7p7fzfe] {
+        border-color: var(--orca-color-primary);
+        box-shadow: 0 0 0 3px rgba(61, 133, 198, .15);
+    }
+
+    .orca-explorer-tree-search-input[b-rgm7p7fzfe]::placeholder {
+        color: #adb5bd;
+    }
+
+    /* We draw our own clear button, so hide the browser's */
+    .orca-explorer-tree-search-input[b-rgm7p7fzfe]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+.orca-explorer-tree-search-clear[b-rgm7p7fzfe] {
+    position: absolute;
+    right: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 10px;
+    color: var(--orca-color-text-muted);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+    .orca-explorer-tree-search-clear:hover[b-rgm7p7fzfe] {
+        color: var(--orca-color-text);
+        background: var(--orca-color-faded-medium);
+    }
+
+/* "23 matches" under the search row; red-tinted when nothing matches */
+.orca-explorer-tree-search-status[b-rgm7p7fzfe] {
+    flex: 0 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: .3rem 1rem;
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-faded-light);
+    border-bottom: 1px solid var(--orca-color-border);
+}
+
+    .orca-explorer-tree-search-status.empty[b-rgm7p7fzfe] {
+        color: var(--orca-color-error);
+    }
+
+/* The tree's own scroll area (both directions), below the fixed Project bar and filter */
+.orca-explorer-tree-scroll[b-rgm7p7fzfe] {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+/* Tree rows are rendered by the recursive ExplorerTreeNode child component,
+   not by this file's own markup - ::deep lets these rules reach past that
+   component boundary instead of being isolated away from it. */
+/* The part of a row that matches the search */
+[b-rgm7p7fzfe] .orca-tree-hit {
+    padding: 0;
+    color: inherit;
+    font-weight: 700;
+    background: color-mix(in srgb, #ffd54f 55%, transparent);
+    border-radius: 2px;
+}
+
+/* Name shown after a row matched by Name, not label (e.g. "0x440  M1_Brake_Status") */
+[b-rgm7p7fzfe] .orca-tree-match-name {
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+}
+
+[b-rgm7p7fzfe] .orca-tree-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+[b-rgm7p7fzfe] .orca-tree-root {
+    padding: .4rem 0;
+}
+
+/* Depth is set per-row via the --depth custom property (ExplorerTreeNode),
+   so indentation scales to any nesting depth without a class per level. */
+[b-rgm7p7fzfe] .orca-tree-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px calc(1rem + var(--depth, 0) * 1.1rem);
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+}
+
+[b-rgm7p7fzfe] .orca-tree-row:hover {
+    background: var(--orca-color-faded-light);
+}
+
+[b-rgm7p7fzfe] .orca-tree-row.selected {
+    background: rgba(61, 133, 198, 0.18);
+}
+
+[b-rgm7p7fzfe] .orca-tree-row.selected .orca-tree-label {
+    color: var(--orca-color-primary-dark);
+    font-weight: 600;
+}
+
+/* Leaf rows still render this span (empty, no chevron class) so their
+   label lines up with expandable siblings without extra compensation. */
+[b-rgm7p7fzfe] .orca-tree-caret {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 13px;
+    color: var(--orca-color-text-muted);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+    [b-rgm7p7fzfe] .orca-tree-caret:not(.orca-tree-caret-empty):hover {
+        background: var(--orca-color-faded-medium);
+        color: var(--orca-color-text);
+    }
+
+[b-rgm7p7fzfe] .orca-tree-caret-empty {
+    cursor: default;
+}
+
+[b-rgm7p7fzfe] .orca-tree-icon {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    font-size: 15px;
+    color: var(--orca-color-text-muted);
+}
+
+[b-rgm7p7fzfe] .orca-tree-label {
+    white-space: nowrap;
+}
+
+/* _content/Orca.UI/Help/HelpButton.razor.rz.scp.css */
+/* Same look as the navigate button (primary colour, soft tint on hover), so the header icons read as one set */
+.orca-help-btn[b-g5dd2jvde3] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    color: var(--orca-color-primary);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+}
+
+.orca-help-btn-wrap[b-g5dd2jvde3] {
+    display: inline-flex;
+}
+
+.orca-help-btn:hover:not(:disabled)[b-g5dd2jvde3] {
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 15%, transparent);
+}
+
+.orca-help-btn:focus-visible[b-g5dd2jvde3] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: 1px;
+}
+
+/* Faded like the nav bar's arrows with nowhere to go. No pointer events, so the hover reaches the wrapper's tooltip */
+.orca-help-btn:disabled[b-g5dd2jvde3] {
+    cursor: default;
+    opacity: .35;
+    pointer-events: none;
+}
+/* _content/Orca.UI/Help/HelpSectionEditor.razor.rz.scp.css */
+/* One light frame: a slim toolbar over a white writing area.
+   clip, not hidden: hidden makes a scroll box, which stops the toolbar sticking while scrolling a long section */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-richtexteditor {
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 6px;
+    overflow: clip;
+}
+
+/* Full screen (the window is the section, HelpTopicForm.razor.css): the writing area fills what's left
+   under the heading bar and toolbar. height: auto undoes a height dragged with the resize handle */
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .e-richtexteditor {
+    height: auto !important;
+}
+
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .e-resize-handle {
+    display: none;
+}
+
+/* The full-screen button shows Maximize, or Minimize while full screen */
+.orca-help-section-editor[b-n9tqk0ngmh]  .orca-help-section-editor-icon-min,
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .orca-help-section-editor-icon-max {
+    display: none;
+}
+
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .orca-help-section-editor-icon-min {
+    display: inline;
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-richtexteditor:focus-within {
+    border-color: var(--orca-color-primary);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-toolbar,
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-toolbar .e-toolbar-items {
+    min-height: 34px;
+    background: var(--orca-color-surface);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-toolbar {
+    border: none;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-toolbar .e-toolbar-item .e-tbar-btn {
+    min-height: 28px;
+    min-width: 28px;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+/* Room for a real section from the start; grows with the text after that */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content,
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content .e-content {
+    min-height: 280px;
+    background: var(--orca-color-bg);
+}
+
+/* Reading size and spacing, close to how the topic shows (HelpTopicContent.razor.css) */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content .e-content {
+    padding: 16px 22px 24px;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+/* The hint lines up with where typing starts */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content .e-rte-placeholder {
+    padding: 16px 22px;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content .e-content p {
+    margin: 0 0 10px;
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content .e-content :is(h3, h4) {
+    margin: 18px 0 8px;
+}
+
+/* Full screen: a centred column, so long lines stay readable on a wide monitor */
+/* After the 280px above, so it wins: fills the window under the heading bar and toolbar */
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .e-rte-content,
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .e-rte-content .e-content {
+    min-height: calc(100vh - 120px);
+}
+
+.orca-help-section-editor-full[b-n9tqk0ngmh]  .e-rte-content .e-content {
+    max-width: 900px;
+    margin-inline: auto;
+    padding: 32px 40px 64px;
+}
+
+/* Note/Warning/Steps icons: same size and colour as the editor's own icons */
+.orca-help-section-editor[b-n9tqk0ngmh]  .orca-help-section-editor-block svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* The link picker (HelpTopicLinkPicker) opens over the editor, placed from here */
+.orca-help-section-editor[b-n9tqk0ngmh] {
+    position: relative;
+}
+
+/* "Topic": the one labelled tool, so linking to another topic is easy to find */
+.orca-help-section-editor[b-n9tqk0ngmh]  .orca-help-section-editor-topic {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 8px !important; /* beats the toolbar's square icon-button padding */
+    font-family: var(--orca-font-nav);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+}
+
+/* Links to other topics look as they will in the topic (HelpTopicContent.razor.css): page icon, soft underline */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content a[href^="/help/"] {
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+    text-decoration: none;
+    border-bottom: 1.5px solid color-mix(in srgb, var(--orca-color-primary) 35%, transparent);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content a[href^="/help/"]::before {
+    content: "";
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 3px;
+    vertical-align: -1px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7l4 4v13h-11z'/%3E%3Cpath d='M13.5 3.5v4h4'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7l4 4v13h-11z'/%3E%3Cpath d='M13.5 3.5v4h4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* The boxes look like they will in the topic (HelpTopicContent.razor.css), so writers see what they add */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside {
+    margin: 0 0 var(--orca-spacing);
+    padding: var(--orca-spacing) calc(var(--orca-spacing) * 1.5);
+    border-left: 3px solid var(--orca-color-primary);
+    background: var(--orca-color-surface);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside::before {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside.note::before {
+    content: "Note";
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside.warning {
+    border-left-color: var(--orca-color-warning);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside.warning::before {
+    content: "Warning";
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside.steps {
+    border-left-color: var(--orca-color-accent);
+}
+
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content aside.steps::before {
+    content: "Steps";
+}
+
+/* Header cells look as they will in the topic (HelpTopicContent.razor.css) */
+.orca-help-section-editor[b-n9tqk0ngmh]  .e-rte-content th {
+    font-weight: 600;
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+/* _content/Orca.UI/Help/HelpTopicContent.razor.rz.scp.css */
+/* The one look for every help topic. Topics hold only words, so changing this restyles all of help.
+   Colours come from orca-theme.css, so help follows the app's theme. ::deep reaches the topic's own HTML.
+   A size container: the layout follows the topic's own width (page, Preview, drawer), not the window's */
+
+/* --orca-help-content-top: where the rail sticks and section jumps land. A page with its own
+   sticky header sets --orca-help-content-offset to sit below it (HelpTopicForm's Preview) */
+.orca-help-content[b-qwrq0onq94] {
+    --orca-help-content-top: var(--orca-help-content-offset, calc(var(--orca-nav-height, 0px) + var(--orca-spacing) * 2));
+    container-type: inline-size;
+    max-width: 100%;
+    font-family: var(--orca-font-nav);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--orca-color-text);
+}
+
+/* Narrow: title, contents box, text, one under the other */
+.orca-help-content-layout[b-qwrq0onq94] {
+    display: grid;
+    grid-template-areas: "header" "toc" "main";
+    min-width: 0;
+}
+
+.orca-help-content-header[b-qwrq0onq94] {
+    grid-area: header;
+    margin-bottom: calc(var(--orca-spacing) * 2.5);
+}
+
+.orca-help-content-title-row[b-qwrq0onq94] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--orca-spacing) * 1.5);
+}
+
+.orca-help-content-title[b-qwrq0onq94] {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.orca-help-content-status[b-qwrq0onq94] {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 99px;
+    color: var(--orca-color-text);
+    background: var(--orca-color-warning-bg);
+}
+
+.orca-help-content-meta[b-qwrq0onq94] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px calc(var(--orca-spacing) * 2);
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-content-main[b-qwrq0onq94] {
+    grid-area: main;
+    min-width: 0;
+}
+
+/* Table of contents: short and scannable, above the first section */
+.orca-help-content-toc[b-qwrq0onq94] {
+    grid-area: toc;
+    margin-bottom: calc(var(--orca-spacing) * 3);
+    padding: var(--orca-spacing) calc(var(--orca-spacing) * 2);
+    background: var(--orca-color-surface);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+}
+
+.orca-help-content-toc-title[b-qwrq0onq94] {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-content-toc ul[b-qwrq0onq94] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px calc(var(--orca-spacing) * 2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Wide: text at a comfortable line length, contents as a rail beside it that stays in view */
+@container (min-width: 900px) {
+    .orca-help-content-layout[b-qwrq0onq94] {
+        grid-template-columns: minmax(0, 760px) 220px;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: "header toc" "main toc";
+        column-gap: 56px;
+    }
+
+    .orca-help-content-toc[b-qwrq0onq94] {
+        position: sticky;
+        top: var(--orca-help-content-top);
+        align-self: start;
+        max-height: calc(100vh - var(--orca-help-content-top) - var(--orca-spacing) * 2);
+        overflow-y: auto;
+        margin: 0;
+        padding: 2px 0;
+        font-size: 13px;
+        line-height: 1.45;
+        background: none;
+        border: none;
+        border-left: var(--orca-border-size) solid var(--orca-color-border);
+        border-radius: 0;
+    }
+
+    .orca-help-content-toc-title[b-qwrq0onq94] {
+        padding: 0 12px 6px;
+    }
+
+    .orca-help-content-toc ul[b-qwrq0onq94] {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+
+    /* Bar over the rail's line marks the section being read (orcaHelp.markReading) */
+    .orca-help-content-toc a[b-qwrq0onq94] {
+        display: block;
+        margin-left: -1px;
+        padding: 5px 12px;
+        color: var(--orca-color-text-muted);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+    }
+
+    .orca-help-content-toc a:hover[b-qwrq0onq94] {
+        color: var(--orca-color-text);
+    }
+
+    .orca-help-content-toc a[aria-current][b-qwrq0onq94] {
+        font-weight: 600;
+        color: var(--orca-color-primary-dark);
+        border-left-color: var(--orca-color-primary);
+    }
+}
+
+.orca-help-content a[b-qwrq0onq94] {
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-help-content-section[b-qwrq0onq94] {
+    margin-bottom: calc(var(--orca-spacing) * 4);
+    scroll-margin-top: var(--orca-help-content-top);
+}
+
+.orca-help-content-section:focus[b-qwrq0onq94] {
+    outline: none;
+}
+
+.orca-help-content-heading[b-qwrq0onq94] {
+    margin: 0 0 calc(var(--orca-spacing) * 1.5);
+    padding-bottom: 6px;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-content-unsafe[b-qwrq0onq94] {
+    color: var(--orca-color-error-text);
+}
+
+/* Every section still empty: say so, rather than show a bare title */
+.orca-help-content-empty[b-qwrq0onq94] {
+    margin: 0;
+    padding: calc(var(--orca-spacing) * 2);
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: 1px dashed var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+}
+
+/* The topic's own HTML (only the tags HelpHtmlValidator allows) */
+.orca-help-content-body[b-qwrq0onq94]  p {
+    margin: 0 0 calc(var(--orca-spacing) * 1.5);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  h3 {
+    margin: calc(var(--orca-spacing) * 3) 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  h4 {
+    margin: calc(var(--orca-spacing) * 2.5) 0 4px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  ul,
+.orca-help-content-body[b-qwrq0onq94]  ol {
+    margin: 0 0 var(--orca-spacing);
+    padding-left: calc(var(--orca-spacing) * 3);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  code,
+.orca-help-content-body[b-qwrq0onq94]  pre {
+    font-family: var(--orca-font-content);
+    font-size: 12px;
+    background: var(--orca-color-surface);
+    border-radius: var(--orca-border-radius);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  code {
+    padding: 1px 4px;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  pre {
+    margin: 0 0 var(--orca-spacing);
+    padding: var(--orca-spacing);
+    overflow-x: auto;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  pre code {
+    padding: 0;
+    background: none;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  blockquote {
+    margin: 0 0 var(--orca-spacing);
+    padding-left: calc(var(--orca-spacing) * 1.5);
+    color: var(--orca-color-text-muted);
+    border-left: 3px solid var(--orca-color-border);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  table {
+    margin: 0 0 var(--orca-spacing);
+    border-collapse: collapse;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  th,
+.orca-help-content-body[b-qwrq0onq94]  td {
+    padding: 4px var(--orca-spacing);
+    text-align: left;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+/* Header cells (the editor's "Header row") stand out the same way in every topic */
+.orca-help-content-body[b-qwrq0onq94]  th {
+    font-weight: 600;
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+.orca-help-content-body[b-qwrq0onq94]  caption {
+    caption-side: top;
+    padding-bottom: 4px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  img {
+    max-width: 100%;
+    height: auto;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  hr {
+    border: 0;
+    border-top: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+/* Blocks the editor offers: Note, Warning, Steps */
+.orca-help-content-body[b-qwrq0onq94]  aside {
+    margin: 0 0 var(--orca-spacing);
+    padding: var(--orca-spacing) calc(var(--orca-spacing) * 1.5);
+    border-left: 3px solid var(--orca-color-primary);
+    border-radius: 0 var(--orca-border-radius) var(--orca-border-radius) 0;
+    background: var(--orca-color-surface);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside::before {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside.note::before {
+    content: "Note";
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside.warning {
+    border-left-color: var(--orca-color-warning);
+    background: color-mix(in srgb, var(--orca-color-warning-bg) 35%, var(--orca-color-bg));
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside.warning::before {
+    content: "Warning";
+    color: var(--orca-color-text);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside.steps {
+    border-left-color: var(--orca-color-accent);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside.steps::before {
+    content: "Steps";
+    color: var(--orca-color-text);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  aside > :last-child {
+    margin-bottom: 0;
+}
+
+.orca-help-content-see-also ul[b-qwrq0onq94] {
+    margin: 0;
+    padding-left: calc(var(--orca-spacing) * 3);
+}
+
+/* ---- Links in the text: another help topic, a website, or a topic that's gone ---- */
+
+/* Another help topic (HelpLinks): page icon and a soft underline, so it reads as "more help", not a website */
+.orca-help-content-body[b-qwrq0onq94]  a[href^="/help/"] {
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid color-mix(in srgb, var(--orca-color-primary) 35%, transparent);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  a[href^="/help/"]:hover {
+    border-bottom-color: var(--orca-color-primary);
+}
+
+.orca-help-content-body[b-qwrq0onq94]  a[href^="/help/"]::before {
+    content: "";
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 3px;
+    vertical-align: -1px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7l4 4v13h-11z'/%3E%3Cpath d='M13.5 3.5v4h4'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7l4 4v13h-11z'/%3E%3Cpath d='M13.5 3.5v4h4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* A website: an arrow says it opens outside Orca */
+.orca-help-content-body[b-qwrq0onq94]  a[href^="http"]::after {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-left: 3px;
+    vertical-align: 0;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4.5h5.5V10M19.5 4.5l-8 8M18 14v5.5H4.5V6H10'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4.5h5.5V10M19.5 4.5l-8 8M18 14v5.5H4.5V6H10'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* A link to a topic that doesn't exist (HelpLinks.MarkMissingTopics): plain text, a wavy hint, never a dead end */
+.orca-help-content-body[b-qwrq0onq94]  .orca-help-missing-link {
+    color: var(--orca-color-text-muted);
+    text-decoration: underline wavy color-mix(in srgb, var(--orca-color-warning) 70%, transparent);
+    text-underline-offset: 4px;
+    cursor: help;
+}
+/* _content/Orca.UI/Help/HelpTopicDetail.razor.rz.scp.css */
+/* Centred, wide enough for three columns: help tree, the topic, and its "On this page" rail */
+.orca-help-topic-detail[b-penqamc3cf] {
+    box-sizing: border-box;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding: calc(var(--orca-spacing) * 2);
+    font-family: var(--orca-font-nav);
+    font-size: 14px;
+}
+
+.orca-help-topic-detail-back[b-penqamc3cf] {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--orca-spacing) * 2);
+    margin-bottom: calc(var(--orca-spacing) * 1.5);
+    font-family: var(--orca-font-nav);
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-help-topic-detail-layout[b-penqamc3cf] {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: calc(var(--orca-spacing) * 4);
+    align-items: start;
+}
+
+.orca-help-topic-detail-main[b-penqamc3cf] {
+    min-width: 0;
+}
+
+/* Stays in view while reading, just below the app's nav (--orca-nav-height, orca-layout.js).
+   Caps the tree card's height, so its list scrolls inside it (HelpTopicTree.razor.css) */
+.orca-help-topic-detail-tree[b-penqamc3cf] {
+    position: sticky;
+    top: calc(var(--orca-nav-height, 0px) + var(--orca-spacing) * 2);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - var(--orca-nav-height, 0px) - var(--orca-spacing) * 4);
+}
+
+/* Narrow window: the topic gets the room; the Help Center link above still lists every topic */
+@media (max-width: 991.98px) {
+    .orca-help-topic-detail-layout[b-penqamc3cf] {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .orca-help-topic-detail-tree[b-penqamc3cf] {
+        display: none;
+    }
+}
+
+.orca-help-topic-detail-back a[b-penqamc3cf] {
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-help-topic-detail-back .orca-help-topic-detail-edit[b-penqamc3cf] {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+}
+
+/* Same as the nav's DEV tag (NavMenu.razor.css) */
+.orca-help-topic-detail-dev-badge[b-penqamc3cf] {
+    font-family: var(--orca-font-content);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: #1b1200;
+    background: var(--orca-color-warning);
+}
+/* _content/Orca.UI/Help/HelpTopicForm.razor.rz.scp.css */
+/* Layout only; inputs and the Edit/Preview toggle use the app's shared styles (orca-grid.css) */
+
+/* Wide: an outline rail beside the writing column. --orca-help-form-top: bottom of the sticky header,
+   which sits under the app's sticky nav (--orca-nav-height, orca-layout.js); sticky parts below it start there */
+.orca-help-topic-form[b-g377y6mx87] {
+    --orca-help-form-header-height: 56px;
+    --orca-help-form-top: calc(var(--orca-nav-height, 0px) + var(--orca-help-form-header-height));
+    /* A section's heading bar: 28px buttons, 6px padding each side, 1px border */
+    --orca-help-section-bar-height: 41px;
+    display: grid;
+    gap: calc(var(--orca-spacing) * 1.5);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding: 0 calc(var(--orca-spacing) * 2) calc(var(--orca-spacing) * 4);
+    font-family: var(--orca-font-nav);
+}
+
+/* Sticks to the top, so Save and Preview stay in reach far down a long topic. Edge to edge of the form */
+.orca-help-topic-form-header[b-g377y6mx87] {
+    position: sticky;
+    top: var(--orca-nav-height, 0px);
+    z-index: 20; /* above the page; below the nav (1020) and a full-screen section */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--orca-spacing);
+    box-sizing: border-box;
+    min-height: var(--orca-help-form-header-height);
+    margin-inline: calc(var(--orca-spacing) * -2);
+    padding: 6px calc(var(--orca-spacing) * 2);
+    background: var(--orca-color-bg);
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-topic-form-header h3[b-g377y6mx87] {
+    margin: 0;
+}
+
+.orca-help-topic-form-actions[b-g377y6mx87] {
+    display: flex;
+    align-items: center;
+    gap: var(--orca-spacing);
+}
+
+.orca-help-topic-form-layout[b-g377y6mx87] {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: calc(var(--orca-spacing) * 3);
+    align-items: start;
+}
+
+.orca-help-topic-form-main[b-g377y6mx87] {
+    display: grid;
+    gap: calc(var(--orca-spacing) * 2);
+    min-width: 0;
+}
+
+/* Preview: the same width as the topic's own page (HelpTopicDetail), so it lays out the same way */
+.orca-help-topic-form-preview[b-g377y6mx87] {
+    --orca-help-content-offset: calc(var(--orca-help-form-top) + var(--orca-spacing) * 2);
+    width: 100%;
+    max-width: 1088px;
+    margin-inline: auto;
+}
+
+/* ---- Outline rail: stays in view, scrolls itself when there are many sections ---- */
+
+.orca-help-topic-form-outline[b-g377y6mx87] {
+    position: sticky;
+    top: calc(var(--orca-help-form-top) + var(--orca-spacing) * 2);
+    display: grid;
+    gap: 4px;
+    max-height: calc(100vh - var(--orca-help-form-top) - var(--orca-spacing) * 4);
+    overflow-y: auto;
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-help-topic-form-outline-head[b-g377y6mx87] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px 4px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-form-outline ol[b-g377y6mx87] {
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.orca-help-topic-form-outline-item[b-g377y6mx87] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 6px 8px;
+    font: inherit;
+    text-align: left;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.orca-help-topic-form-outline-item:hover[b-g377y6mx87] {
+    background: var(--orca-color-faded-light);
+}
+
+/* The section holding the cursor */
+.orca-help-topic-form-outline-item.active[b-g377y6mx87] {
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, var(--orca-color-bg));
+    box-shadow: inset 3px 0 0 var(--orca-color-primary);
+}
+
+.orca-help-topic-form-outline-number[b-g377y6mx87] {
+    flex: none;
+    min-width: 18px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-form-outline-title[b-g377y6mx87] {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Word count; "Empty" stands out so unwritten sections are easy to spot */
+.orca-help-topic-form-outline-count[b-g377y6mx87] {
+    flex: none;
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-form-outline-count.empty[b-g377y6mx87] {
+    padding: 0 6px;
+    color: var(--orca-color-text);
+    background: var(--orca-color-warning-bg);
+    border-radius: 999px;
+}
+
+.orca-help-topic-form-outline-add[b-g377y6mx87] {
+    justify-self: start;
+    margin-top: 4px;
+    padding: 6px 8px;
+}
+
+.orca-help-topic-form-link-btn[b-g377y6mx87] {
+    padding: 2px 4px;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--orca-color-primary-dark);
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.orca-help-topic-form-link-btn:hover[b-g377y6mx87] {
+    text-decoration: underline;
+}
+
+/* Narrow window: no room for the rail; the section bars still number and fold */
+@media (max-width: 991.98px) {
+    .orca-help-topic-form-layout[b-g377y6mx87] {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .orca-help-topic-form-outline[b-g377y6mx87] {
+        display: none;
+    }
+}
+
+/* Help window: scrolls inside the dock panel, not under the nav, and is too narrow for the rail */
+.orca-help-topic-form.orca-help-topic-form-in-window[b-g377y6mx87] {
+    --orca-nav-height: 0px;
+    --orca-help-form-header-height: 48px;
+    padding-inline: calc(var(--orca-spacing) * 1.5);
+}
+
+.orca-help-topic-form-in-window .orca-help-topic-form-header[b-g377y6mx87] {
+    margin-inline: calc(var(--orca-spacing) * -1.5);
+    padding-inline: calc(var(--orca-spacing) * 1.5);
+}
+
+.orca-help-topic-form-in-window .orca-help-topic-form-header h3[b-g377y6mx87] {
+    font-size: 1.1rem;
+}
+
+.orca-help-topic-form-in-window .orca-help-topic-form-layout[b-g377y6mx87] {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.orca-help-topic-form-in-window .orca-help-topic-form-outline[b-g377y6mx87] {
+    display: none;
+}
+
+/* ---- Topic details: a card that folds to one summary line ---- */
+
+.orca-help-topic-form-details[b-g377y6mx87] {
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 8px;
+    background: var(--orca-color-bg);
+}
+
+.orca-help-topic-form-details-bar[b-g377y6mx87] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    font: inherit;
+    text-align: left;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.orca-help-topic-form-details-bar:hover[b-g377y6mx87] {
+    background: var(--orca-color-surface);
+}
+
+.orca-help-topic-form-details-title[b-g377y6mx87] {
+    margin-right: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.orca-help-topic-form-chip[b-g377y6mx87] {
+    padding: 1px 8px;
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 999px;
+}
+
+.orca-help-topic-form-fields[b-g377y6mx87] {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: var(--orca-spacing) calc(var(--orca-spacing) * 1.5);
+    align-items: start;
+    padding: 4px 16px 16px;
+}
+
+/* display: grid above would otherwise win over the hidden attribute */
+.orca-help-topic-form-fields[hidden][b-g377y6mx87] {
+    display: none;
+}
+
+.orca-help-topic-form-fields label[b-g377y6mx87] {
+    padding-top: 5px;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-form-fields input[b-g377y6mx87] {
+    width: 100%;
+}
+
+.orca-help-topic-form-status[b-g377y6mx87] {
+    width: auto;
+}
+
+/* The page's URL after its name in the "Shown on" list. The span is written in this file's ItemTemplate,
+   so it gets this file's scope even though Syncfusion shows the list in a popup elsewhere on the page */
+.orca-help-topic-form-page-url[b-g377y6mx87] {
+    margin-left: 8px;
+    font-family: var(--orca-font-content);
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-form-mono[b-g377y6mx87] {
+    font-family: var(--orca-font-content);
+}
+
+.orca-help-topic-form-hint[b-g377y6mx87] {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+}
+
+/* Turns right when open; shared by Topic details and the section bars */
+.orca-help-topic-form-chevron[b-g377y6mx87] {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--orca-color-text-muted);
+    transition: transform 0.15s ease;
+}
+
+.orca-help-topic-form-chevron.open[b-g377y6mx87] {
+    transform: rotate(90deg);
+}
+
+/* ---- Sections: one card each, a tinted header strip over the writing area ---- */
+
+/* clip, not hidden: hidden makes a scroll box, which stops the editor toolbar sticking.
+   scroll-margin: an outline jump lands below the sticky header */
+.orca-help-topic-form-section[b-g377y6mx87] {
+    display: grid;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 8px;
+    background: var(--orca-color-bg);
+    overflow: clip;
+    scroll-margin-top: calc(var(--orca-help-form-top) + var(--orca-spacing) * 1.5);
+}
+
+.orca-help-topic-form-section:focus[b-g377y6mx87] {
+    outline: none;
+}
+
+.orca-help-topic-form-section:focus-within[b-g377y6mx87] {
+    border-color: color-mix(in srgb, var(--orca-color-primary) 55%, var(--orca-color-border));
+}
+
+.orca-help-topic-form-section-bar[b-g377y6mx87] {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 8px 6px 6px;
+    background: color-mix(in srgb, var(--orca-color-primary) 7%, var(--orca-color-bg));
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-topic-form-section[b-g377y6mx87]  .orca-help-section-editor {
+    padding: 10px 12px 12px;
+}
+
+/* The editor's toolbar sticks just under the page's sticky header while scrolling a long section.
+   !important beats the inline top Syncfusion sets (it can't read a CSS variable) */
+.orca-help-topic-form-section[b-g377y6mx87]  .e-rte-tb-float {
+    top: var(--orca-help-form-top) !important;
+}
+
+/* Full screen: the whole card fills the window, over the app's nav (1020), and scrolls itself.
+   Heading bar sticks at its top, the toolbar just under it, as on the page */
+.orca-help-topic-form-section.orca-help-topic-form-section-full[b-g377y6mx87] {
+    position: fixed;
+    inset: 0;
+    z-index: 1040;
+    align-content: start;
+    overflow: auto;
+    overscroll-behavior: contain;
+    border: none;
+    border-radius: 0;
+}
+
+.orca-help-topic-form-section-full .orca-help-topic-form-section-bar[b-g377y6mx87] {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    min-height: var(--orca-help-section-bar-height);
+    box-sizing: border-box;
+}
+
+.orca-help-topic-form-section-full[b-g377y6mx87]  .e-rte-tb-float {
+    top: var(--orca-help-section-bar-height) !important;
+}
+
+.orca-help-topic-form-section-number[b-g377y6mx87] {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+    font-family: var(--orca-font-nav);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orca-color-text-on-primary);
+    background: var(--orca-color-primary);
+    border-radius: 50%;
+}
+
+/* The section's #link, as a small pill right after its title */
+.orca-help-topic-form-section-bar .orca-help-topic-form-hint[b-g377y6mx87] {
+    margin: 0 auto 0 6px;
+    padding: 1px 8px;
+    color: var(--orca-color-primary-dark);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 999px;
+}
+
+.orca-help-topic-form-word-count[b-g377y6mx87] {
+    flex: none;
+    margin-right: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    color: var(--orca-color-text-muted);
+}
+
+/* Reads as the section's title; the box appears only on hover and while typing. Sized to its text, so the #link sits beside it */
+.orca-help-topic-form-heading[b-g377y6mx87] {
+    field-sizing: content;
+    min-width: 8ch;
+    max-width: 60%;
+    padding: 3px 6px;
+    font-family: var(--orca-font-nav);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none;
+}
+
+.orca-help-topic-form-heading:hover[b-g377y6mx87] {
+    border-color: var(--orca-color-border);
+}
+
+.orca-help-topic-form-heading:focus[b-g377y6mx87] {
+    border-color: var(--orca-color-primary);
+    background: var(--orca-color-bg);
+}
+
+/* Folded section: the start of its text, one line; click to open it again */
+.orca-help-topic-form-excerpt[b-g377y6mx87] {
+    padding: 12px 16px;
+    overflow: hidden;
+    font: inherit;
+    font-size: var(--orca-font-size-sm);
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--orca-color-text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.orca-help-topic-form-excerpt:hover[b-g377y6mx87] {
+    color: var(--orca-color-text);
+    background: var(--orca-color-surface);
+}
+
+/* Fold, add, move and remove: quiet until hovered, so the text is what stands out */
+.orca-help-topic-form-icon-btn[b-g377y6mx87] {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: var(--orca-color-faded);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.orca-help-topic-form-icon-btn svg[b-g377y6mx87] {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.orca-help-topic-form-icon-btn:hover:not(:disabled)[b-g377y6mx87] {
+    color: var(--orca-color-text);
+    background: var(--orca-color-faded-light);
+}
+
+.orca-help-topic-form-icon-btn-danger:hover:not(:disabled)[b-g377y6mx87] {
+    color: var(--orca-color-error-text);
+}
+
+.orca-help-topic-form-icon-btn:disabled[b-g377y6mx87] {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.orca-help-topic-form-icon-btn:focus-visible[b-g377y6mx87],
+.orca-help-topic-form-add-section:focus-visible[b-g377y6mx87],
+.orca-help-topic-form-outline-item:focus-visible[b-g377y6mx87],
+.orca-help-topic-form-details-bar:focus-visible[b-g377y6mx87],
+.orca-help-topic-form-excerpt:focus-visible[b-g377y6mx87],
+.orca-help-topic-form-link-btn:focus-visible[b-g377y6mx87] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: 1px;
+}
+
+/* Where the next section goes, rather than another button in the row */
+.orca-help-topic-form-add-section[b-g377y6mx87] {
+    padding: 14px;
+    font-family: var(--orca-font-nav);
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+    background: transparent;
+    border: 1px dashed var(--orca-color-faded-medium);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.orca-help-topic-form-add-section:hover[b-g377y6mx87] {
+    border-color: var(--orca-color-primary);
+    background: color-mix(in srgb, var(--orca-color-primary) 6%, transparent);
+}
+
+.orca-help-topic-form-problems[b-g377y6mx87] {
+    margin: 0;
+    padding: var(--orca-spacing) var(--orca-spacing) var(--orca-spacing) calc(var(--orca-spacing) * 3);
+    color: var(--orca-color-error-text);
+    border-left: 3px solid var(--orca-color-error);
+    background: var(--orca-color-surface);
+}
+
+.orca-help-topic-form-saved[b-g377y6mx87] {
+    margin: 0;
+    padding: var(--orca-spacing) calc(var(--orca-spacing) * 1.5);
+    border-left: 3px solid var(--orca-color-success);
+    background: var(--orca-color-surface);
+}
+
+/* Worth a look but not blocking Save (FindLinkWarnings): amber, where problems are red */
+.orca-help-topic-form-warnings[b-g377y6mx87] {
+    margin: 0;
+    padding: var(--orca-spacing) var(--orca-spacing) var(--orca-spacing) calc(var(--orca-spacing) * 3);
+    border-left: 3px solid var(--orca-color-warning);
+    background: color-mix(in srgb, var(--orca-color-warning-bg) 30%, var(--orca-color-bg));
+}
+/* _content/Orca.UI/Help/HelpTopicLinkPicker.razor.rz.scp.css */
+/* A popover under the editor's toolbar: heading with Cancel / Insert link, search, then topics by folder. Kept inside the editor (max-height),
+   since the section card clips anything hanging below it; the list scrolls instead */
+.orca-help-link-picker[b-65y4n1onl8] {
+    position: absolute;
+    z-index: 40; /* above the editor's sticky toolbar */
+    top: 52px;
+    right: 16px;
+    width: 440px;
+    max-width: calc(100% - 32px);
+    max-height: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: var(--orca-font-nav);
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--orca-color-text);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--orca-color-text) 18%, transparent),
+                0 2px 6px color-mix(in srgb, var(--orca-color-text) 8%, transparent);
+}
+
+.orca-help-link-picker-head[b-65y4n1onl8] {
+    flex: none;
+    display: grid;
+    gap: 10px;
+    padding: 14px 14px 10px;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-faded-light);
+}
+
+/* Heading, then Cancel / Insert link: always in sight, however long the list below */
+.orca-help-link-picker-top[b-65y4n1onl8] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.orca-help-link-picker-heading[b-65y4n1onl8] {
+    flex: 1;
+    min-width: 0;
+    font-weight: 700;
+}
+
+.orca-help-link-picker-search[b-65y4n1onl8] {
+    position: relative;
+}
+
+.orca-help-link-picker-search svg[b-65y4n1onl8] {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: var(--orca-color-text-muted);
+    stroke-width: 2;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
+.orca-help-link-picker-search input[b-65y4n1onl8] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 10px 8px 34px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--orca-color-text);
+    background: var(--orca-color-surface);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.orca-help-link-picker-search input:focus[b-65y4n1onl8] {
+    background: var(--orca-color-bg);
+    border-color: var(--orca-color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--orca-color-primary) 18%, transparent);
+}
+
+/* Takes what's left of the popover; min-height 0 lets it shrink and scroll in a short editor */
+.orca-help-link-picker-list[b-65y4n1onl8] {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: 360px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px;
+}
+
+.orca-help-link-picker-none[b-65y4n1onl8] {
+    margin: 10px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-link-picker-group[b-65y4n1onl8] {
+    padding: 8px 8px 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-link-picker-topic[b-65y4n1onl8] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 7px 10px;
+    font: inherit;
+    text-align: left;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.orca-help-link-picker-topic:hover[b-65y4n1onl8] {
+    background: color-mix(in srgb, var(--orca-color-primary) 6%, var(--orca-color-surface));
+}
+
+.orca-help-link-picker-topic.picked[b-65y4n1onl8] {
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+.orca-help-link-picker-topic svg[b-65y4n1onl8] {
+    flex: none;
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.orca-help-link-picker-title[b-65y4n1onl8] {
+    flex: 1;
+    min-width: 0;
+}
+
+.orca-help-link-picker-status[b-65y4n1onl8] {
+    flex: none;
+    padding: 0 6px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #8a5a00;
+    background: color-mix(in srgb, var(--orca-color-warning) 16%, var(--orca-color-bg));
+    border-radius: 4px;
+}
+
+/* The picked topic's sections, to link straight to one; "Whole topic" by default */
+.orca-help-link-picker-sections[b-65y4n1onl8] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 10px 10px 35px;
+}
+
+.orca-help-link-picker-chip[b-65y4n1onl8] {
+    padding: 3px 10px;
+    font: inherit;
+    font-size: 12px;
+    color: var(--orca-color-text);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.orca-help-link-picker-chip:hover[b-65y4n1onl8] {
+    border-color: var(--orca-color-primary);
+}
+
+.orca-help-link-picker-chip.on[b-65y4n1onl8] {
+    color: var(--orca-color-text-on-primary);
+    background: var(--orca-color-primary-dark);
+    border-color: var(--orca-color-primary-dark);
+}
+
+/* What the link will say, or a hint until a topic is picked */
+.orca-help-link-picker-text[b-65y4n1onl8] {
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-link-picker-text strong[b-65y4n1onl8] {
+    color: var(--orca-color-text);
+}
+
+.orca-help-link-picker-topic:focus-visible[b-65y4n1onl8],
+.orca-help-link-picker-chip:focus-visible[b-65y4n1onl8] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: 1px;
+}
+/* _content/Orca.UI/Help/HelpTopicSummary.razor.rz.scp.css */
+/* Same centred width as a topic's page, so moving between them doesn't shift the page */
+.orca-help-topic-summary[b-79bsm0trto] {
+    display: grid;
+    gap: calc(var(--orca-spacing) * 3);
+    box-sizing: border-box;
+    max-width: 1120px;
+    margin-inline: auto;
+    padding: calc(var(--orca-spacing) * 2);
+    font-family: var(--orca-font-nav);
+    font-size: 14px;
+}
+
+/* ---- Header: title, intro, search, area chips, on a soft tinted band ---- */
+
+.orca-help-topic-summary-hero[b-79bsm0trto] {
+    display: grid;
+    gap: var(--orca-spacing);
+    padding: calc(var(--orca-spacing) * 3);
+    background: color-mix(in srgb, var(--orca-color-primary) 6%, var(--orca-color-bg));
+    border: var(--orca-border-size) solid color-mix(in srgb, var(--orca-color-primary) 15%, var(--orca-color-border));
+    border-radius: 12px;
+}
+
+.orca-help-topic-summary-hero h3[b-79bsm0trto] {
+    margin: 0;
+}
+
+.orca-help-topic-summary-lead[b-79bsm0trto] {
+    margin: 0;
+    font-size: 15px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-summary-search[b-79bsm0trto] {
+    position: relative;
+    max-width: 560px;
+    margin-top: 4px;
+}
+
+.orca-help-topic-summary-search svg[b-79bsm0trto] {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    width: 18px;
+    height: 18px;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: var(--orca-color-text-muted);
+    stroke-width: 2;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
+.orca-help-topic-summary-search input[b-79bsm0trto] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    font: inherit;
+    font-size: 15px;
+    color: var(--orca-color-text);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.orca-help-topic-summary-search input:focus[b-79bsm0trto] {
+    border-color: var(--orca-color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--orca-color-primary) 18%, transparent);
+}
+
+.orca-help-topic-summary-areas[b-79bsm0trto] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.orca-help-topic-summary-area-chip[b-79bsm0trto] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.orca-help-topic-summary-area-chip span[b-79bsm0trto] {
+    font-weight: 500;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-summary-area-chip:hover[b-79bsm0trto] {
+    border-color: var(--orca-color-primary);
+}
+
+/* ---- Areas: a heading with its count, then topic cards ---- */
+
+/* scroll-margin: an area chip lands it just below the app's nav (--orca-nav-height, orca-layout.js) */
+.orca-help-topic-summary-section[b-79bsm0trto] {
+    display: grid;
+    gap: calc(var(--orca-spacing) * 1.5);
+    scroll-margin-top: calc(var(--orca-nav-height, 0px) + var(--orca-spacing) * 2);
+}
+
+.orca-help-topic-summary-section:focus[b-79bsm0trto] {
+    outline: none;
+}
+
+.orca-help-topic-summary-section-head[b-79bsm0trto] {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--orca-spacing) * 1.5);
+    padding-bottom: 6px;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-topic-summary-section-head h4[b-79bsm0trto] {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.orca-help-topic-summary-section-head span[b-79bsm0trto],
+.orca-help-topic-summary-count[b-79bsm0trto] {
+    font-size: 13px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-summary-count[b-79bsm0trto] {
+    margin: 0;
+}
+
+.orca-help-topic-summary-group[b-79bsm0trto] {
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-summary-grid[b-79bsm0trto] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: calc(var(--orca-spacing) * 1.5);
+}
+
+/* A card per topic: lifts a little on hover so it reads as clickable */
+.orca-help-topic-summary-tile[b-79bsm0trto] {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    padding: 14px 16px;
+    color: var(--orca-color-text);
+    text-decoration: none;
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.orca-help-topic-summary-tile:hover[b-79bsm0trto] {
+    border-color: color-mix(in srgb, var(--orca-color-primary) 50%, var(--orca-color-border));
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--orca-color-text) 8%, transparent);
+    transform: translateY(-1px);
+}
+
+.orca-help-topic-summary-tile:focus-visible[b-79bsm0trto] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: 2px;
+}
+
+.orca-help-topic-summary-tile-head[b-79bsm0trto] {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.orca-help-topic-summary-tile-title[b-79bsm0trto] {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+}
+
+/* Two lines of the topic's text at most */
+.orca-help-topic-summary-tile-text[b-79bsm0trto] {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--orca-color-text-muted);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.orca-help-topic-summary-tile-text.empty[b-79bsm0trto] {
+    font-style: italic;
+    opacity: 0.75;
+}
+
+.orca-help-topic-summary-tile-path[b-79bsm0trto] {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-summary-status[b-79bsm0trto] {
+    flex: none;
+    padding: 1px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--orca-color-text);
+    background: var(--orca-color-warning-bg);
+    border-radius: 99px;
+}
+
+.orca-help-topic-summary-empty[b-79bsm0trto] {
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-topic-summary-note[b-79bsm0trto] {
+    max-width: 100%;
+    margin: 0;
+    padding: var(--orca-spacing) calc(var(--orca-spacing) * 1.5);
+    border-left: 3px solid var(--orca-color-warning);
+    background: var(--orca-color-surface);
+}
+
+.orca-help-topic-summary-page[b-79bsm0trto] {
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/Help/HelpTopicTree.razor.rz.scp.css */
+/* A card: header (count, progress, filter), the tree scrolling in the middle, "+ New topic" at the foot.
+   Fills the height its parent gives it (HelpTopicDetail's sticky rail), so only the tree scrolls */
+.orca-help-tree[b-u7gep50scb] {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+    font-family: var(--orca-font-nav);
+    font-size: 13px;
+    line-height: 1.4;
+    background: var(--orca-color-surface);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 12px;
+}
+
+/* ---- Header ---- */
+
+.orca-help-tree-head[b-u7gep50scb] {
+    flex: none;
+    display: grid;
+    gap: 8px;
+    padding: 14px 14px 12px;
+    background: var(--orca-color-bg);
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-tree-head-row[b-u7gep50scb] {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.orca-help-tree-heading[b-u7gep50scb] {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--orca-color-text);
+}
+
+.orca-help-tree-total[b-u7gep50scb],
+.orca-help-tree-progress-label[b-u7gep50scb] {
+    font-size: 12px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-tree-progress-label[b-u7gep50scb] {
+    margin-top: -3px;
+    font-size: 11px;
+}
+
+/* Progress bars: the fill's width comes from the markup (published / total) */
+.orca-help-tree-progress[b-u7gep50scb],
+.orca-help-tree-folder-bar[b-u7gep50scb] {
+    display: block;
+    overflow: hidden;
+    background: var(--orca-color-faded-light);
+    border-radius: 999px;
+}
+
+.orca-help-tree-progress[b-u7gep50scb] {
+    height: 6px;
+}
+
+.orca-help-tree-progress > span[b-u7gep50scb],
+.orca-help-tree-folder-bar > span[b-u7gep50scb] {
+    display: block;
+    height: 100%;
+    background: var(--orca-color-success);
+    border-radius: 999px;
+}
+
+.orca-help-tree-filter[b-u7gep50scb] {
+    position: relative;
+}
+
+.orca-help-tree-filter svg[b-u7gep50scb] {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: var(--orca-color-text-muted);
+    stroke-width: 2;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
+.orca-help-tree-filter input[b-u7gep50scb] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 7px 10px 7px 32px;
+    font: inherit;
+    font-size: 13px;
+    color: var(--orca-color-text);
+    background: var(--orca-color-surface);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.orca-help-tree-filter input:focus[b-u7gep50scb] {
+    background: var(--orca-color-bg);
+    border-color: var(--orca-color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--orca-color-primary) 18%, transparent);
+}
+
+/* ---- Tree ---- */
+
+.orca-help-tree-body[b-u7gep50scb] {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.orca-help-tree-none[b-u7gep50scb] {
+    margin: 6px 8px;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-tree-list[b-u7gep50scb] {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Sub-folders and their topics sit a step in, under the folder's name */
+.orca-help-tree-children[b-u7gep50scb] {
+    padding: 2px 0 6px 22px;
+}
+
+.orca-help-tree-folder[b-u7gep50scb] {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+    margin-top: 2px;
+    padding: 7px 8px;
+    font: inherit;
+    text-align: left;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.orca-help-tree-folder:hover[b-u7gep50scb] {
+    background: color-mix(in srgb, var(--orca-color-primary) 6%, var(--orca-color-surface));
+}
+
+.orca-help-tree-folder-row[b-u7gep50scb] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.orca-help-tree-chevron[b-u7gep50scb] {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--orca-color-text-muted);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.15s ease;
+}
+
+.orca-help-tree-chevron.open[b-u7gep50scb] {
+    transform: rotate(90deg);
+}
+
+/* An area's icon on a tinted tile, one tint per area */
+.orca-help-tree-area-icon[b-u7gep50scb] {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+.orca-help-tree-area-icon.can[b-u7gep50scb] {
+    color: #0b7a66;
+    background: color-mix(in srgb, var(--orca-color-accent) 14%, var(--orca-color-bg));
+}
+
+.orca-help-tree-area-icon.general[b-u7gep50scb],
+.orca-help-tree-area-icon.other[b-u7gep50scb] {
+    color: #46515e;
+    background: var(--orca-color-faded-light);
+}
+
+.orca-help-tree-area-icon.looms[b-u7gep50scb] {
+    color: #9a5b00;
+    background: color-mix(in srgb, var(--orca-color-warning) 14%, var(--orca-color-bg));
+}
+
+.orca-help-tree-area-icon svg[b-u7gep50scb] {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.orca-help-tree-folder-name[b-u7gep50scb] {
+    flex: 1;
+    min-width: 0;
+    font-weight: 700;
+}
+
+.orca-help-tree-folder-count[b-u7gep50scb] {
+    flex: none;
+    font-family: var(--orca-font-content);
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+}
+
+/* Lines up under the folder's name, past the chevron */
+.orca-help-tree-folder-bar[b-u7gep50scb] {
+    height: 3px;
+    margin-left: 22px;
+}
+
+.orca-help-tree-topic[b-u7gep50scb] {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    color: #3b4652;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.orca-help-tree-topic:hover[b-u7gep50scb] {
+    color: var(--orca-color-text);
+    background: color-mix(in srgb, var(--orca-color-primary) 6%, var(--orca-color-surface));
+}
+
+/* The topic being read */
+.orca-help-tree-topic.active[b-u7gep50scb] {
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+.orca-help-tree-doc[b-u7gep50scb] {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.7;
+}
+
+.orca-help-tree-title[b-u7gep50scb] {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Writer mode: each topic's status. Live is the goal, so it's the calm one */
+.orca-help-tree-status[b-u7gep50scb] {
+    flex: none;
+    padding: 0 6px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #8a5a00;
+    background: color-mix(in srgb, var(--orca-color-warning) 16%, var(--orca-color-bg));
+    border-radius: 4px;
+}
+
+.orca-help-tree-status.review[b-u7gep50scb] {
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 14%, var(--orca-color-bg));
+}
+
+.orca-help-tree-status.published[b-u7gep50scb] {
+    color: #0b7a66;
+    background: color-mix(in srgb, var(--orca-color-accent) 14%, var(--orca-color-bg));
+}
+
+/* ---- Foot ---- */
+
+.orca-help-tree-foot[b-u7gep50scb] {
+    flex: none;
+    padding: 10px 12px 12px;
+    background: var(--orca-color-bg);
+    border-top: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-tree-new[b-u7gep50scb] {
+    display: block;
+    padding: 7px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: var(--orca-color-primary-dark);
+    border: 1px dashed var(--orca-color-faded-medium);
+    border-radius: 8px;
+}
+
+.orca-help-tree-new:hover[b-u7gep50scb] {
+    border-color: var(--orca-color-primary);
+    background: color-mix(in srgb, var(--orca-color-primary) 5%, var(--orca-color-bg));
+}
+
+.orca-help-tree-folder:focus-visible[b-u7gep50scb],
+.orca-help-tree-topic:focus-visible[b-u7gep50scb],
+.orca-help-tree-new:focus-visible[b-u7gep50scb] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: 1px;
+}
+/* _content/Orca.UI/Help/HelpWindow.razor.rz.scp.css */
+.orca-help-window[b-d6cr446sl1] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: var(--orca-font-nav);
+    background: var(--orca-color-surface);
+}
+
+/* Same toolbar as the Documentation window */
+.orca-help-window-toolbar[b-d6cr446sl1] {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    font-size: 12px;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-help-window-tool[b-d6cr446sl1] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 22px;
+    flex: none;
+    color: var(--orca-color-text);
+    background: none;
+    border: var(--orca-border-size) solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.orca-help-window-tool:hover:not(:disabled)[b-d6cr446sl1] {
+    background: var(--orca-color-faded-light);
+}
+
+.orca-help-window-tool:disabled[b-d6cr446sl1] {
+    color: var(--orca-color-faded);
+    cursor: default;
+}
+
+.orca-help-window-tool.on[b-d6cr446sl1] {
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+    border-color: color-mix(in srgb, var(--orca-color-primary) 40%, var(--orca-color-bg));
+}
+
+.orca-help-window-search[b-d6cr446sl1] {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 80px;
+}
+
+.orca-help-window-search-input[b-d6cr446sl1] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1px 22px 1px 6px;
+    font: inherit;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 3px;
+}
+
+.orca-help-window-search[b-d6cr446sl1]  .orca-help-window-search-icon {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    color: var(--orca-color-faded);
+    pointer-events: none;
+}
+
+.orca-help-window-results[b-d6cr446sl1] {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    max-height: 260px;
+    margin: 0;
+    padding: 2px 0;
+    overflow-y: auto;
+    list-style: none;
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+}
+
+.orca-help-window-result[b-d6cr446sl1],
+.orca-help-window-result-none[b-d6cr446sl1] {
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.orca-help-window-result[b-d6cr446sl1] {
+    cursor: pointer;
+}
+
+.orca-help-window-result:hover[b-d6cr446sl1],
+.orca-help-window-result.active[b-d6cr446sl1] {
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+}
+
+.orca-help-window-result-none[b-d6cr446sl1] {
+    color: var(--orca-color-faded);
+}
+
+.orca-help-window-body[b-d6cr446sl1] {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 12px 16px;
+    background: var(--orca-color-bg);
+}
+
+.orca-help-window-body.orca-help-window-editing[b-d6cr446sl1] {
+    padding: 0;
+}
+
+.orca-help-window-link[b-d6cr446sl1] {
+    padding: 0;
+    font: inherit;
+    color: var(--orca-color-primary);
+    text-decoration: underline;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.orca-help-window-empty[b-d6cr446sl1] {
+    color: var(--orca-color-faded);
+    font-size: 13px;
+}
+/* _content/Orca.UI/IconGallery.razor.rz.scp.css */
+.orca-icon-gallery[b-gzq6nsff6s] {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 12px 0;
+}
+
+.orca-icon-gallery-row[b-gzq6nsff6s] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Same width for every item, so the icons line up in columns */
+.orca-icon-gallery-item[b-gzq6nsff6s] {
+    width: 150px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+    .orca-icon-gallery-item figcaption[b-gzq6nsff6s] {
+        font-size: var(--orca-font-size-sm);
+        color: var(--orca-color-text-muted);
+        white-space: nowrap;
+    }
+
+.orca-icon-gallery-heading[b-gzq6nsff6s] {
+    margin: 0 0 14px;
+    font-size: var(--orca-font-size);
+    font-weight: 600;
+}
+/* _content/Orca.UI/ImportGrid.razor.rz.scp.css */
+/* CSS for ImportGrid component */
+/* _content/Orca.UI/Issues/IssueCrashPanel.razor.rz.scp.css */
+/* One slim line where the broken area was; the toast carries the details */
+.orca-crash[b-vy9pn0lmm0] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin: 1rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--orca-color-border);
+    border-left: 4px solid var(--orca-color-error);
+    border-radius: 6px;
+    background: var(--orca-color-surface);
+    color: var(--orca-color-text);
+}
+
+.orca-crash-compact[b-vy9pn0lmm0] {
+    margin: 0.25rem;
+    padding: 0.4rem 0.75rem;
+}
+
+/* The user can fix it: a warning, not an error */
+.orca-crash-user[b-vy9pn0lmm0] {
+    border-left-color: var(--orca-color-warning);
+}
+
+.orca-crash-icon[b-vy9pn0lmm0] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: var(--orca-color-error);
+    color: var(--orca-color-text-on-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.orca-crash-user .orca-crash-icon[b-vy9pn0lmm0] {
+    background: var(--orca-color-warning);
+}
+
+.orca-crash-text[b-vy9pn0lmm0] {
+    font-weight: 600;
+}
+
+.orca-crash-reference[b-vy9pn0lmm0] {
+    font-family: monospace;
+    color: var(--orca-color-text-muted);
+    user-select: all;
+}
+
+/* The error file button: a link, so "Try again" stays the main action */
+.orca-crash-file[b-vy9pn0lmm0] {
+    padding: 0;
+}
+/* _content/Orca.UI/Issues/IssueSummary.razor.rz.scp.css */
+.orca-issue-summary[b-qzv4qbk1lh] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: var(--orca-font-nav);
+    font-size: 12px;
+}
+
+.orca-issue-summary-toolbar[b-qzv4qbk1lh] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+    background: var(--orca-color-surface);
+}
+
+.orca-issue-summary-filter[b-qzv4qbk1lh],
+.orca-issue-summary-tool[b-qzv4qbk1lh] {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    font: inherit;
+    color: var(--orca-color-text);
+    background: none;
+    border: var(--orca-border-size) solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.orca-issue-summary-filter:hover[b-qzv4qbk1lh],
+.orca-issue-summary-tool:hover:not(:disabled)[b-qzv4qbk1lh] {
+    background: var(--orca-color-faded-light);
+}
+
+.orca-issue-summary-filter.on[b-qzv4qbk1lh] {
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+    border-color: color-mix(in srgb, var(--orca-color-primary) 40%, var(--orca-color-bg));
+}
+
+.orca-issue-summary-tool:disabled[b-qzv4qbk1lh] {
+    color: var(--orca-color-faded);
+    cursor: default;
+}
+
+.orca-issue-summary-search[b-qzv4qbk1lh] {
+    width: 180px;
+    margin-left: 6px;
+    padding: 1px 6px;
+    font: inherit;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 3px;
+}
+
+.orca-issue-summary-spacer[b-qzv4qbk1lh] {
+    flex: 1;
+}
+
+.orca-issue-summary-failed[b-qzv4qbk1lh] {
+    margin: 4px 6px;
+    color: var(--orca-color-error-text);
+}
+
+.orca-issue-summary-grid[b-qzv4qbk1lh] {
+    flex: 1;
+    overflow: auto;
+}
+
+.orca-issue-summary-grid table[b-qzv4qbk1lh] {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orca-issue-summary-grid th[b-qzv4qbk1lh] {
+    position: sticky;
+    top: 0;
+    padding: 3px 6px;
+    font-weight: 400;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-bg);
+    border-right: var(--orca-border-size) solid var(--orca-color-border);
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-issue-summary-grid td[b-qzv4qbk1lh] {
+    padding: 2px 6px;
+    vertical-align: top;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-faded-light);
+}
+
+.orca-issue-summary-grid tbody tr[b-qzv4qbk1lh] {
+    cursor: default;
+}
+
+.orca-issue-summary-grid tbody tr:hover[b-qzv4qbk1lh] {
+    background: var(--orca-color-surface);
+}
+
+.orca-issue-summary-grid tbody tr.selected[b-qzv4qbk1lh] {
+    background: color-mix(in srgb, var(--orca-color-primary) 18%, var(--orca-color-bg));
+}
+
+.orca-issue-summary-col-icon[b-qzv4qbk1lh] {
+    width: 22px;
+}
+
+.orca-issue-summary-code[b-qzv4qbk1lh] {
+    font-family: var(--orca-font-content);
+    white-space: nowrap;
+}
+
+.orca-issue-summary-icon[b-qzv4qbk1lh] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--orca-color-text-on-primary);
+}
+
+.orca-issue-summary-icon-error[b-qzv4qbk1lh] {
+    background: var(--orca-color-error-text);
+}
+
+.orca-issue-summary-icon-warning[b-qzv4qbk1lh] {
+    background: color-mix(in srgb, var(--orca-color-warning) 85%, black);
+}
+
+.orca-issue-summary-empty[b-qzv4qbk1lh] {
+    margin: 8px;
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/Issues/IssueTestPage.razor.rz.scp.css */
+.orca-issue-test[b-pyrwo3xw2q] {
+    padding: 1rem;
+}
+
+.orca-issue-test-badge[b-pyrwo3xw2q] {
+    font-size: 0.7rem;
+    vertical-align: middle;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    background: var(--orca-color-warning);
+    color: var(--orca-color-text);
+}
+
+.orca-issue-test-hint[b-pyrwo3xw2q] {
+    color: var(--orca-color-text-muted);
+}
+
+.orca-issue-test-buttons[b-pyrwo3xw2q] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.orca-issue-test-header[b-pyrwo3xw2q] {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.orca-issue-test-header h5[b-pyrwo3xw2q] {
+    margin: 0;
+}
+
+.orca-issue-test-failed[b-pyrwo3xw2q] {
+    color: var(--orca-color-error);
+}
+
+.orca-issue-test-table[b-pyrwo3xw2q] {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+}
+/* _content/Orca.UI/Layout/ActionBar.razor.rz.scp.css */
+/* Same height and look as a tool window's title bar (.orca-dock-caption), so it lines up with Explorer's;
+   sticky, so it stays put when a page scrolls */
+.orca-action-bar[b-26oaf6e3zz] {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    box-sizing: border-box;
+    height: 29px;
+    padding: 0 1.25rem;
+    background: var(--orca-color-surface);
+    border-bottom: 1px solid var(--orca-color-border);
+}
+
+.orca-action-btn-wrap[b-26oaf6e3zz] {
+    display: inline-flex;
+}
+
+/* Matches HelpButton, which sits in the same row */
+.orca-action-btn[b-26oaf6e3zz] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    color: var(--orca-color-primary);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+}
+
+    .orca-action-btn:hover:not(:disabled)[b-26oaf6e3zz] {
+        color: var(--orca-color-primary-dark);
+        background: color-mix(in srgb, var(--orca-color-primary) 15%, transparent);
+    }
+
+    .orca-action-btn:focus-visible[b-26oaf6e3zz] {
+        outline: 2px solid var(--orca-color-primary-light);
+        outline-offset: 1px;
+    }
+
+    /* No pointer events, so the hover reaches the wrapper's tooltip */
+    .orca-action-btn:disabled[b-26oaf6e3zz] {
+        cursor: default;
+        opacity: .35;
+        pointer-events: none;
+    }
+
+/* The page's live warning/error count, on the corner of the Validate icon */
+.orca-action-badge[b-26oaf6e3zz] {
+    position: absolute;
+    top: -2px;
+    right: -6px;
+    min-width: 15px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #fff;
+    background: var(--orca-color-warning);
+    border-radius: 8px;
+}
+
+    .orca-action-badge.has-errors[b-26oaf6e3zz] {
+        background: var(--orca-color-error);
+    }
+
+.orca-action-sep[b-26oaf6e3zz] {
+    width: 1px;
+    height: 16px;
+    margin: 0 8px 0 10px;
+    background: var(--orca-color-border);
+}
+
+.orca-action-status[b-26oaf6e3zz] {
+    margin-left: auto;
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    color: var(--orca-color-warning);
+    background: transparent;
+    border: none;
+    border-radius: var(--orca-border-radius);
+    cursor: pointer;
+}
+
+    .orca-action-status.has-errors[b-26oaf6e3zz] {
+        color: var(--orca-color-error);
+    }
+
+    .orca-action-status:hover[b-26oaf6e3zz],
+    .orca-action-status:focus-visible[b-26oaf6e3zz] {
+        background: color-mix(in srgb, currentColor 12%, transparent);
+        outline: none;
+    }
+/* _content/Orca.UI/Layout/MainLayout.razor.rz.scp.css */
+/* Scoped CSS (CSS isolation):  global rules go in
+   the host's wwwroot/css/app.css. */
+
+/* Fills the window under the nav bar; the dock scrolls the page inside it */
+.orca-main[b-zf38lnyln9] {
+    height: calc(100vh - var(--orca-nav-height, 56px));
+}
+
+/* Less room on top: the action bar above already separates the page from the nav bar.
+   Sticky headers inside (e.g. the help editor's) sit under the 29px action bar, not over it */
+.content[b-zf38lnyln9] {
+    padding: .75rem 1.25rem 1.5rem;
+    margin-inline: auto;
+}
+
+.orca-dock-content.content[b-zf38lnyln9] {
+    --orca-nav-height: 29px;
+}
+
+@media (max-width: 575.98px) {
+    .content[b-zf38lnyln9] {
+        padding: .75rem 0.9rem 1rem;
+    }
+}
+/* _content/Orca.UI/Layout/NavArrowButton.razor.rz.scp.css */
+.orca-nav-arrow-wrap[b-wbzylzo3mg] {
+    display: inline-flex;
+}
+
+.orca-nav-arrow[b-wbzylzo3mg] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.85);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+}
+
+.orca-nav-arrow svg[b-wbzylzo3mg] {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.orca-nav-arrow:hover:not(:disabled)[b-wbzylzo3mg],
+.orca-nav-arrow[aria-expanded="true"][b-wbzylzo3mg] {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* The recent places trigger: narrow with a small icon, so it reads as part of Back/Forward */
+.orca-nav-arrow-compact[b-wbzylzo3mg] {
+    width: 20px;
+    border-radius: 4px;
+}
+
+.orca-nav-arrow-compact svg[b-wbzylzo3mg] {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.2;
+}
+
+.orca-nav-arrow:focus-visible[b-wbzylzo3mg] {
+    outline: 2px solid #fff;
+    outline-offset: 1px;
+}
+
+/* Same fade as the help icon. No pointer events, so the hover reaches the wrapper's tooltip */
+.orca-nav-arrow:disabled[b-wbzylzo3mg] {
+    cursor: default;
+    opacity: 0.4;
+    pointer-events: none;
+}
+/* _content/Orca.UI/Layout/NavHistoryButtons.razor.rz.scp.css */
+/* Tight pair, a little space before the brand */
+.orca-nav-history[b-eqirg9dxzw] {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-right: 10px;
+}
+/* _content/Orca.UI/Layout/NavMenu.razor.rz.scp.css */
+/* Scoped to NavMenu. Bootstrap 5 supplies the base navbar/dropdown styling;
+   these rules are polish on top of it. */
+
+.navbar-brand[b-xorl4sqs0f] {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.navbar-nav .nav-link[b-xorl4sqs0f] {
+    padding-inline: 0.9rem;
+}
+
+/* Slightly tighter, rounded dropdown panels with a soft shadow. */
+.dropdown-menu[b-xorl4sqs0f] {
+    --bs-dropdown-min-width: 12rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.18);
+    padding-block: 0.35rem;
+}
+
+[b-xorl4sqs0f] .dropdown-item {
+    padding-block: 0.45rem;
+    font-size: 0.925rem;
+}
+
+/* Active route: solid accent so the current page is obvious in the menu. */
+[b-xorl4sqs0f] .dropdown-item.active,
+[b-xorl4sqs0f] .dropdown-item:active {
+    background-color: var(--orca-color-primary-dark);
+    color: #fff;
+}
+
+[b-xorl4sqs0f] .dropdown-item:hover:not(.disabled) {
+    background-color: rgba(61, 133, 198, 0.12);
+}
+
+/* Collapsed (mobile) menu: give the panel room and let sub-menus indent
+   instead of floating. */
+@media (max-width: 991.98px) {
+    #orcaNav[b-xorl4sqs0f] {
+        padding-block: 0.5rem;
+    }
+
+    .navbar-nav .dropdown-menu[b-xorl4sqs0f] {
+        box-shadow: none;
+        background-color: transparent;
+        padding-left: 0.75rem;
+    }
+
+    [b-xorl4sqs0f] .navbar-nav .dropdown-item {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    [b-xorl4sqs0f] .navbar-nav .dropdown-item.active {
+        border-radius: 0.375rem;
+    }
+}
+
+/* Items for writing help: the DEV tag shows they're for dev mode only, not for users */
+[b-xorl4sqs0f] .orca-nav-dev-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+[b-xorl4sqs0f] .orca-nav-dev-badge {
+    font-family: var(--orca-font-content);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: #1b1200;
+    background: var(--orca-color-warning);
+}
+
+/* Wide window: [Back/Forward] [Orca + menu] [help] on a grid. The outer columns share the spare width equally,
+   so Orca and the menu sit in the exact middle whatever is either side. 992px is Bootstrap's lg, where
+   navbar-expand-lg stops collapsing the menu; below it Bootstrap's own layout is kept */
+@media (min-width: 992px) {
+    .navbar .orca-nav-row[b-xorl4sqs0f] {
+        display: grid;
+        grid-template-columns: 1fr auto auto 1fr;
+        align-items: center;
+    }
+
+    /* The collapse wrapper steps aside, so the menu and help are grid cells next to Orca (it's outside the collapse) */
+    .navbar-expand-lg .orca-nav-collapse[b-xorl4sqs0f] {
+        display: contents !important;
+    }
+
+    .orca-nav-brand[b-xorl4sqs0f] {
+        grid-column: 2;
+    }
+
+    .orca-nav-menu[b-xorl4sqs0f] {
+        grid-column: 3;
+    }
+}
+/* _content/Orca.UI/Layout/NavRecentPlaces.razor.rz.scp.css */
+.orca-recent[b-08vuwaqkrp] {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Drops below the bar from the trigger, like the menus */
+.orca-recent-menu[b-08vuwaqkrp] {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 1050;
+    width: 300px;
+    max-width: calc(100vw - 32px);
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+
+.orca-recent-item[b-08vuwaqkrp] {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 13px;
+    text-align: left;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.orca-recent-item:hover:not(:disabled)[b-08vuwaqkrp] {
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+}
+
+.orca-recent-item:focus-visible[b-08vuwaqkrp] {
+    outline: 2px solid var(--orca-color-primary-light);
+    outline-offset: -2px;
+}
+
+/* The open place: ticked, not clickable */
+.orca-recent-current[b-08vuwaqkrp] {
+    font-weight: 600;
+    cursor: default;
+}
+
+.orca-recent-icon[b-08vuwaqkrp] {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: var(--orca-color-text-muted);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* An item's tree icon (font), the same size and colour as the page icons */
+.orca-recent-tree-icon[b-08vuwaqkrp] {
+    width: 16px;
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-recent-current .orca-recent-icon[b-08vuwaqkrp] {
+    stroke: var(--orca-color-primary);
+    stroke-width: 2.4;
+}
+
+.orca-recent-name[b-08vuwaqkrp] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-recent-kind[b-08vuwaqkrp] {
+    font-size: 11px;
+    color: var(--orca-color-text-muted);
+}
+/* _content/Orca.UI/Looms/SearchCavitiess.razor.rz.scp.css */
+/* CSS for SearchConnections component */
+/* _content/Orca.UI/Looms/SensorCalibrationExportDialog.razor.rz.scp.css */
+/* CSS for SensorCalibrationExportDialog component */
+
+/* A wide export scrolls here rather than stretching the dialog */
+.calibration-export-preview[b-g20rglgzo9] {
+    overflow-x: auto;
+    max-height: 18rem;
+}
+
+.calibration-export-table[b-g20rglgzo9] {
+    border-collapse: collapse;
+    font-size: .875rem;
+    font-family: Consolas, "Cascadia Mono", monospace;
+}
+
+.calibration-export-table td[b-g20rglgzo9] {
+    padding: .1rem .75rem;
+    border: 1px solid var(--orca-color-border);
+    white-space: nowrap;
+}
+/* _content/Orca.UI/PayloadAndMaskMatrix.razor.rz.scp.css */
+/* CSS for PayloadAndMaskMatrix component */
+/* _content/Orca.UI/UnitConverter.razor.rz.scp.css */
+/* Scoped CSS (CSS isolation): page-specific grid tweaks go here (::deep is
+   required to reach SfGrid's own internal markup).     The general grid look -
+   row height, alt-row shading, header color - lives in the shared
+   wwwroot/css/orca-grid.css since it applies to every grid in the app. */
+
+.orca-convert-units[b-wqo366jt6h] {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 220px);
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+}
+
+/* Default  */
+.orca-convert-row[b-wqo366jt6h] {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .75rem 1.5rem;
+}
+
+.orca-field[b-wqo366jt6h] {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex: 1 1 170px;
+    min-width: 150px;
+    max-width: 220px;
+}
+
+.orca-field-label[b-wqo366jt6h] {
+    flex: 0 0 auto;
+    margin: 0;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.orca-field[b-wqo366jt6h]  .e-input-group,
+.orca-field[b-wqo366jt6h]  .e-numeric.e-input-group {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Small screens only  */
+@container (max-width: 380px) {
+    .orca-convert-row[b-wqo366jt6h] {
+        display: grid;
+        grid-template-columns: max-content minmax(120px, 1fr);
+        row-gap: .6rem;
+        column-gap: .75rem;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .orca-field[b-wqo366jt6h] {
+        display: contents;
+    }
+
+    .orca-field-label[b-wqo366jt6h] {
+        grid-column: 1;
+    }
+
+    .orca-field[b-wqo366jt6h]  .e-input-group,
+    .orca-field[b-wqo366jt6h]  .e-numeric.e-input-group {
+        grid-column: 2;
+        width: 100%;
+    }
+}
+
+.orca-convert-grid-wrap[b-wqo366jt6h] {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+}
+/* _content/Orca.UI/ValidationMessagesView.razor.rz.scp.css */
+/* Fills whatever holds it, so Height="100%" fills the dock window */
+.orca-validation-grid[b-luuyl45d4x] {
+    height: 100%;
+}
+
+/* The icon column is a narrow strip right beside Message ID, as in Visual Studio's Error List */
+.orca-validation-grid[b-luuyl45d4x]  .orca-severity-col {
+    padding-left: 4px !important;
+    padding-right: 0 !important;
+}
+
+/* Too narrow for the sort arrows; clicking the header still sorts */
+.orca-validation-grid[b-luuyl45d4x]  .e-headercell.orca-severity-col .e-sortfilterdiv {
+    display: none;
+}
+
+/* Rows are double-click-to-navigate, so show they're clickable. */
+.orca-validation-grid[b-luuyl45d4x]  .e-row {
+    cursor: pointer;
+}
+
+/* !important because the shared grid CSS forces a focus-within color with !important. */
+.orca-validation-grid[b-luuyl45d4x]  .e-row.orca-validation-opened .e-rowcell {
+    background: #ffe8a3 !important;
+}
+/* _content/Orca.UI/ValidationWindow.razor.rz.scp.css */
+/* Fills the dock panel; only the grid scrolls, so there's no second scrollbar on the window */
+.orca-validation-window[b-mu8xv9r4wh] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background: var(--orca-color-surface);
+}
+
+/* Same toolbar look as the Help and Documentation windows; the buttons and search sit in a row like Visual Studio's Error List */
+.orca-validation-window-toolbar[b-mu8xv9r4wh] {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 6px;
+    font-size: 12px;
+    border-bottom: var(--orca-border-size) solid var(--orca-color-border);
+}
+
+.orca-validation-window-scope[b-mu8xv9r4wh] {
+    padding: 0 8px 0 2px;
+    margin-right: 2px;
+    border-right: 1px solid var(--orca-color-border);
+    color: var(--orca-color-text-muted);
+    white-space: nowrap;
+}
+
+/* Pressed = that severity is shown; the outline says so, as in Visual Studio */
+.orca-validation-filter[b-mu8xv9r4wh] {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+    padding: 0 6px;
+    border: 1px solid transparent;
+    border-radius: var(--orca-border-radius);
+    background: none;
+    color: var(--orca-color-text);
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+    .orca-validation-filter:hover[b-mu8xv9r4wh] {
+        background: var(--orca-color-faded-light);
+    }
+
+    .orca-validation-filter[aria-pressed="true"][b-mu8xv9r4wh] {
+        border-color: var(--orca-color-primary);
+        background: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+    }
+
+    .orca-validation-filter[aria-pressed="false"][b-mu8xv9r4wh] {
+        color: var(--orca-color-text-muted);
+    }
+
+/* Pushed to the right end, as in Visual Studio */
+.orca-validation-window-search[b-mu8xv9r4wh] {
+    margin-left: auto;
+    width: 220px;
+    min-width: 100px;
+    height: 22px;
+    padding: 0 6px;
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    font-size: 12px;
+    background: var(--orca-color-bg);
+    color: var(--orca-color-text);
+}
+
+.orca-validation-window-grid[b-mu8xv9r4wh] {
+    flex: 1;
+    min-height: 0;
+}
+
+/* Syncfusion's Height="100%" makes the rows area as tall as the whole grid, so the header pushed it past the window
+   and the window scrolled too (R61). The rows area takes only the space under the header instead */
+.orca-validation-window-grid[b-mu8xv9r4wh]  .e-grid {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+}
+
+.orca-validation-window-grid[b-mu8xv9r4wh]  .e-gridcontent {
+    flex: 1;
+    min-height: 0;
+}
+
+.orca-validation-window-grid[b-mu8xv9r4wh]  .e-gridcontent .e-content {
+    height: 100% !important;
+}
+
+.orca-validation-window-empty[b-mu8xv9r4wh] {
+    margin: 12px;
+    color: var(--orca-color-text-muted);
+}

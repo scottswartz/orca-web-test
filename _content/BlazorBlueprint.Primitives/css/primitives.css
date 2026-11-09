@@ -1,0 +1,48 @@
+/* BlazorBlueprint Primitives - Positioning styles */
+[data-positioned="false"] {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 50;
+}
+
+/*
+ * The handful of utility classes the primitives themselves render.
+ *
+ * Primitives are unstyled by design, but a few classes are not decoration: they are what makes the
+ * markup behave. Both of these were only defined in the Components stylesheet, so an app using
+ * Primitives on its own showed the screen-reader-only text as ordinary paragraphs and had a
+ * dismiss overlay with no size to click.
+ *
+ * Declarations match the Tailwind utilities of the same names, so loading both stylesheets is
+ * harmless.
+ */
+.bb\:sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.bb\:fixed {
+  position: fixed;
+}
+
+.bb\:inset-0 {
+  inset: 0;
+}
+
+.bb\:relative {
+  position: relative;
+}
+
+.bb\:z-40 {
+  z-index: 40;
+}

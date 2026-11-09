@@ -1,0 +1,563 @@
+/* Orca global theme — single source of truth for fonts, color tokens, and
+   base element styling. Loaded by every host (Orca.Web, Orca.Desktop) via
+   _content/Orca.UI/css/orca-theme.css, before app.css and orca-grid.css so
+   both can build on these tokens.
+
+   Palette and type system mirror the CSS Electronics DBC editor: JetBrains
+   Mono for tool/data surfaces (grids, tables, technical text), Open Sans for
+   chrome (navbar, menus). Fonts are vendored under wwwroot/fonts — no CDN. */
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/JetBrainsMono-Variable.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/OpenSans-Variable.woff2') format('woff2');
+}
+
+:root {
+    /* Typography */
+    --orca-font-content: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+    --orca-font-nav: 'Open Sans', Arial, Helvetica, sans-serif;
+    --orca-font-size: 13px;
+    --orca-font-size-sm: 12px;
+    --orca-line-height: 1.5;
+
+    /* Palette */
+    --orca-color-primary: #3d85c6;
+    --orca-color-primary-light: #4e96d7;
+    --orca-color-primary-dark: #2f6ba1;
+    --orca-color-accent: #10cba9;
+
+    --orca-color-bg: #ffffff;
+    --orca-color-surface: #f7f9fb;
+    --orca-color-text: #000000;
+    --orca-color-text-muted: #434343;
+    --orca-color-text-on-primary: #ffffff;
+
+    --orca-color-faded: #999999;
+    --orca-color-faded-light: #eeeeee;
+    --orca-color-faded-medium: #cccccc;
+    --orca-color-border: #d7dde3;
+
+    --orca-color-error: #ff6666;
+    --orca-color-error-bg: #ff9999;
+    --orca-color-error-text: #c62828; /* darker, readable red for error text on white */
+    --orca-color-warning: #ff9900;
+    --orca-color-warning-bg: #ffd699;
+    --orca-color-success: #10cba9;
+
+    /* Spacing / shape */
+    --orca-spacing: 8px;
+    --orca-border-size: 1px;
+    --orca-border-radius: 4px;
+}
+
+html, body {
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size);
+    line-height: var(--orca-line-height);
+    color: var(--orca-color-text);
+    background-color: var(--orca-color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--orca-font-content);
+    font-weight: 400;
+}
+
+code, pre, kbd, samp {
+    font-family: var(--orca-font-content);
+}
+
+/* Chrome (navbar/menus) reads Open Sans, matching the reference site's nav
+   while the tool surface underneath stays monospace. */
+.navbar, .navbar .dropdown-menu {
+    font-family: var(--orca-font-nav);
+}
+
+a, .btn-link {
+    color: var(--orca-color-primary-dark);
+}
+
+    a:hover, .btn-link:hover {
+        color: var(--orca-color-primary);
+    }
+
+.btn-primary {
+    color: var(--orca-color-text-on-primary);
+    background-color: var(--orca-color-primary-dark);
+    border-color: var(--orca-color-primary-dark);
+}
+
+    .btn-primary:hover, .btn-primary:focus {
+        background-color: var(--orca-color-primary);
+        border-color: var(--orca-color-primary);
+    }
+
+.navbar.bg-primary {
+    background-color: var(--orca-color-primary-dark) !important;
+}
+
+.text-primary {
+    color: var(--orca-color-primary-dark) !important;
+}
+
+.border-primary {
+    border-color: var(--orca-color-primary) !important;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-check-input:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--orca-color-primary-light);
+    border-color: var(--orca-color-primary);
+}
+
+.form-control, .form-select {
+    font-family: var(--orca-font-content);
+    border-color: var(--orca-color-faded-medium);
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid var(--orca-color-success);
+}
+
+.invalid {
+    outline: 1px solid var(--orca-color-error);
+    background-color: var(--orca-color-error-bg);
+}
+
+.validation-message {
+    color: var(--orca-color-error);
+}
+
+/* Shared tooltip (orca-tooltip.js) for validation error badges and help icons -
+   one bubble in <body> for every data-orca-tooltip element */
+.orca-tooltip {
+    position: fixed;
+    z-index: 10000;
+    max-width: 280px;
+    padding: 8px 10px;
+    font-family: var(--orca-font-nav);
+    font-size: var(--orca-font-size-sm);
+    line-height: 1.45;
+    color: var(--orca-color-text);
+    background: var(--orca-color-bg);
+    border: 1px solid var(--orca-color-border);
+    border-left: 3px solid var(--orca-color-primary);
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .14);
+    white-space: pre-line; /* one line per message */
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .12s ease-out;
+}
+
+    .orca-tooltip.orca-tooltip-visible {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* Validation errors: red accent */
+    .orca-tooltip.orca-tooltip-error {
+        border-left-color: var(--orca-color-error);
+    }
+
+.orca-tooltip-title {
+    margin-bottom: 2px;
+    font-weight: 700;
+    color: var(--orca-color-primary-dark);
+}
+
+.orca-tooltip-error .orca-tooltip-title {
+    color: var(--orca-color-error-text);
+}
+
+/* Small arrow pointing at the element */
+.orca-tooltip::after {
+    content: "";
+    position: absolute;
+    left: var(--orca-tooltip-arrow-left, 50%);
+    width: 8px;
+    height: 8px;
+    background: var(--orca-color-bg);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.orca-tooltip[data-placement="top"]::after {
+    bottom: -5px;
+    border-right: 1px solid var(--orca-color-border);
+    border-bottom: 1px solid var(--orca-color-border);
+}
+
+.orca-tooltip[data-placement="bottom"]::after {
+    top: -5px;
+    border-left: 1px solid var(--orca-color-border);
+    border-top: 1px solid var(--orca-color-border);
+}
+
+table {
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size-sm);
+}
+
+/* NumericTextBox spin buttons - the fluent2 theme CSS never actually sets
+   position:absolute on .e-spin-up/.e-spin-down, so without this they render
+   as normal inline-flex siblings next to the input (side-by-side) instead of
+   stacked at the right edge. Fix applies everywhere, not just in grids. */
+.e-numeric.e-input-group {
+    position: relative;
+}
+
+    .e-numeric.e-input-group input.e-numerictextbox {
+        width: 100%;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+
+.e-numeric.e-input-group .e-spin-up,
+.e-numeric.e-input-group .e-spin-down {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 13px !important;
+    min-width: 0 !important;
+    height: 50% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    line-height: 1;
+}
+
+.e-numeric.e-input-group .e-spin-up {
+    top: 0;
+}
+
+.e-numeric.e-input-group .e-spin-down {
+    bottom: 0;
+}
+
+/* SfDialog - shared skin for every modal in the app. */
+.e-dialog {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Draggable dialogs move by their title bar */
+.e-dialog.e-draggable .e-dlg-header-content {
+    cursor: move;
+    user-select: none;
+}
+
+    .e-dialog.e-draggable .e-dlg-header-content .e-dlg-closeicon-btn {
+        cursor: pointer;
+    }
+
+.e-dialog .e-dlg-header-content {
+    background: #e4eef8;
+    border-bottom: 1px solid #cfe0f1;
+    padding: 13px 10px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .e-dialog .e-dlg-header-content .e-dlg-header {
+        order: 1;
+        font-family: var(--orca-font-content);
+        font-weight: 700;
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+        text-transform: uppercase;
+        letter-spacing: .02em;
+        color: var(--orca-color-primary-dark);
+    }
+
+    .e-dialog .e-dlg-header-content .e-icon-dlg-close {
+        color: var(--orca-color-primary-dark);
+        font-size: 13px !important;
+        font-weight: 700;
+    }
+
+    .e-dialog .e-dlg-header-content .e-dlg-closeicon-btn {
+        order: 2;
+        width: 22px !important;
+        height: 22px !important;
+        padding: 0 !important;
+        margin: 0 0 0 auto !important;
+        min-height: 0 !important;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color .15s ease;
+    }
+
+        .e-dialog .e-dlg-header-content .e-dlg-closeicon-btn:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+
+.e-dialog .e-dlg-content {
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size);
+    padding: 16px;
+}
+
+.e-dialog .e-footer-content {
+    padding: 10px 16px;
+    border-top: 1px solid var(--orca-color-border);
+    background: var(--orca-color-surface);
+}
+
+    .e-dialog .e-footer-content .e-btn.e-primary {
+        background-color: var(--orca-color-primary-dark);
+        border-color: var(--orca-color-primary-dark);
+    }
+
+        .e-dialog .e-footer-content .e-btn.e-primary:hover {
+            background-color: var(--orca-color-primary);
+            border-color: var(--orca-color-primary);
+        }
+
+.e-dlg-overlay {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* ConfirmDialog (Orca.UI/Components) - small, centered "are you sure?" card
+   reused everywhere a destructive action needs a gentle guard rail. */
+.orca-confirm-dialog {
+    text-align: center;
+}
+
+    .orca-confirm-dialog .e-dlg-header-content {
+        display: none;
+    }
+
+    .orca-confirm-dialog .e-dlg-content {
+        padding: 22px 22px 4px;
+    }
+
+    .orca-confirm-dialog .e-footer-content {
+        display: flex !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 8px;
+        border-top: none;
+        background: transparent;
+        padding: 4px 22px 20px;
+    }
+
+        .orca-confirm-dialog .e-footer-content .e-btn {
+            min-width: 84px;
+            border-radius: var(--orca-border-radius);
+        }
+
+        .orca-confirm-dialog .e-footer-content .e-btn.e-primary {
+            background-color: var(--orca-color-error);
+            border-color: var(--orca-color-error);
+        }
+
+            .orca-confirm-dialog .e-footer-content .e-btn.e-primary:hover {
+                background-color: #e64c4c;
+                border-color: #e64c4c;
+            }
+
+.orca-confirm-icon {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--orca-color-error-bg);
+    color: #b91c1c;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.orca-confirm-title {
+    font-family: var(--orca-font-content);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--orca-color-text);
+    margin-bottom: 4px;
+}
+    
+.orca-confirm-message {
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    line-height: 1.4;
+}
+
+/* Severity icon colours, as in Visual Studio's Error List (validation grid and its toolbar filters) */
+.orca-severity {
+    display: inline-flex;
+}
+
+.orca-severity-critical {
+    color: #8b0000;
+}
+
+.orca-severity-error {
+    color: var(--orca-color-error-text);
+}
+
+.orca-severity-warning {
+    color: var(--orca-color-warning);
+}
+
+.orca-severity-information {
+    color: #1e88e5;
+}
+
+.orca-pull-up { 
+    display:flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 4px;
+}
+
+/* Reusable layout: orca-row = children left to right, orca-column = top to bottom.
+   Inside either, orca-fixed keeps its own size and orca-fill takes the space left over */
+.orca-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.orca-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.orca-fixed {
+    flex: 0 0 auto;
+}
+
+/* min-width/min-height 0 let the item shrink instead of overflowing the row or column */
+.orca-fill {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+}
+/* Outlined action button for important page actions (Import DBC, Signal Scaling Calculator) */
+.orca-outline-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .25rem .65rem .25rem .5rem;
+    font-family: inherit;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    color: var(--orca-color-primary);
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-primary);
+    border-radius: var(--orca-border-radius);
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+    .orca-outline-btn:hover {
+        color: var(--orca-color-surface);
+        background: var(--orca-color-primary);
+    }
+
+    .orca-outline-btn:focus-visible {
+        outline: 2px solid var(--orca-color-primary);
+        outline-offset: 2px;
+    }
+/* CAN bus health levels (CanBusHealth), as CanBusLoadCalculator.GetHealthColor: Safe and Normal are both green */
+:root {
+    --orca-health-safe: #2e8b57;
+    --orca-health-normal: #2e8b57;
+    --orca-health-caution: #d9a400;
+    --orca-health-warning: #e07b00;
+    --orca-health-critical: #c8372d;
+}
+
+.orca-health-pill {
+    display: inline-block;
+    padding: 0 .6rem;
+    border-radius: 999px;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    line-height: 1.6;
+    color: #fff;
+    background: var(--orca-health-color);
+    white-space: nowrap;
+}
+
+.orca-health-safe { --orca-health-color: var(--orca-health-safe); }
+.orca-health-normal { --orca-health-color: var(--orca-health-normal); }
+.orca-health-caution { --orca-health-color: var(--orca-health-caution); }
+.orca-health-warning { --orca-health-color: var(--orca-health-warning); }
+.orca-health-critical { --orca-health-color: var(--orca-health-critical); }
+
+/* Yellow needs dark text to stay readable */
+.orca-health-pill.orca-health-caution { color: #1c2733; }
+
+/* Plain tab strip (no script): buttons along a bottom border, the open one joins the content below */
+.orca-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 2px;
+    border-bottom: 1px solid var(--orca-color-border);
+}
+
+.orca-tab {
+    padding: .3rem .9rem;
+    font-family: inherit;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    background: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: var(--orca-border-radius) var(--orca-border-radius) 0 0;
+    cursor: pointer;
+}
+
+    .orca-tab:hover {
+        color: var(--orca-color-primary-dark);
+    }
+
+    .orca-tab:focus-visible {
+        outline: 2px solid var(--orca-color-primary);
+        outline-offset: -2px;
+    }
+
+.orca-tab-active {
+    margin-bottom: -1px;
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+    background: var(--orca-color-bg);
+    border-color: var(--orca-color-border);
+}

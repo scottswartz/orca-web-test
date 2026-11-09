@@ -1,0 +1,194 @@
+/* Floating, draggable, resizable windows (Windows-calculator style) that can
+   host any component on top of the current page. */
+.orca-floatwin {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: var(--orca-color-bg);
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .22), 0 2px 6px rgba(0, 0, 0, .12);
+    overflow: hidden;
+}
+.orca-floatwin-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    height: 34px;
+    padding: 0 6px 0 10px;
+    background: var(--orca-color-primary-dark);
+    color: var(--orca-color-text-on-primary);
+    font-family: var(--orca-font-nav);
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    cursor: move;
+    user-select: none;
+    touch-action: none;
+}
+.orca-floatwin-icon {
+    font-size: 13px;
+}
+
+.orca-floatwin-title {
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-floatwin-minimize,
+.orca-floatwin-maximize,
+.orca-floatwin-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: var(--orca-border-radius);
+    color: inherit;
+    cursor: pointer;
+}
+
+    .orca-floatwin-close .e-icons {
+        font-size: 11px;
+    }
+
+    .orca-floatwin-minimize:hover,
+    .orca-floatwin-maximize:hover,
+    .orca-floatwin-close:hover {
+        background: rgba(255, 255, 255, .18);
+    }
+
+/* Help icon in white on the dark title bar; extra classes so it beats HelpButton's own (scoped) primary colour */
+.orca-floatwin-titlebar .orca-floatwin-help .orca-help-btn {
+    width: 24px;
+    height: 24px;
+    color: inherit;
+}
+
+    .orca-floatwin-titlebar .orca-floatwin-help .orca-help-btn:hover:not(:disabled) {
+        color: inherit;
+        background: rgba(255, 255, 255, .18);
+    }
+
+/* Plain horizontal bar, same glyph Windows itself uses for "minimize". */
+.orca-floatwin-minimize-icon {
+    display: block;
+    width: 10px;
+    height: 1px;
+    background: currentColor;
+}
+
+/* Small square outline - same glyph Windows uses for "restore" once a
+   window is minimized, shown in place of the bar above so the button's
+   next click is obviously "bring it back". */
+.orca-floatwin-restore-icon {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border: 1px solid currentColor;
+}
+
+.orca-floatwin-maximize-icon {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid currentColor;
+}
+
+.orca-floatwin-restore-down-icon {
+    position: relative;
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin: 2px 2px 0 0;
+    border: 1px solid currentColor;
+}
+
+    .orca-floatwin-restore-down-icon::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 8px;
+        height: 8px;
+        border-top: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+    }
+
+.orca-floatwin-maximized:not(.orca-floatwin-minimized) {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: none !important;
+    border-radius: 0;
+}
+
+    .orca-floatwin-maximized .orca-floatwin-titlebar {
+        cursor: default;
+    }
+
+.orca-floatwin-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+    padding: 10px;
+    background: var(--orca-color-bg);
+}
+
+/* Resize hit-areas  */
+.orca-floatwin-resize {
+    position: absolute;
+    touch-action: none;
+}
+
+.orca-floatwin-resize-n,
+.orca-floatwin-resize-s {
+    left: 10px;
+    right: 10px;
+    height: 6px;
+    cursor: ns-resize;
+}
+
+.orca-floatwin-resize-n { top: 0; }
+.orca-floatwin-resize-s { bottom: 0; }
+
+.orca-floatwin-resize-e,
+.orca-floatwin-resize-w {
+    top: 10px;
+    bottom: 10px;
+    width: 6px;
+    cursor: ew-resize;
+}
+
+.orca-floatwin-resize-e { right: 0; }
+.orca-floatwin-resize-w { left: 0; }
+
+.orca-floatwin-resize-nw,
+.orca-floatwin-resize-ne,
+.orca-floatwin-resize-sw,
+.orca-floatwin-resize-se {
+    width: 10px;
+    height: 10px;
+}
+
+.orca-floatwin-resize-nw { top: 0; left: 0; cursor: nwse-resize; }
+.orca-floatwin-resize-se { bottom: 0; right: 0; cursor: nwse-resize; }
+.orca-floatwin-resize-ne { top: 0; right: 0; cursor: nesw-resize; }
+.orca-floatwin-resize-sw { bottom: 0; left: 0; cursor: nesw-resize; }
+
+/* Full-viewport transparent catcher shown only while a drag/resize is active,
+   so fast pointer movement is never lost to whatever element is underneath. */
+.orca-floatwin-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: transparent;
+}

@@ -1,0 +1,86 @@
+/* Help's link preview card (orca-help.js). Global, not scoped: the script adds the card to the page body,
+   outside any component, so it can float over everything without upsetting Blazor's own markup */
+
+.orca-help-preview {
+    position: fixed;
+    z-index: 1030; /* over the page and the app's nav (1020) */
+    box-sizing: border-box;
+    width: 340px;
+    max-width: calc(100vw - 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
+    font-family: var(--orca-font-nav);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--orca-color-text);
+    background: var(--orca-color-bg);
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--orca-color-text) 16%, transparent),
+                0 2px 6px color-mix(in srgb, var(--orca-color-text) 8%, transparent);
+    pointer-events: none; /* only a preview: the link under it is still the thing to click */
+}
+
+.orca-help-preview[hidden] {
+    display: none;
+}
+
+.orca-help-preview-folder {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-help-preview-title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.orca-help-preview-section {
+    font-weight: 600;
+    color: var(--orca-color-text-muted);
+}
+
+/* Three lines of the topic at most */
+.orca-help-preview-text {
+    display: -webkit-box;
+    overflow: hidden;
+    color: var(--orca-color-text-muted);
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.orca-help-preview-text.empty {
+    font-style: italic;
+}
+
+.orca-help-preview-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 2px;
+    padding-top: 8px;
+    border-top: var(--orca-border-size) solid var(--orca-color-faded-light);
+    font-size: 12px;
+}
+
+.orca-help-preview-status {
+    padding: 0 6px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
+    color: #8a5a00;
+    background: color-mix(in srgb, var(--orca-color-warning) 16%, var(--orca-color-bg));
+    border-radius: 4px;
+}
+
+.orca-help-preview-open {
+    margin-left: auto;
+    font-weight: 600;
+    color: var(--orca-color-primary-dark);
+}

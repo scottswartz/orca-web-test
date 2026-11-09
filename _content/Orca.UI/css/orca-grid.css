@@ -1,0 +1,759 @@
+/* Shared Syncfusion Grid look-and-feel - applies to every grid in the app,
+   no opt-in class needed. For a one-off tweak on a single page, override in
+   that page's own <Page>.razor.css instead (remember ::deep, since SfGrid's
+   internal rows/cells aren't written directly in the page's own markup). */
+
+.e-grid {
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size);
+    border: 1px solid var(--orca-color-border);
+}
+
+/* Section heading above an always-editable grid (CAN Nodes/Messages/Signals
+   etc). */
+.orca-grid-heading {
+    font-size: 1rem;
+    margin: .6rem 0 .5rem;
+}
+
+/* Header - tinted to match the app's accent blue instead of plain gray */
+.e-grid .e-gridheader,
+.e-grid .e-headercell,
+.e-grid .e-detailheadercell,
+.e-grid .e-grouptopleftcell {
+    background: linear-gradient(180deg, #eef5fb 0%, #dfebf6 100%);
+    border-color: #cbdcec;
+}
+
+.e-grid .e-headertext {
+    font-weight: 700;
+    font-size: var(--orca-font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: var(--orca-color-primary-dark);
+}
+
+/* Sort affordance - Syncfusion only inserts an ascending/descending glyph
+   once a column is actually sorted, leaving unsorted headers bare. 
+   Show a neutral up/down hint on every sortable header all the time instead, 
+   like CSS Elecroncis website does. Syncfusion's own asc/desc icon takes over once
+   the column is actually sorted (that state isn't touched here). */
+.e-grid .e-headercell:not([aria-sort="ascending"]):not([aria-sort="descending"]) .e-sortfilterdiv::after {
+    content: "\2195";
+    font-size: 10px;
+    color: var(--orca-color-faded);
+    margin-left: 2px;
+}
+
+.e-grid .e-headercell:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.e-grid .e-headercell[aria-sort="ascending"],
+.e-grid .e-headercell[aria-sort="descending"] {
+    box-shadow: inset 0 -2px 0 var(--orca-color-primary-dark) !important;
+}
+
+    .e-grid .e-headercell[aria-sort="ascending"] .e-sortfilterdiv,
+    .e-grid .e-headercell[aria-sort="descending"] .e-sortfilterdiv {
+        color: var(--orca-color-primary-dark);
+    }
+
+/* Rows - compact, editor-style density */
+.e-grid .e-rowcell {
+    height: 24px;
+    padding: 2px 8px;
+    line-height: 1.1;
+    font-size: var(--orca-font-size-sm);
+    border-color: #e6e9ec;
+}
+
+.e-grid .e-headercell {
+    height: 28px;
+}
+
+/* Edit-row inputs (Add/Edit form) - match the same compact row density as
+   the display cells instead of the theme's default ~32px control height. */
+.e-grid .e-input-group.e-control-wrapper,
+.e-grid .e-numeric.e-input-group {
+    height: 24px;
+    min-height: 0;
+}
+
+    .e-grid .e-input-group.e-control-wrapper input.e-input,
+    .e-grid .e-numeric.e-input-group input.e-numerictextbox {
+        height: 100%;
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: var(--orca-font-size-sm);
+        box-sizing: border-box;
+    }
+
+.e-grid .e-ddl.e-input-group .e-input-group-icon,
+.e-grid .e-input-group.e-control-wrapper .e-input-group-icon {
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+    padding: 0 4px;
+    font-size: 12px;
+}
+
+/* Alternate rows - permanently on, using what used to be only the hover color.
+   The expand/collapse cell of a detail-template grid isn't an e-rowcell, so it is listed too. */
+.e-grid .e-altrow .e-rowcell,
+.e-grid .e-altrow .e-detailrowcollapse,
+.e-grid .e-altrow .e-detailrowexpand {
+    background: #eef5fc;
+}
+
+/* Hover - a touch deeper than the alt-row tint so it still reads on any row */
+.e-grid .e-row:hover .e-rowcell,
+.e-grid .e-row:hover .e-detailrowcollapse,
+.e-grid .e-row:hover .e-detailrowexpand {
+    background: #dbe9f7;
+}
+
+/* Selected row (click a row to pick it for Remove etc.) - a deeper tint plus a blue bar on the left edge. 
+   Generic, so every grid gets it. Syncfusion marks the row with aria-selected and its cells with e-selectionbackground 
+    (not the row). td.e-rowcell makes this outrank the "typing in this row" tint further down, so it stays visible. */
+.e-grid .e-row[aria-selected="true"] td.e-rowcell,
+.e-grid td.e-rowcell.e-selectionbackground {
+    background: color-mix(in srgb, var(--orca-color-primary) 26%, transparent) !important;
+}
+
+    .e-grid .e-row[aria-selected="true"] td.e-rowcell:first-child,
+    .e-grid td.e-rowcell.e-selectionbackground:first-child {
+        box-shadow: inset 3px 0 0 var(--orca-color-primary);
+    }
+
+    /* Dropdowns are white boxes that would hide the tint - see-through until clicked */
+    .e-grid .e-row[aria-selected="true"] .e-input-group:not(.e-input-focus) {
+        background: transparent;
+    }
+
+/* Row-select checkbox: a quiet hint that rows can be selected. Hidden at rest, a faint empty box
+   fades in on the hovered row, and the selected row shows a small soft-blue box with a white tick
+   (the row tint + bar stay the main signal). Pure CSS on the first cell, so every grid gets it;
+   clicks land on the cell, so Syncfusion selects the row. The SVGs are masks, so they take the colour. */
+.e-grid .e-row td.e-rowcell:first-child {
+    position: relative;
+    padding-left: 18px; /* always reserved, so the row's text doesn't jump when the box appears */
+}
+
+    .e-grid .e-row td.e-rowcell:first-child::before {
+        /* Empty box */
+        --orca-row-select-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><rect x='1.25' y='1.25' width='11.5' height='11.5' rx='3' fill='none' stroke='black' stroke-width='1.25'/></svg>");
+        /* Solid box with the tick cut out (inner mask), so the tick shows white */
+        --orca-row-select-icon-on: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><defs><mask id='t'><rect width='14' height='14' fill='white'/><path d='M4 7.2L6.1 9.3L10.2 5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></mask></defs><rect x='0.5' y='0.5' width='13' height='13' rx='3.25' mask='url(%23t)'/></svg>");
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 0;
+        bottom: 0;
+        width: 14px;
+        background-color: currentColor;
+        -webkit-mask: var(--orca-row-select-icon) no-repeat center / 10px 10px;
+        mask: var(--orca-row-select-icon) no-repeat center / 10px 10px;
+        color: #b8c2cc;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity .12s ease-out;
+    }
+
+    .e-grid .e-row:hover td.e-rowcell:first-child::before {
+        opacity: 1;
+    }
+
+    .e-grid .e-row[aria-selected="true"] td.e-rowcell:first-child::before {
+        opacity: 1;
+        color: color-mix(in srgb, var(--orca-color-primary) 75%, transparent);
+        -webkit-mask-image: var(--orca-row-select-icon-on);
+        mask-image: var(--orca-row-select-icon-on);
+    }
+
+    /* The clicked cell gets a box from Syncfusion (focus shadow) and from the browser (focus ring).
+       Removed on every cell - the row tint + blue bar already show the active row. !important
+       because theme rules kept winning; the text boxes inside keep their own focus box. */
+    .e-grid .e-row td.e-rowcell.e-focused,
+    .e-grid .e-row td.e-rowcell:focus,
+    .e-grid .e-row td.e-rowcell:focus-visible {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+        /* ...but the selected row keeps its blue bar on the first cell */
+        .e-grid .e-row[aria-selected="true"] td.e-rowcell:first-child {
+            box-shadow: inset 3px 0 0 var(--orca-color-primary) !important;
+        }
+
+    .e-grid .e-row:focus,
+    .e-grid .e-row:focus-visible {
+        outline: none !important;
+    }
+
+
+.e-grid .e-gridcontent {
+    border-color: var(--orca-color-border);
+}
+
+/* Horizontal scrolling - grids with many fixed-width columns (e.g. CAN
+   signals/messages) overflow their container on purpose; give the scrollbar
+   itself the app's accent color so it reads as an affordance, not a fluke. */
+.e-grid .e-gridcontent,
+.e-grid .e-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--orca-color-primary) var(--orca-color-faded-light);
+}
+
+    .e-grid .e-gridcontent::-webkit-scrollbar,
+    .e-grid .e-content::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+    }
+
+    .e-grid .e-gridcontent::-webkit-scrollbar-track,
+    .e-grid .e-content::-webkit-scrollbar-track {
+        background: var(--orca-color-faded-light);
+    }
+
+    .e-grid .e-gridcontent::-webkit-scrollbar-thumb,
+    .e-grid .e-content::-webkit-scrollbar-thumb {
+        background: var(--orca-color-primary);
+        border-radius: var(--orca-border-radius);
+    }
+
+/* Single-record form (not a grid) - e.g. CanNodeForm/DeviceEdit. */
+.orca-node-panel {
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    padding: 1rem 1.25rem;
+    background: var(--orca-color-bg);
+}
+
+/* Heading on the left, optional buttons (e.g. Validate) in the top right of the box */
+.orca-node-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    margin: .6rem 0 .75rem;
+}
+
+/* The header row holds the spacing, so the button lines up with the heading text */
+.orca-node-panel .orca-node-panel-header .orca-grid-heading {
+    margin: 0;
+}
+
+.orca-node-panel .orca-grid-heading {
+    margin-bottom: .75rem;
+}
+
+.orca-node-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+}
+
+.orca-node-field {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    flex: 0 1 220px;
+}
+
+.orca-node-field-label {
+    font-weight: 500;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Takes a whole line inside orca-node-fields (e.g. the Signal/Power/Ground editor in CavityDetail).
+   Two classes so it beats .orca-node-field's 220px */
+.orca-node-field.orca-node-field-full {
+    flex: 1 1 100%;
+}
+
+/* Label left of the input, one row (e.g. a single read-only field above a grid) */
+.orca-node-field.orca-node-field-inline {
+    flex-direction: row;
+    flex: 0 1 auto;
+    align-items: center;
+    gap: .75rem;
+}
+
+    .orca-node-field-inline > .orca-node-field-label {
+        white-space: nowrap;
+    }
+
+/* An input with a button beside it (e.g. CAN Bus dropdown + navigate button) */
+.orca-node-input-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    /* width 0: the box shrinks to make room for the button, so the field stays as wide as its neighbours */
+    .orca-node-input-row > .orca-node-input {
+        flex: 1;
+        width: 0;
+        min-width: 0;
+    }
+
+/* Live validation: a form field or grid cell holding an OrcaValidationMessage error turns its
+   input red - inputs need no extra class. Anchored on the field/cell classes to keep it cheap;
+   grid cells match anywhere inside, because Syncfusion wraps template content in a div.
+   The input-row lines cover inputs that sit next to a button (orca-node-input-row). */
+.orca-node-field:has(> .orca-field-error) > .orca-node-input,
+.orca-node-field:has(> .orca-field-error) > .orca-node-input-row > .orca-node-input,
+.orca-node-field:has(> .orca-field-error) .e-input-group,
+.orca-node-field:has(> .orca-field-error) .orca-hexdec-input,
+.e-rowcell:has(.orca-field-error) .orca-cell-input,
+.e-rowcell:has(.orca-field-error) .orca-cell-select {
+    border-color: var(--orca-color-error);
+    background-color: #fff5f5;
+}
+
+    /* Stays red while the user is typing in it */
+    .orca-node-field:has(> .orca-field-error) > .orca-node-input:focus,
+    .orca-node-field:has(> .orca-field-error) > .orca-node-input-row > .orca-node-input:focus {
+        border-color: var(--orca-color-error);
+        box-shadow: 0 0 0 2px rgba(255, 102, 102, .2);
+    }
+
+/* Brief flash on the field we jumped to from the validation grid (orca-field.js), so the eye finds it */
+@keyframes orca-field-flash {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 102, 102, 0); }
+    35% { box-shadow: 0 0 0 4px rgba(255, 102, 102, .45); }
+}
+
+.orca-field-flash {
+    animation: orca-field-flash .9s ease-out 2;
+}
+
+/* No flashing for users who've asked their system to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .orca-field-flash {
+        animation: none;
+    }
+}
+
+/* Error text under a form field */
+.orca-field-error {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-error);
+}
+
+/* Compact errors for grid cells: a small "!" badge in the cell's top-right corner
+   (clear of number spinners), with the errors in the Orca tooltip */
+.e-rowcell:has(.orca-field-error-icon) {
+    position: relative;
+}
+
+.orca-field-error-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--orca-color-error);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    text-align: center;
+    cursor: help;
+}
+
+/* LiveValidationListener's wrapper only listens for edits - takes no space, so layout is unchanged */
+.orca-live-validation-listener {
+    display: contents;
+}
+
+/* Deliberately NOT reusing .orca-cell-input/.orca-cell-select (those stay
+   border-transparent-until-hover, tuned for sitting inline in a grid row).
+   A standalone form field should look editable at a glance. */
+.orca-node-input {
+    height: 30px;
+    padding: 2px 10px;
+    font-family: inherit;
+    font-size: var(--orca-font-size);
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--orca-color-faded-medium);
+    border-radius: var(--orca-border-radius);
+    box-sizing: border-box;
+}
+
+    .orca-node-input:hover {
+        border-color: var(--orca-color-faded);
+    }
+
+    .orca-node-input:focus {
+        border-color: var(--orca-color-primary);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(61, 133, 198, .15);
+    }
+
+select.orca-node-input {
+    cursor: pointer;
+}
+
+/* Signal Min/Max Limit button (CanSignalLimitButton): icon-only, same in the grid and the form */
+.orca-limit-btn {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: 1px solid var(--orca-color-faded-medium);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    .orca-limit-btn:hover {
+        color: var(--orca-color-primary);
+        border-color: var(--orca-color-primary);
+    }
+
+    .orca-limit-btn:focus-visible {
+        outline: 2px solid var(--orca-color-primary);
+        outline-offset: 1px;
+    }
+
+.orca-node-input-row > .orca-limit-btn {
+    width: 30px;
+    height: 30px;
+}
+
+/* A grid cell input with a small button beside it (e.g. signal Min/Max + Limit) */
+.orca-cell-input-row {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+    .orca-cell-input-row > .orca-cell-input {
+        flex: 1;
+        min-width: 0;
+    }
+
+/* Number box without up/down arrows (e.g. signal Min/Max, which have a Limit button instead) */
+.orca-no-spin {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+    .orca-no-spin::-webkit-inner-spin-button,
+    .orca-no-spin::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+/* Multi-line field (e.g. Comment): its own full row, grows with a drag */
+.orca-node-field.orca-node-field-wide {
+    flex-basis: 100%;
+}
+
+textarea.orca-node-input {
+    height: auto;
+    min-height: 60px;
+    padding: 6px 10px;
+    resize: vertical;
+}
+
+    /* Starts the same height as the inputs beside it; drag the corner for a longer text */
+    textarea.orca-node-input.orca-node-input-oneline {
+        height: 30px;
+        min-height: 30px;
+        padding: 4px 10px;
+        line-height: 20px;
+    }
+
+/* "N entries" / "N attrs" style link cells (Value Table, Attributes, and any
+   future drill-into-a-sub-grid column) - shared by every grid in the app. */
+.orca-grid-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--orca-color-primary-dark);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+    .orca-grid-link:hover {
+        text-decoration: underline;
+    }
+
+    .orca-grid-link .e-icons {
+        font-size: 12px;
+    }
+
+/* Small CRUD grids embedded in a dialog (Signal Value Table, Signal
+   Attributes) - same bold-header/bordered-cell look as the main grids. */
+.orca-subgrid-dialog .e-dlg-content {
+    padding-top: 4px;
+}
+
+/* DBC Import Wizard dialog - wider than the small subgrid dialogs above so
+   its grids (unit mapping, file load errors) have room to breathe. */
+.orca-wizard-dialog.e-dialog {
+    max-width: 95vw;
+}
+
+.orca-wizard-dialog .e-dlg-content {
+    padding-top: 4px;
+}
+
+/* Dropdown / ComboBox popup lists - the selected item's default highlight is
+   a very pale theme tint; make it the app's accent blue so it actually reads
+   as "selected" at a glance. */
+.e-dropdownbase .e-list-item.e-active,
+.e-dropdownbase .e-list-item.e-active.e-hover {
+    background: var(--orca-color-primary-dark);
+    color: #fff;
+}
+
+/* Always-editable grids (e.g. CanSignalsGrid) - every cell is a live
+   input/select, not a separate click-to-edit form. A row reads as "active"
+   the moment the user focuses/types into one of its own fields. */
+.orca-cell-input,
+.orca-cell-select {
+    width: 100%;
+    box-sizing: border-box;
+    height: 22px;
+    padding: 1px 4px;
+    font-family: inherit;
+    font-size: var(--orca-font-size-sm);
+    color: inherit;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.orca-cell-select {
+    cursor: pointer;
+}
+
+.orca-cell-input:hover,
+.orca-cell-select:hover {
+    border-color: var(--orca-color-faded-medium);
+}
+
+.orca-cell-input:focus,
+.orca-cell-select:focus {
+    border-color: var(--orca-color-primary);
+    outline: none;
+    background: #fff;
+}
+
+/* Computed/read-only cells (e.g. a message's derived PGN) */
+.orca-cell-input:disabled,
+.orca-cell-select:disabled {
+    color: #9aa4ae;
+    background: var(--orca-color-faded-light);
+    cursor: default;
+}
+
+.e-grid .e-row:focus-within .e-rowcell {
+    background: rgba(61, 133, 198, 0.15) !important;
+}
+
+.orca-row-checkbox {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--orca-color-primary-dark);
+    vertical-align: middle;
+}
+
+/* Custom lightweight toolbar for always-editable grids, sitting where a
+   Syncfusion GridToolbar normally would - same visual language (bordered
+   strip, icon + text buttons) without pulling in the Add/Edit form flow. */
+.orca-grid-toolbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    background: #fff;
+    border: 1px solid var(--orca-color-border);
+    border-bottom: none;
+}
+
+.orca-toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text);
+    background: transparent;
+    border: none;
+    border-radius: var(--orca-border-radius);
+    cursor: pointer;
+}
+
+    .orca-toolbar-btn:hover {
+        background: var(--orca-color-faded-light);
+    }
+
+    .orca-toolbar-btn .e-icons {
+        font-size: 12px;
+        color: var(--orca-color-primary-dark);
+    }
+
+    .orca-toolbar-btn:disabled {
+        cursor: default;
+        opacity: .4;
+    }
+
+        .orca-toolbar-btn:disabled:hover {
+            background: transparent;
+        }
+
+/* OrcaNavigateButton - "navigate to" button for grid rows and next to fields.
+   Round with no border: the icon's own ring is the button's edge; a soft round tint on hover. */
+.orca-navigate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    color: var(--orca-color-primary);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+}
+
+    /* Drawn arrow-in-a-ring; currentColor so hover/disabled colours apply */
+    .orca-navigate-icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+
+    .orca-navigate-btn:hover {
+        color: var(--orca-color-primary-dark);
+        background: color-mix(in srgb, var(--orca-color-primary) 15%, transparent);
+    }
+
+    /* Keyboard focus ring, so Tab users can see which row's button is active */
+    .orca-navigate-btn:focus-visible {
+        outline: 2px solid var(--orca-color-primary-light);
+        outline-offset: 1px;
+    }
+
+    .orca-navigate-btn:disabled {
+        cursor: default;
+        opacity: .4;
+        color: var(--orca-color-primary);
+        background: transparent;
+    }
+
+/* HEX/DEC (or similar) display-format toggle sitting in an orca-grid-toolbar
+   - a page/column-level view option, not a row action. Centered in the
+   toolbar independent of the Add/Delete group and search box so it stays
+   put regardless of their widths. */
+.orca-grid-toolbar-format {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.orca-grid-toolbar-format-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--orca-color-faded);
+}
+
+.orca-format-toggle {
+    display: inline-flex;
+    background: var(--orca-color-faded-light);
+    border: 1px solid var(--orca-color-faded-medium);
+    border-radius: 999px;
+    padding: 2px;
+}
+
+.orca-format-toggle-btn {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: var(--orca-color-text-muted);
+    padding: 3px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1.3;
+    transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+    .orca-format-toggle-btn:hover {
+        color: var(--orca-color-text);
+    }
+
+    .orca-format-toggle-btn.active {
+        background: var(--orca-color-primary-dark);
+        color: #fff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+/* Filter/search box docked to the right end of an orca-grid-toolbar. */
+.orca-grid-toolbar-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.orca-grid-toolbar-search-icon {
+    position: absolute;
+    left: 10px;
+    width: 13px;
+    height: 13px;
+    fill: #9aa4ae;
+    pointer-events: none;
+}
+
+.orca-grid-toolbar-search-input {
+    width: 200px;
+    padding: 5px 10px 5px 30px;
+    border: 1px solid #d7dde3;
+    border-radius: 999px;
+    font-size: 12px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+    .orca-grid-toolbar-search-input:focus {
+        border-color: var(--orca-color-primary);
+        box-shadow: 0 0 0 3px rgba(61, 133, 198, 0.15);
+    }
+
+    .orca-grid-toolbar-search-input::placeholder {
+        color: #adb5bd;
+    }
+
+/* Vertical gap between two stacked panels, e.g. a fields form above a grid
+   in a "details" view. */
+.orca-explorer-stack {
+    margin-top: .75rem;
+}
