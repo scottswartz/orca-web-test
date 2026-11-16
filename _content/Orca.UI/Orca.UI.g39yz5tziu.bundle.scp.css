@@ -5797,6 +5797,80 @@
     text-align: center;
     font-size: .875rem;
 }
+/* _content/Orca.UI/Mobile/MobileInstallButton.razor.rz.scp.css */
+.orca-install[b-8f01za39tq] {
+    position: relative;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+/* Small outlined pill: easy to spot without taking over the header */
+.orca-install-button[b-8f01za39tq] {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    min-height: 40px;
+    padding: 0 .9rem 0 .7rem;
+    border: 1.5px solid var(--orca-color-primary);
+    border-radius: 999px;
+    background: var(--orca-color-bg);
+    color: var(--orca-color-primary);
+    font-size: .9375rem;
+    font-weight: 600;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .orca-install-button:active[b-8f01za39tq] {
+        background: color-mix(in srgb, var(--orca-color-primary) 12%, var(--orca-color-bg));
+    }
+
+.orca-install-icon[b-8f01za39tq] {
+    width: 20px;
+    height: 20px;
+}
+
+/* Opens under the button, kept inside the screen on the right */
+.orca-install-steps[b-8f01za39tq] {
+    position: absolute;
+    top: calc(100% + .5rem);
+    right: 0;
+    z-index: 20;
+    width: min(280px, calc(100vw - 2rem));
+    padding: .9rem 1rem .75rem;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 12px;
+    background: var(--orca-color-bg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
+    font-size: .875rem;
+}
+
+.orca-install-steps-title[b-8f01za39tq] {
+    margin-bottom: .4rem;
+    font-weight: 700;
+}
+
+.orca-install-steps ol[b-8f01za39tq] {
+    margin: 0 0 .6rem;
+    padding-left: 1.2rem;
+    line-height: 1.6;
+}
+
+.orca-install-inline[b-8f01za39tq] {
+    width: 1.1em;
+    height: 1.1em;
+    vertical-align: -.15em;
+}
+
+.orca-install-close[b-8f01za39tq] {
+    display: block;
+    margin-left: auto;
+    padding: .35rem .9rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--orca-color-primary);
+    color: white;
+    font-weight: 600;
+}
 /* _content/Orca.UI/Mobile/MobileKeypad.razor.rz.scp.css */
 .mobile-keypad[b-0tu1q65882] {
     --key-height: 46px;
