@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orca.Web</title>
     <base href="/orca-web-test/" />
-    <link href="_framework/dotnet.8c997eeqyw.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-eKlJ0ez1447hJQZgub2356MDgdsx6wu4ZrGZ7qcIC4M=" />
+    <link href="_framework/dotnet.xiqq5q93tu.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-ySWPifog4A0BLPYXAvkhv4iNL+KqeCc2993FeW6LNQI=" />
     <!-- Bootstrap vendored locally under wwwroot/lib -- no CDN dependency. -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="_content/Orca.UI/css/orca-theme.css" rel="stylesheet" />
@@ -34,22 +34,35 @@
     <script type="importmap">{
   "imports": {
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.w3qd1tpl0e.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.8c997eeqyw.js",
     "./_framework/dotnet.native.js": "./_framework/dotnet.native.puryxhmhq9.js",
-    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.web2r9gqbh.js"
+    "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.web2r9gqbh.js",
+    "./_framework/dotnet.js": "./_framework/dotnet.xiqq5q93tu.js"
   },
   "scopes": {},
   "integrity": {
     "./_framework/blazor.webassembly.js": "sha256-lDXsDYFgm62F+YUvxES7IOTCXYpiHpU3uR45YdC6mq4=",
     "./_framework/blazor.webassembly.w3qd1tpl0e.js": "sha256-lDXsDYFgm62F+YUvxES7IOTCXYpiHpU3uR45YdC6mq4=",
-    "./_framework/dotnet.8c997eeqyw.js": "sha256-eKlJ0ez1447hJQZgub2356MDgdsx6wu4ZrGZ7qcIC4M=",
-    "./_framework/dotnet.js": "sha256-eKlJ0ez1447hJQZgub2356MDgdsx6wu4ZrGZ7qcIC4M=",
+    "./_framework/dotnet.js": "sha256-ySWPifog4A0BLPYXAvkhv4iNL+KqeCc2993FeW6LNQI=",
     "./_framework/dotnet.native.js": "sha256-gQbHHzCnWx8iDOC65EKbql7bEltJkfao7lmkAbIRajw=",
     "./_framework/dotnet.native.puryxhmhq9.js": "sha256-gQbHHzCnWx8iDOC65EKbql7bEltJkfao7lmkAbIRajw=",
     "./_framework/dotnet.runtime.js": "sha256-SOUHEQ3FhDAibBSR2u90NWZpoBjPuWRmH0BAATUlhJU=",
-    "./_framework/dotnet.runtime.web2r9gqbh.js": "sha256-SOUHEQ3FhDAibBSR2u90NWZpoBjPuWRmH0BAATUlhJU="
+    "./_framework/dotnet.runtime.web2r9gqbh.js": "sha256-SOUHEQ3FhDAibBSR2u90NWZpoBjPuWRmH0BAATUlhJU=",
+    "./_framework/dotnet.xiqq5q93tu.js": "sha256-ySWPifog4A0BLPYXAvkhv4iNL+KqeCc2993FeW6LNQI="
   }
 }</script>
+    <script>
+        // Only the phone tools page (/m) installs as an app, so the full app never offers "Install"
+        if (/\/m(\/|$)/.test(location.pathname)) {
+            const add = (tag, attrs) => document.head.appendChild(Object.assign(document.createElement(tag), attrs));
+            add("link", { rel: "manifest", href: "manifest.webmanifest" });
+            add("link", { rel: "apple-touch-icon", href: "orca-tools-192.png" });
+            add("meta", { name: "theme-color", content: "#3d85c6" });
+            add("meta", { name: "apple-mobile-web-app-capable", content: "yes" });
+            add("meta", { name: "apple-mobile-web-app-title", content: "Orca Tools" });
+            if ("serviceWorker" in navigator)
+                navigator.serviceWorker.register("service-worker.js");
+        }
+    </script>
 </head>
 
 <body>

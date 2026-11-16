@@ -164,6 +164,18 @@
     font-size: 1.1rem;
     line-height: 1;
 }
+
+/* Mobile page: no hover on a phone, so the copy buttons always show and are finger-sized */
+.orca-mobile-mode .orca-base-copy[b-yjyt9w0j3g] {
+    visibility: visible;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.orca-mobile-mode .orca-base-value[b-yjyt9w0j3g] {
+    padding-right: 3.25rem;
+    padding-left: 3.25rem;
+}
 /* _content/Orca.UI/CAN/CanBusDetail.razor.rz.scp.css */
 /* Fills Explorer's content pane (a flex column, see Explorer.razor.css); fields, health and tabs scroll as one page */
 .orca-canbus-detail[b-jv8jmf7wzc] {
@@ -797,6 +809,11 @@
     font-size: var(--orca-font-size-sm);
     color: var(--orca-color-text-muted);
 }
+
+/* Mobile page: one card a row, even on a narrow phone */
+.orca-mobile-mode[b-4ie3i6v0xp] {
+    grid-template-columns: minmax(0, 1fr);
+}
 /* _content/Orca.UI/CAN/CanSignal_Matrix.razor.rz.scp.css */
 .orca-signal-panel[b-scsje8ckyn] {
     border: 1px solid var(--orca-color-border);
@@ -1358,6 +1375,300 @@
     color: #6c757d;
     font-size: .85rem;
     margin: 0 0 1rem;
+}
+/* _content/Orca.UI/CAN/PayloadOptimizerDialog.razor.rz.scp.css */
+.payload-optimizer-header[b-qbmntcvzqe] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+/* _content/Orca.UI/CAN/PayloadOptimizerPanel.razor.rz.scp.css */
+.orca-po[b-nl4kol8qjg] {
+    --po-accent: var(--orca-color-primary);
+    --po-accent-soft: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+    --po-good: color-mix(in srgb, var(--orca-color-success) 75%, var(--orca-color-text));
+    --po-good-soft: color-mix(in srgb, var(--orca-color-success) 10%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.orca-po-inputs[b-nl4kol8qjg] {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    background: var(--orca-color-bg);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.orca-po-field[b-nl4kol8qjg] {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+    min-width: 0;
+    margin: 0;
+    padding: .4rem .7rem;
+    cursor: text;
+    transition: background-color .15s ease, box-shadow .15s ease;
+}
+
+    .orca-po-field + .orca-po-field[b-nl4kol8qjg] {
+        border-left: 1px solid var(--orca-color-border);
+    }
+
+    .orca-po-field:focus-within[b-nl4kol8qjg] {
+        background: var(--po-accent-soft);
+        box-shadow: inset 0 -2px 0 var(--po-accent);
+    }
+
+.orca-po-field-label[b-nl4kol8qjg] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-po-input[b-nl4kol8qjg] {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--orca-color-text);
+    background: transparent;
+    border: 0;
+    outline: none;
+}
+
+.orca-po-input-row[b-nl4kol8qjg] {
+    display: flex;
+    align-items: baseline;
+    gap: .3rem;
+    min-width: 0;
+}
+
+.orca-po-unit[b-nl4kol8qjg] {
+    flex: none;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Same height as the error bar so the cards don't jump */
+.orca-po-chips[b-nl4kol8qjg],
+.orca-po-error[b-nl4kol8qjg] {
+    min-height: 1.6rem;
+}
+
+.orca-po-chips[b-nl4kol8qjg] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.orca-po-chip[b-nl4kol8qjg] {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    padding: .1rem .6rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+}
+
+    .orca-po-chip strong[b-nl4kol8qjg] {
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-color-text);
+    }
+
+.orca-po-error[b-nl4kol8qjg] {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .3rem .65rem;
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    color: var(--orca-color-error-text);
+    background: color-mix(in srgb, var(--orca-color-error) 10%, transparent);
+    border-radius: 6px;
+}
+
+.orca-po-options[b-nl4kol8qjg] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .65rem;
+}
+
+.orca-po-card[b-nl4kol8qjg] {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding: .7rem .85rem;
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 8px;
+    transition: border-color .2s ease, background-color .2s ease;
+}
+
+.orca-po-card-better[b-nl4kol8qjg] {
+    background: var(--po-good-soft);
+    border-color: var(--po-good);
+}
+
+.orca-po-card-head[b-nl4kol8qjg] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    min-height: 1.3rem;
+}
+
+.orca-po-card-title[b-nl4kol8qjg] {
+    margin: 0;
+    font-size: var(--orca-font-size-base, .9rem);
+    font-weight: 600;
+    color: var(--orca-color-text);
+}
+
+.orca-po-badge[b-nl4kol8qjg] {
+    padding: .05rem .5rem;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--orca-color-text-on-primary);
+    background: var(--po-good);
+    border-radius: 999px;
+}
+
+.orca-po-length[b-nl4kol8qjg] {
+    display: flex;
+    align-items: baseline;
+    gap: .3rem;
+}
+
+.orca-po-length-value[b-nl4kol8qjg] {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--po-accent);
+}
+
+.orca-po-card-better .orca-po-length-value[b-nl4kol8qjg] {
+    color: var(--po-good);
+}
+
+.orca-po-length-unit[b-nl4kol8qjg] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-po-bits[b-nl4kol8qjg] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.orca-po-byte[b-nl4kol8qjg] {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.orca-po-bit[b-nl4kol8qjg] {
+    width: 9px;
+    height: 11px;
+    border-radius: 2px;
+    background: var(--orca-color-faded-light);
+    box-shadow: inset 0 0 0 1px var(--orca-color-border);
+}
+
+.orca-po-bit-on[b-nl4kol8qjg] {
+    background: var(--po-accent);
+    box-shadow: none;
+}
+
+.orca-po-card-better .orca-po-bit-on[b-nl4kol8qjg] {
+    background: var(--po-good);
+}
+
+/* One line, keeps its height when empty */
+.orca-po-fit[b-nl4kol8qjg] {
+    min-height: 1.2em;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.orca-po-values[b-nl4kol8qjg] {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .4rem;
+    margin: 0;
+    padding-top: .45rem;
+    border-top: 1px solid var(--orca-color-border);
+}
+
+    .orca-po-values dt[b-nl4kol8qjg] {
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--orca-color-text-muted);
+    }
+
+    .orca-po-values dd[b-nl4kol8qjg] {
+        margin: 0;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-color-text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+.orca-po-dbc[b-nl4kol8qjg] {
+    display: block;
+    padding: .15rem .4rem;
+    font-family: var(--bs-font-monospace, Consolas, ui-monospace, monospace);
+    font-size: 12px;
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-bg);
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.orca-po-same[b-nl4kol8qjg] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    text-align: center;
+}
+
+.orca-po-select[b-nl4kol8qjg] {
+    margin-top: auto;
+    width: 100%;
+    border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orca-po-card[b-nl4kol8qjg],
+    .orca-po-field[b-nl4kol8qjg] {
+        transition: none;
+    }
+}
+
+/* Mobile page: inputs stacked, each a full-width row */
+.orca-mobile-mode .orca-po-inputs[b-nl4kol8qjg] {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+    .orca-mobile-mode .orca-po-field + .orca-po-field[b-nl4kol8qjg] {
+        border-left: 0;
+        border-top: 1px solid var(--orca-color-border);
+    }
+
+.orca-mobile-mode .orca-po-field[b-nl4kol8qjg] {
+    padding: .6rem .8rem;
 }
 /* _content/Orca.UI/Components/HexOrDecEditor.razor.rz.scp.css */
 .orca-hexdec[b-bwvk69ugab] {
@@ -2466,6 +2777,99 @@
     white-space: nowrap;
 }
 
+/* _content/Orca.UI/Help/AboutOrca.razor.rz.scp.css */
+/* Normal UI font; the content font is monospace */
+.orca-about[b-ias70mni0y] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    font-family: var(--orca-font-nav);
+    color: var(--orca-color-text);
+}
+
+/* Brand band; the logo hangs off its bottom edge */
+.orca-about-hero[b-ias70mni0y] {
+    position: relative;
+    align-self: stretch;
+    height: 84px;
+    margin-bottom: 52px;
+    border-radius: 6px 6px 0 0;
+    /* Orange underline, as on the splash image */
+    border-bottom: 3px solid #e8762c;
+    background:
+        radial-gradient(circle at 85% -20%, rgba(255, 255, 255, .25), transparent 55%),
+        linear-gradient(135deg, var(--orca-color-primary), color-mix(in srgb, var(--orca-color-primary) 55%, #0b1a2b));
+}
+
+.orca-about-logo[b-ias70mni0y] {
+    position: absolute;
+    left: 50%;
+    bottom: -48px;
+    width: 96px;
+    height: 96px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #fff;
+    border: 4px solid #fff;
+    box-shadow: 0 6px 18px rgba(15, 30, 50, .25);
+}
+
+.orca-about-name[b-ias70mni0y] {
+    margin-top: .25rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: .01em;
+}
+
+.orca-about-company[b-ias70mni0y] {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-about-chips[b-ias70mni0y] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .35rem;
+    margin-top: .5rem;
+}
+
+.orca-about-chip[b-ias70mni0y] {
+    padding: .05rem .6rem;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--orca-color-primary) 7%, transparent);
+    font-size: .75rem;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-about-chip-mono[b-ias70mni0y] {
+    font-family: var(--orca-font-content);
+}
+
+.orca-about-actions[b-ias70mni0y] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: .9rem;
+    padding: 0 1.25rem;
+}
+
+.orca-about-copyright[b-ias70mni0y] {
+    align-self: stretch;
+    margin: 1rem 1.25rem 0;
+    padding-top: .65rem;
+    border-top: 1px solid var(--orca-color-border);
+    font-size: .75rem;
+    color: var(--orca-color-text-muted);
+}
 /* _content/Orca.UI/Help/HelpButton.razor.rz.scp.css */
 /* Same look as the navigate button (primary colour, soft tint on hover), so the header icons read as one set */
 .orca-help-btn[b-g5dd2jvde3] {
@@ -5270,10 +5674,29 @@
 /* _content/Orca.UI/Looms/SensorCalibrationExportDialog.razor.rz.scp.css */
 /* CSS for SensorCalibrationExportDialog component */
 
+.calibration-export-header[b-g20rglgzo9] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* SfSwitch is inline, so stack it under its label like the selects */
+.calibration-export-switch-field[b-g20rglgzo9] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.calibration-export-status[b-g20rglgzo9] {
+    margin-top: .5rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
 /* A wide export scrolls here rather than stretching the dialog */
 .calibration-export-preview[b-g20rglgzo9] {
-    overflow-x: auto;
-    max-height: 18rem;
+    overflow: auto;
+    max-height: 60vh;
 }
 
 .calibration-export-table[b-g20rglgzo9] {
@@ -5287,8 +5710,411 @@
     border: 1px solid var(--orca-color-border);
     white-space: nowrap;
 }
+/* _content/Orca.UI/Mobile/MobileHome.razor.rz.scp.css */
+.orca-mobile-home-header[b-mqfyn4xnt5] {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1.25rem 1rem .75rem;
+}
+
+.orca-mobile-home-logo[b-mqfyn4xnt5] {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+}
+
+.orca-mobile-home-title[b-mqfyn4xnt5] {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.orca-mobile-home-sub[b-mqfyn4xnt5] {
+    color: var(--orca-color-text-muted);
+    font-size: .875rem;
+}
+
+/* Two big tiles a row on a phone, more on a wider screen */
+.orca-mobile-tiles[b-mqfyn4xnt5] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .75rem;
+    padding: .5rem 1rem 1rem;
+}
+
+.orca-mobile-tile[b-mqfyn4xnt5] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+    min-height: 150px;
+    padding: 1rem;
+    background: var(--orca-color-bg);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 16px;
+    color: var(--orca-color-text);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .orca-mobile-tile:active[b-mqfyn4xnt5] {
+        transform: scale(.97);
+        background: color-mix(in srgb, var(--tile-color) 8%, var(--orca-color-bg));
+    }
+
+.orca-mobile-tile-icon[b-mqfyn4xnt5] {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: .35rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--tile-color) 65%, white), var(--tile-color));
+    color: white;
+}
+
+    .orca-mobile-tile-icon[b-mqfyn4xnt5]  .orca-mobile-glyph {
+        width: 34px;
+        height: 34px;
+    }
+
+.orca-mobile-tile-title[b-mqfyn4xnt5] {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.orca-mobile-tile-summary[b-mqfyn4xnt5] {
+    color: var(--orca-color-text-muted);
+    font-size: .8125rem;
+    line-height: 1.3;
+}
+
+.orca-mobile-home-footer[b-mqfyn4xnt5] {
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+    font-size: .875rem;
+}
+/* _content/Orca.UI/Mobile/MobileKeypad.razor.rz.scp.css */
+.mobile-keypad[b-0tu1q65882] {
+    --key-height: 46px;
+    --key-gap: 4px;
+    width: 100%;
+    max-width: 440px;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 12px;
+    background: #f0f2f5;
+    color: #1d2733;
+    font-family: inherit;
+}
+
+.keypad-display[b-0tu1q65882] {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    margin-bottom: var(--key-gap);
+    border-radius: 8px;
+    background: white;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+}
+
+.keypad-columns[b-0tu1q65882] {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--key-gap);
+}
+
+.keypad-side[b-0tu1q65882] {
+    flex: 1 1 0;
+    min-width: 0;
+    display: grid;
+    grid-template-rows: repeat(6, var(--key-height));
+    gap: var(--key-gap);
+}
+
+.keypad-center[b-0tu1q65882] {
+    flex: 3 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--key-gap);
+}
+
+.keypad-actions[b-0tu1q65882] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--key-gap);
+}
+
+.keypad-digits[b-0tu1q65882] {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--key-gap);
+}
+
+.keypad-digits.compact[b-0tu1q65882] { --digit-height: 46px; }
+/* 4 tall digit rows fill the height of 5 normal rows below the action row. */
+.keypad-digits.expanded[b-0tu1q65882] { --digit-height: 58.5px; }
+
+.key[b-0tu1q65882] {
+    height: var(--key-height);
+    min-width: 0;
+    border: 1px solid #d7dce2;
+    border-radius: 6px;
+    background: white;
+    color: inherit;
+    font: inherit;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.key:active[b-0tu1q65882] { filter: brightness(.93); }
+.key:focus-visible[b-0tu1q65882] { outline: 2px solid #2478d4; outline-offset: 1px; }
+.key-accent[b-0tu1q65882] { background: #dceafa; border-color: transparent; }
+.key-action[b-0tu1q65882] { background: #e1e5ea; font-size: 14px; }
+.key-digit[b-0tu1q65882] { height: var(--digit-height); }
+.key-space[b-0tu1q65882] { height: var(--digit-height); font-size: 12px; }
+.key-placeholder[b-0tu1q65882] { height: var(--digit-height); }
+.backspace-icon[b-0tu1q65882] { width: 32px; height: 27px; vertical-align: middle; }
+
+@media (max-width: 340px) {
+    .mobile-keypad[b-0tu1q65882] { padding: 5px; --key-gap: 3px; }
+    .key[b-0tu1q65882] { font-size: 17px; }
+    .key-action[b-0tu1q65882] { font-size: 12px; }
+    .key-space[b-0tu1q65882] { font-size: 10px; }
+}
+
+@media (prefers-color-scheme: dark) {
+    .mobile-keypad[b-0tu1q65882] { background: #262b33; color: #f5f6f7; }
+    .keypad-display[b-0tu1q65882], .key-digit[b-0tu1q65882] { background: #363c45; }
+    .key[b-0tu1q65882] { border-color: #4d5560; }
+    .key-accent[b-0tu1q65882] { background: #254567; }
+    .key-action[b-0tu1q65882] { background: #474e59; }
+}
+
+/* Mode selector styles */
+.keypad-mode-selector[b-0tu1q65882] { margin-bottom: 8px; }
+.keypad-mode-segments[b-0tu1q65882] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+}
+.keypad-mode-segment[b-0tu1q65882], .keypad-mode-cycle[b-0tu1q65882], .keypad-mode-dropdown[b-0tu1q65882] {
+    font: inherit;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #d7dce2;
+    border-radius: 7px;
+    box-sizing: border-box;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+.keypad-mode-segment[b-0tu1q65882] { min-height: 43px; font-size: 13px; font-weight: 600; }
+.keypad-mode-segment.selected[b-0tu1q65882] { background: #dceafa; border: 2px solid #2478d4; }
+.keypad-mode-dropdown[b-0tu1q65882] { width: 100%; min-height: 46px; padding: 8px 12px; }
+.keypad-mode-cycle[b-0tu1q65882] {
+    width: 100%; min-height: 58px; padding: 8px 12px;
+    display: flex; align-items: center; gap: 12px; text-align: left;
+}
+.mode-cycle-icon[b-0tu1q65882] { font-size: 23px; }
+.mode-cycle-label[b-0tu1q65882] { display: flex; flex: 1; flex-direction: column; gap: 2px; }
+.mode-cycle-label small[b-0tu1q65882] { font-size: 11px; opacity: .75; }
+.keypad-mode-segment:focus-visible[b-0tu1q65882], .keypad-mode-cycle:focus-visible[b-0tu1q65882], .keypad-mode-dropdown:focus-visible[b-0tu1q65882] {
+    outline: 2px solid #2478d4; outline-offset: 2px;
+}
+@media (prefers-color-scheme: dark) {
+    .keypad-mode-segment[b-0tu1q65882], .keypad-mode-cycle[b-0tu1q65882], .keypad-mode-dropdown[b-0tu1q65882] { background: #363c45; border-color: #4d5560; }
+    .keypad-mode-segment.selected[b-0tu1q65882] { background: #254567; border-color: #6faef5; }
+}
+/* _content/Orca.UI/Mobile/MobileLayout.razor.rz.scp.css */
+/* Fills the phone; notches and the home bar are kept clear */
+.orca-mobile[b-gw6gmyrcvx] {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    background: var(--orca-color-surface);
+    color: var(--orca-color-text);
+}
+
+/* 16px stops iOS zooming in when an input gets focus */
+.orca-mobile[b-gw6gmyrcvx]  input,
+.orca-mobile[b-gw6gmyrcvx]  textarea,
+.orca-mobile[b-gw6gmyrcvx]  select {
+    font-size: max(16px, 1em);
+}
+/* _content/Orca.UI/Mobile/MobileToolPage.razor.rz.scp.css */
+/* Stays at the top while the tool scrolls */
+.orca-mobile-bar[b-hqdsqqbtxl] {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    min-height: 56px;
+    padding: 0 .75rem 0 .25rem;
+    background: var(--tile-color);
+    color: white;
+}
+
+.orca-mobile-back[b-hqdsqqbtxl] {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .orca-mobile-back:active[b-hqdsqqbtxl] {
+        background: rgba(255, 255, 255, .2);
+    }
+
+    .orca-mobile-back svg[b-hqdsqqbtxl] {
+        width: 22px;
+        height: 22px;
+    }
+
+.orca-mobile-bar-title[b-hqdsqqbtxl] {
+    margin: 0;
+    overflow: hidden;
+    font-size: 1.15rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Fills the rest of the screen, so tools with a table (ASCII, Unit Converter) can scroll inside it */
+.orca-mobile-tool[b-hqdsqqbtxl] {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: calc(100dvh - 56px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    padding: 1rem;
+    overflow: auto;
+    background: var(--orca-color-bg);
+}
+
+    .orca-mobile-tool[b-hqdsqqbtxl] >  * {
+        flex: 1 1 auto;
+        min-height: 0;
+    }
 /* _content/Orca.UI/PayloadAndMaskMatrix.razor.rz.scp.css */
 /* CSS for PayloadAndMaskMatrix component */
+/* _content/Orca.UI/SensorCalibration.razor.rz.scp.css */
+.orca-sc-head[b-1xwhcbzflm] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem 1.5rem;
+    margin-bottom: .75rem;
+}
+
+.orca-sc-pullup[b-1xwhcbzflm] {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.orca-sc-pullup-switch[b-1xwhcbzflm] {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    margin: 0;
+}
+
+    .orca-sc-pullup-switch .orca-field-label[b-1xwhcbzflm] {
+        margin: 0;
+    }
+
+/* Keeps its space when hidden so the grid doesn't move */
+.orca-sc-pullup-ohms[b-1xwhcbzflm] {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
+}
+
+    .orca-sc-pullup-ohms.orca-sc-open[b-1xwhcbzflm] {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition: opacity .15s ease, transform .15s ease;
+    }
+
+.orca-sc-actions[b-1xwhcbzflm] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+    margin-left: auto;
+}
+
+    .orca-sc-actions .btn[b-1xwhcbzflm] {
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+    }
+
+.orca-sc-chart[b-1xwhcbzflm] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    min-width: 0;
+}
+
+.orca-sc-summary[b-1xwhcbzflm] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.orca-sc-chip[b-1xwhcbzflm] {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .15rem .65rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+}
+
+    .orca-sc-chip strong[b-1xwhcbzflm] {
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-color-text);
+    }
+
+/* Mixed steps: no resolution for the optimizer */
+.orca-sc-chip-warn[b-1xwhcbzflm] {
+    border-color: var(--orca-color-warning);
+    background: color-mix(in srgb, var(--orca-color-warning) 12%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orca-sc-pullup-ohms[b-1xwhcbzflm],
+    .orca-sc-pullup-ohms.orca-sc-open[b-1xwhcbzflm] {
+        transition: none;
+    }
+}
 /* _content/Orca.UI/UnitConverter.razor.rz.scp.css */
 /* Scoped CSS (CSS isolation): page-specific grid tweaks go here (::deep is
    required to reach SfGrid's own internal markup).     The general grid look -
@@ -5367,6 +6193,148 @@
     flex: 1 1 auto;
     min-height: 0;
     min-width: 0;
+}
+
+/* Mobile page: fills the tool page instead of the desktop window height */
+.orca-mobile-mode[b-wqo366jt6h] {
+    height: 100%;
+}
+
+    .orca-mobile-mode .orca-field[b-wqo366jt6h] {
+        max-width: none;
+    }
+/* _content/Orca.UI/Utilities/AsciiConverter.razor.rz.scp.css */
+/* Fills the window so the table can scroll inside it */
+.orca-ascii[b-yyaqjm2jem] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    height: 100%;
+    min-height: 0;
+}
+
+.orca-ascii-table[b-yyaqjm2jem] {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* Convert tab: same boxed rows as the Calculator, but text areas since strings get long */
+.orca-ascii-convert[b-yyaqjm2jem] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.orca-ascii-row[b-yyaqjm2jem] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    cursor: text;
+}
+
+.orca-ascii-name[b-yyaqjm2jem] {
+    position: absolute;
+    z-index: 1;
+    top: .3rem;
+    left: .55rem;
+    font-size: .875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+    .orca-ascii-name small[b-yyaqjm2jem] {
+        margin-left: .15rem;
+        padding: .05rem .35rem;
+        border-radius: var(--orca-border-radius);
+        background: var(--orca-color-primary-dark);
+        color: var(--orca-color-text-on-primary);
+        font-family: Consolas, "Cascadia Mono", monospace;
+        font-size: .8125rem;
+        font-weight: 700;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+.orca-ascii-value[b-yyaqjm2jem] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 1.95rem .75rem .45rem;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    outline: 0;
+    background: color-mix(in srgb, var(--orca-color-border) 40%, var(--orca-color-bg));
+    color: inherit;
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: 1.05rem;
+    resize: none;
+    word-break: break-all;
+}
+
+.orca-ascii-row:hover .orca-ascii-value[b-yyaqjm2jem] {
+    border-color: var(--orca-color-primary-light);
+}
+
+.orca-ascii-value:focus[b-yyaqjm2jem],
+.orca-ascii-row:hover .orca-ascii-value:focus[b-yyaqjm2jem] {
+    border-color: var(--orca-color-primary);
+    background: var(--orca-color-bg);
+    box-shadow: 0 0 0 1px var(--orca-color-primary);
+}
+
+.orca-ascii-value[b-yyaqjm2jem]::placeholder {
+    color: var(--orca-color-faded);
+    opacity: 1;
+}
+
+.orca-ascii-error[b-yyaqjm2jem] {
+    min-height: 1.25rem;
+    color: var(--orca-color-error-text);
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-ascii-toolbar[b-yyaqjm2jem] {
+    flex: 0 0 auto;
+}
+
+.orca-ascii-count[b-yyaqjm2jem] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* What the key caps in the Char column mean */
+.orca-ascii-legend[b-yyaqjm2jem] {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    margin: 0 auto 0 1rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    white-space: nowrap;
+}
+
+.orca-ascii-char[b-yyaqjm2jem] {
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: 1rem;
+}
+
+.orca-ascii-key[b-yyaqjm2jem] {
+    display: inline-block;
+    min-width: 2.6em;
+    padding: 0 .4em;
+    border: 1px solid var(--orca-color-border);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: var(--orca-color-surface);
+    color: var(--orca-color-text-muted);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: .75rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
 }
 /* _content/Orca.UI/ValidationMessagesView.razor.rz.scp.css */
 /* Fills whatever holds it, so Height="100%" fills the dock window */
