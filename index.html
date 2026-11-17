@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orca.Web</title>
     <base href="/orca-web-test/" />
-    <link href="_framework/dotnet.opkckzq6kl.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-3BNjzmlrJ8sH2QKOo5qVW5FygJV6dN0kdKO3ESKC/xM=" />
+    <link href="_framework/dotnet.a4dqcx4gel.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-FkvocMiAa1/rV/iTok9gtuqCebHiaNf9CsH34v3itfM=" />
     <!-- Bootstrap vendored locally under wwwroot/lib -- no CDN dependency. -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="_content/Orca.UI/css/orca-theme.css" rel="stylesheet" />
@@ -31,21 +31,22 @@
     <script src="_content/Orca.UI/js/orca-help.js"></script>
     <script src="_content/Orca.UI/js/orca-layout.js"></script>
     <script src="_content/Orca.UI/js/orca-popup.js"></script>
+    <script src="_content/Orca.UI/js/orca-mobile-keypad.js"></script>
     <script type="importmap">{
   "imports": {
     "./_framework/blazor.webassembly.js": "./_framework/blazor.webassembly.w3qd1tpl0e.js",
+    "./_framework/dotnet.js": "./_framework/dotnet.a4dqcx4gel.js",
     "./_framework/dotnet.native.js": "./_framework/dotnet.native.puryxhmhq9.js",
-    "./_framework/dotnet.js": "./_framework/dotnet.opkckzq6kl.js",
     "./_framework/dotnet.runtime.js": "./_framework/dotnet.runtime.web2r9gqbh.js"
   },
   "scopes": {},
   "integrity": {
     "./_framework/blazor.webassembly.js": "sha256-lDXsDYFgm62F+YUvxES7IOTCXYpiHpU3uR45YdC6mq4=",
     "./_framework/blazor.webassembly.w3qd1tpl0e.js": "sha256-lDXsDYFgm62F+YUvxES7IOTCXYpiHpU3uR45YdC6mq4=",
-    "./_framework/dotnet.js": "sha256-3BNjzmlrJ8sH2QKOo5qVW5FygJV6dN0kdKO3ESKC/xM=",
+    "./_framework/dotnet.a4dqcx4gel.js": "sha256-FkvocMiAa1/rV/iTok9gtuqCebHiaNf9CsH34v3itfM=",
+    "./_framework/dotnet.js": "sha256-FkvocMiAa1/rV/iTok9gtuqCebHiaNf9CsH34v3itfM=",
     "./_framework/dotnet.native.js": "sha256-gQbHHzCnWx8iDOC65EKbql7bEltJkfao7lmkAbIRajw=",
     "./_framework/dotnet.native.puryxhmhq9.js": "sha256-gQbHHzCnWx8iDOC65EKbql7bEltJkfao7lmkAbIRajw=",
-    "./_framework/dotnet.opkckzq6kl.js": "sha256-3BNjzmlrJ8sH2QKOo5qVW5FygJV6dN0kdKO3ESKC/xM=",
     "./_framework/dotnet.runtime.js": "sha256-SOUHEQ3FhDAibBSR2u90NWZpoBjPuWRmH0BAATUlhJU=",
     "./_framework/dotnet.runtime.web2r9gqbh.js": "sha256-SOUHEQ3FhDAibBSR2u90NWZpoBjPuWRmH0BAATUlhJU="
   }
@@ -63,7 +64,7 @@
                 navigator.serviceWorker.register("service-worker.js");
 
             // Chrome offers install only once, often before Blazor has started, so the offer is kept here
-            // for the page's own Install button (MobileInstallBanner) instead of Chrome's small pop-up
+            // for the page's own Install button (MobileInstallButton) instead of Chrome's small pop-up
             window.orcaInstall = {
                 offer: null,
                 done: false,

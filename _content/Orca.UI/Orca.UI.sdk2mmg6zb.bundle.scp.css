@@ -6012,6 +6012,29 @@
     .keypad-mode-segment[b-0tu1q65882], .keypad-mode-cycle[b-0tu1q65882], .keypad-mode-dropdown[b-0tu1q65882] { background: #363c45; border-color: #4d5560; }
     .keypad-mode-segment.selected[b-0tu1q65882] { background: #254567; border-color: #6faef5; }
 }
+/* _content/Orca.UI/Mobile/MobileKeypadHost.razor.rz.scp.css */
+/* Docked to the bottom like the phone keyboard, clear of the home bar */
+.orca-keypad-dock[b-vbv92khhes] {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    padding: 4px max(4px, env(safe-area-inset-right, 0px)) calc(4px + env(safe-area-inset-bottom, 0px)) max(4px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid var(--orca-color-border);
+    background: var(--orca-color-surface);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, .08);
+}
+
+    /* Full width strip instead of the card look of the test page */
+    .orca-keypad-dock[b-vbv92khhes]  .mobile-keypad {
+        max-width: 480px;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+    }
 /* _content/Orca.UI/Mobile/MobileLayout.razor.rz.scp.css */
 /* Fills the phone; notches and the home bar are kept clear */
 .orca-mobile[b-gw6gmyrcvx] {
@@ -6081,6 +6104,9 @@
     min-height: 0;
     height: calc(100dvh - 56px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
     padding: 1rem;
+    /* Room under the last field while the keypad is up (set by orca-mobile-keypad.js) */
+    padding-bottom: calc(1rem + var(--orca-keypad-height, 0px));
+    scroll-padding-bottom: var(--orca-keypad-height, 0px);
     overflow: auto;
     background: var(--orca-color-bg);
 }
