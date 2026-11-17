@@ -1,7 +1,7 @@
 // Phone tool pages: number fields use the on-screen keypad (MobileKeypadHost) instead of the phone keyboard.
 // A field picks its keypad with data-keypad="dec|hex|decfx|hexfx"; other number fields get "dec".
 window.orcaKeypad = (() => {
-    const NUMBER_FIELDS = "input[data-keypad], input.e-numerictextbox, input[inputmode=decimal], input[inputmode=numeric]";
+    const NUMBER_FIELDS = "input[data-keypad], textarea[data-keypad], input.e-numerictextbox, input[inputmode=decimal], input[inputmode=numeric]";
     let host = null;
     let field = null;
     let edited = false;
@@ -9,7 +9,7 @@ window.orcaKeypad = (() => {
 
     // Returns the keypad mode, and turns the phone keyboard off for that field
     function prepare(el) {
-        if (!(el instanceof HTMLInputElement) || el.disabled || el.readOnly
+        if (!(el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) || el.disabled || el.readOnly
             || !el.closest(".orca-mobile") || !el.matches(NUMBER_FIELDS))
             return null;
         // Kept on the field, as inputmode=decimal is gone once it is "none"
