@@ -6466,12 +6466,13 @@
     line-height: 1.5;
 }
 
-/* Same copy button as the Calculator, in the box's top-right corner beside its name */
+/* Same copy button as the Calculator: centred at the box's right edge */
 .orca-ascii-copy[b-yyaqjm2jem] {
     position: absolute;
     z-index: 2;
-    top: .2rem;
-    right: .35rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: .5rem;
     width: 1.75rem;
     height: 1.75rem;
     display: grid;
@@ -6496,6 +6497,11 @@
 
 .orca-ascii-copy:hover[b-yyaqjm2jem] {
     background: color-mix(in srgb, var(--orca-color-primary) 35%, var(--orca-color-bg));
+}
+
+/* Long text wraps before it reaches the button */
+.orca-ascii-value[b-yyaqjm2jem] {
+    padding-right: 2.75rem;
 }
 
 .orca-ascii-copy span[b-yyaqjm2jem] {
