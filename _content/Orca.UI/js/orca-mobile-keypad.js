@@ -114,6 +114,10 @@ window.orcaKeypad = (() => {
         clear() {
             if (field?.value)
                 write("", 0);
+        },
+        // Leaving the field hides the keypad and saves the value, as a tap elsewhere would
+        hide() {
+            field?.blur();
         }
     };
 })();

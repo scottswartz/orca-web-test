@@ -1657,6 +1657,11 @@
     }
 }
 
+/* Mobile page: each part keeps its full height and the page scrolls; squeezed, the cards drew over the inputs */
+.orca-po.orca-mobile-mode > *[b-nl4kol8qjg] {
+    flex-shrink: 0;
+}
+
 /* Mobile page: inputs stacked, each a full-width row */
 .orca-mobile-mode .orca-po-inputs[b-nl4kol8qjg] {
     grid-template-columns: minmax(0, 1fr);
@@ -6021,12 +6026,37 @@
     left: 0;
     z-index: 30;
     display: flex;
-    justify-content: center;
-    padding: 4px max(4px, env(safe-area-inset-right, 0px)) calc(4px + env(safe-area-inset-bottom, 0px)) max(4px, env(safe-area-inset-left, 0px));
+    flex-direction: column;
+    align-items: center;
+    padding: 0 max(4px, env(safe-area-inset-right, 0px)) calc(4px + env(safe-area-inset-bottom, 0px)) max(4px, env(safe-area-inset-left, 0px));
     border-top: 1px solid var(--orca-color-border);
     background: var(--orca-color-surface);
     box-shadow: 0 -4px 16px rgba(0, 0, 0, .08);
 }
+
+.orca-keypad-bar[b-vbv92khhes] {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 480px;
+}
+
+.orca-keypad-hide[b-vbv92khhes] {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--orca-color-text-muted);
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .orca-keypad-hide svg[b-vbv92khhes] {
+        width: 20px;
+        height: 20px;
+    }
 
     /* Full width strip instead of the card look of the test page */
     .orca-keypad-dock[b-vbv92khhes]  .mobile-keypad {
@@ -6100,13 +6130,12 @@
 .orca-mobile-tool[b-hqdsqqbtxl] {
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
+    /* Fixed, not stretched to the page, so the height below is what it gets */
+    flex: 0 0 auto;
     min-height: 0;
-    height: calc(100dvh - 56px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    /* Ends at the top of the keypad while it is up (height set by orca-mobile-keypad.js), so nothing hides under it */
+    height: calc(100dvh - 56px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - var(--orca-keypad-height, 0px));
     padding: 1rem;
-    /* Room under the last field while the keypad is up (set by orca-mobile-keypad.js) */
-    padding-bottom: calc(1rem + var(--orca-keypad-height, 0px));
-    scroll-padding-bottom: var(--orca-keypad-height, 0px);
     overflow: auto;
     background: var(--orca-color-bg);
 }
@@ -6435,6 +6464,54 @@
     font-weight: 600;
     text-align: center;
     line-height: 1.5;
+}
+
+/* Same copy button as the Calculator, in the box's top-right corner beside its name */
+.orca-ascii-copy[b-yyaqjm2jem] {
+    position: absolute;
+    z-index: 2;
+    top: .2rem;
+    right: .35rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--orca-border-radius);
+    background: color-mix(in srgb, var(--orca-color-primary) 20%, var(--orca-color-bg));
+    color: var(--orca-color-primary-dark);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.orca-ascii-row:hover .orca-ascii-copy[b-yyaqjm2jem] {
+    visibility: visible;
+}
+
+/* The grid display above would otherwise override the hidden attribute on empty boxes */
+.orca-ascii-copy[hidden][b-yyaqjm2jem] {
+    display: none;
+}
+
+.orca-ascii-copy:hover[b-yyaqjm2jem] {
+    background: color-mix(in srgb, var(--orca-color-primary) 35%, var(--orca-color-bg));
+}
+
+.orca-ascii-copy span[b-yyaqjm2jem] {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Phone: no hover, so the buttons always show and are finger-sized; text stays clear of them */
+.orca-mobile-mode .orca-ascii-copy[b-yyaqjm2jem] {
+    visibility: visible;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.orca-mobile-mode .orca-ascii-value[b-yyaqjm2jem] {
+    padding-right: 3.25rem;
 }
 /* _content/Orca.UI/ValidationMessagesView.razor.rz.scp.css */
 /* Fills whatever holds it, so Height="100%" fills the dock window */
