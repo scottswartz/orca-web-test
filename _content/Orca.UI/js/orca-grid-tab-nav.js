@@ -1,8 +1,10 @@
 (function () {
-    var CELL_SELECTOR = '.orca-cell-input:not([disabled]), .orca-cell-select:not([disabled])';
+    // Plain tables marked orca-tab-adds-row (e.g. dialog value tables) work like the grids
+    var CELL_SELECTOR = '.orca-cell-input:not([disabled]), .orca-cell-select:not([disabled]), table.orca-tab-adds-row input:not([disabled])';
 
     document.addEventListener('keydown', function (e) {
-        if (e.key !== 'Tab') {
+        var isEnter = e.key === 'Enter' && !e.shiftKey && !e.ctrlKey && !e.altKey;
+        if (e.key !== 'Tab' && !isEnter) {
             return;
         }
 
@@ -11,7 +13,7 @@
             return;
         }
 
-        var grid = target.closest('.e-grid');
+        var grid = target.closest('.e-grid, table.orca-tab-adds-row');
         if (!grid) {
             return;
         }
@@ -19,6 +21,11 @@
         var cells = Array.prototype.slice.call(grid.querySelectorAll(CELL_SELECTOR));
         var index = cells.indexOf(target);
         if (index === -1) {
+            return;
+        }
+
+        // Enter only adds a row, from the last cell of an orca-tab-adds-row table or grid; elsewhere it's left alone
+        if (isEnter && (!grid.classList.contains('orca-tab-adds-row') || index !== cells.length - 1)) {
             return;
         }
 
@@ -77,3 +84,19 @@
         })();
     }
 })();
+
+window.orcaGrid = {
+    // Scrolls a grid's row into view once the grid has redrawn with rowCount rows (e.g. after adding signals)
+    revealRow: function (gridSelector, rowIndex, rowCount) {
+        var deadline = Date.now() + 2000;
+        (function waitForRow() {
+            var grid = document.querySelector(gridSelector);
+            var rows = grid ? grid.querySelectorAll('tr.e-row') : [];
+            if (rows.length >= rowCount && rows[rowIndex]) {
+                rows[rowIndex].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+            } else if (Date.now() < deadline) {
+                requestAnimationFrame(waitForRow);
+            }
+        })();
+    }
+};

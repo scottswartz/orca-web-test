@@ -36,6 +36,27 @@ export function disposeDock(dockId) {
     docks.delete(dockId);
 }
 
+// Orca: right of the element, or left when there's no room
+export function getFloatSpotBeside(dockId, selector, width, gap) {
+    const dock = docks.get(dockId);
+    const el = document.querySelector(selector);
+    if (!dock || !el) {
+        return null;
+    }
+
+    const root = dock.rootEl.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    let x = r.right + gap - root.left;
+    if (x + width > root.width) {
+        x = r.left - gap - width - root.left;
+        if (x < 0) {
+            x = Math.max(0, root.width - width);
+        }
+    }
+
+    return { x, y: Math.max(0, r.top - root.top), height: r.height };
+}
+
 // ---------------------------------------------------------------- tab strip overflow
 
 // One entry per observed tab strip, keyed by the tab group's id.

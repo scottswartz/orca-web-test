@@ -1,3 +1,76 @@
+/* _content/Orca.UI/AddDeviceDialog.razor.rz.scp.css */
+.orca-add-device[b-5qwb67n8es] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.orca-add-device-hint[b-5qwb67n8es] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Blank / Template as two cards side by side; stacked on narrow screens */
+.orca-add-device-modes[b-5qwb67n8es] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+}
+
+.orca-add-device-mode[b-5qwb67n8es] {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    margin: 0;
+    padding: .7rem .8rem;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .orca-add-device-mode:hover[b-5qwb67n8es] {
+        border-color: var(--orca-color-primary);
+    }
+
+    .orca-add-device-mode input[b-5qwb67n8es] {
+        margin-top: .2rem;
+    }
+
+.orca-add-device-mode-on[b-5qwb67n8es] {
+    border-color: var(--orca-color-primary);
+    background: color-mix(in srgb, var(--orca-color-primary) 8%, transparent);
+}
+
+.orca-add-device-mode-text[b-5qwb67n8es] {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.orca-add-device-mode-title[b-5qwb67n8es] {
+    font-weight: 600;
+}
+
+.orca-add-device-empty[b-5qwb67n8es] {
+    padding: 1rem;
+    border: 1px dashed var(--orca-color-border);
+    border-radius: 6px;
+    text-align: center;
+    color: var(--orca-color-text-muted);
+}
+
+.orca-add-device-footer[b-5qwb67n8es] {
+    display: flex;
+    justify-content: flex-end;
+    gap: .4rem;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .orca-add-device-modes[b-5qwb67n8es] {
+        grid-template-columns: 1fr;
+    }
+}
 /* _content/Orca.UI/Calculator.razor.rz.scp.css */
 /* CSS for Calculator component */
 
@@ -175,6 +248,225 @@
 .orca-mobile-mode .orca-base-value[b-yjyt9w0j3g] {
     padding-right: 3.25rem;
     padding-left: 3.25rem;
+}
+/* _content/Orca.UI/CAN/CanBitFieldDialog.razor.rz.scp.css */
+/* Title with the help button beside it */
+.orca-bitfield-header[b-4qamwa2x72] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.orca-bitfield-top[b-4qamwa2x72] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: .4rem 1rem;
+    margin-bottom: .75rem;
+}
+
+/* Label left of the box, one row */
+.orca-bitfield-start[b-4qamwa2x72] {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin: 0;
+}
+
+    .orca-bitfield-start .orca-node-input[b-4qamwa2x72] {
+        width: 90px;
+    }
+
+.orca-bitfield-label[b-4qamwa2x72] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-bitfield-hint[b-4qamwa2x72] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Small heading over each column */
+.orca-bitfield-section[b-4qamwa2x72] {
+    padding-bottom: .3rem;
+    border-bottom: 1px solid var(--orca-color-border);
+    font-size: var(--orca-font-size-sm);
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--orca-color-text-muted);
+}
+
+/* Rows on the left, bit preview on the right; stacked on narrow screens */
+.orca-bitfield-body[b-4qamwa2x72] {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.orca-bitfield-rows[b-4qamwa2x72] {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: .4rem;
+    min-width: 0;
+}
+
+/* Bit fields can run to 16-32 rows, so the table scrolls instead of the dialog */
+.orca-bitfield-scroll[b-4qamwa2x72] {
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.orca-bitfield-table[b-4qamwa2x72] {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+    .orca-bitfield-table .orca-node-input[b-4qamwa2x72] {
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .orca-bitfield-table th[b-4qamwa2x72] {
+        position: sticky;
+        top: 0;
+        padding: .25rem .3rem;
+        border-bottom: 1px solid var(--orca-color-border);
+        background: var(--orca-color-bg);
+        font-size: var(--orca-font-size-sm);
+        font-weight: 600;
+        color: var(--orca-color-text-muted);
+        text-align: left;
+    }
+
+    .orca-bitfield-table td[b-4qamwa2x72] {
+        padding: .2rem .3rem;
+    }
+
+.orca-bitfield-col-bit[b-4qamwa2x72] {
+    width: 44px;
+}
+
+.orca-bitfield-col-remove[b-4qamwa2x72] {
+    width: 40px;
+}
+
+.orca-bitfield-bit-cell[b-4qamwa2x72] {
+    color: var(--orca-color-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.orca-bitfield-row-on .orca-bitfield-bit-cell[b-4qamwa2x72] {
+    color: var(--orca-color-warning);
+    font-weight: 600;
+}
+
+.orca-bitfield-add[b-4qamwa2x72] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem;
+}
+
+.orca-bitfield-preview[b-4qamwa2x72] {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+/* 8 bits to a row (one byte); CAN FD messages scroll */
+.orca-bitfield-bits[b-4qamwa2x72] {
+    display: grid;
+    grid-template-columns: repeat(8, 22px);
+    gap: 3px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+/* Same colours as the bit matrix: white free, gray other signals */
+.orca-bitfield-bit[b-4qamwa2x72] {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 22px;
+    height: 14px;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 3px;
+    background: #fff;
+}
+
+.orca-bitfield-bit-used[b-4qamwa2x72] {
+    background: #c4c4c4;
+}
+
+.orca-bitfield-bit-field[b-4qamwa2x72] {
+    background: var(--orca-color-success);
+}
+
+.orca-bitfield-bit-current[b-4qamwa2x72] {
+    background: var(--orca-color-warning);
+}
+
+/* White stripes so an overlap doesn't rely on red vs the orange current row (colour-blind users) */
+.orca-bitfield-bit-clash[b-4qamwa2x72] {
+    background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, .75) 0 2px, transparent 2px 5px), var(--orca-color-error);
+}
+
+.orca-bitfield-legend[b-4qamwa2x72] {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+    .orca-bitfield-legend > span[b-4qamwa2x72] {
+        display: flex;
+        align-items: center;
+        gap: .4rem;
+    }
+
+    .orca-bitfield-legend .orca-bitfield-bit[b-4qamwa2x72] {
+        width: 12px;
+        height: 12px;
+    }
+
+.orca-bitfield-note[b-4qamwa2x72] {
+    margin-top: .75rem;
+    padding: .4rem .65rem;
+    border-radius: 6px;
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-bitfield-note-good[b-4qamwa2x72] {
+    background: color-mix(in srgb, var(--orca-color-success) 12%, transparent);
+    color: color-mix(in srgb, var(--orca-color-success) 60%, var(--orca-color-text));
+}
+
+.orca-bitfield-note-warn[b-4qamwa2x72] {
+    background: color-mix(in srgb, var(--orca-color-warning) 15%, transparent);
+    color: color-mix(in srgb, var(--orca-color-warning) 55%, var(--orca-color-text));
+}
+
+.orca-bitfield-footer[b-4qamwa2x72] {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    width: 100%;
+}
+
+.orca-bitfield-footer-gap[b-4qamwa2x72] {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    .orca-bitfield-body[b-4qamwa2x72] {
+        flex-direction: column;
+    }
 }
 /* _content/Orca.UI/CAN/CanBusDetail.razor.rz.scp.css */
 /* Fills Explorer's content pane (a flex column, see Explorer.razor.css); fields, health and tabs scroll as one page */
@@ -653,6 +945,30 @@
 }
 /* _content/Orca.UI/CAN/CanMessageLinkTxDetail.razor.rz.scp.css */
 /* CSS for CanMessageLinkTxDetail component */
+/* _content/Orca.UI/CAN/CanMessageSignalsSummary.razor.rz.scp.css */
+/* Guided Add stands out from the plain toolbar buttons */
+.orca-guided-add-btn[b-9xsk7m9ogw] {
+    color: var(--orca-color-primary-dark);
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, transparent);
+    font-weight: 600;
+}
+
+    .orca-guided-add-btn:hover[b-9xsk7m9ogw] {
+        background: color-mix(in srgb, var(--orca-color-primary) 22%, transparent);
+    }
+
+/* Splits the ordering buttons from the add/remove ones */
+.orca-signals-toolbar-divider[b-9xsk7m9ogw] {
+    align-self: stretch;
+    width: 1px;
+    margin: 4px .35rem;
+    background: var(--orca-color-border);
+}
+
+.orca-guided-add-icon[b-9xsk7m9ogw] {
+    width: 14px;
+    height: 14px;
+}
 /* _content/Orca.UI/CAN/CanNodeDetail.razor.rz.scp.css */
 /* Scoped CSS (CSS isolation): page-specific tweaks go here. */
 
@@ -813,6 +1129,380 @@
 /* Mobile page: one card a row, even on a narrow phone */
 .orca-mobile-mode[b-4ie3i6v0xp] {
     grid-template-columns: minmax(0, 1fr);
+}
+/* _content/Orca.UI/CAN/CanSignalWizard.razor.rz.scp.css */
+/* Step bar: an icon per step joined by lines, label underneath; done steps go green with a tick */
+.orca-wizard-steps[b-gn9lixut6a] {
+    display: flex;
+    align-items: flex-start;
+    margin: .1rem 0 1rem;
+    padding: 0;
+    list-style: none;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-wizard-step[b-gn9lixut6a] {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    width: 80px;
+    text-align: center;
+}
+
+.orca-wizard-step-icon[b-gn9lixut6a] {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--orca-color-border);
+    border-radius: 50%;
+    background: var(--orca-color-bg);
+    color: var(--orca-color-text-muted);
+}
+
+    .orca-wizard-step-icon svg[b-gn9lixut6a] {
+        width: 15px;
+        height: 15px;
+    }
+
+.orca-wizard-step-on[b-gn9lixut6a] {
+    color: var(--orca-color-text);
+    font-weight: 600;
+}
+
+    .orca-wizard-step-on .orca-wizard-step-icon[b-gn9lixut6a] {
+        border-color: var(--orca-color-primary);
+        background: var(--orca-color-primary);
+        color: var(--orca-color-text-on-primary);
+    }
+
+.orca-wizard-step-done .orca-wizard-step-icon[b-gn9lixut6a] {
+    border-color: var(--orca-color-success);
+    background: var(--orca-color-success);
+    color: var(--orca-color-text-on-primary);
+}
+
+/* Lines sit level with the middle of the icons */
+.orca-wizard-step-line[b-gn9lixut6a] {
+    flex: 1;
+    height: 2px;
+    margin-top: 14px;
+    background: var(--orca-color-border);
+}
+
+.orca-wizard-step-line-done[b-gn9lixut6a] {
+    background: var(--orca-color-success);
+}
+
+/* Same height on every step, so the buttons don't jump */
+.orca-wizard-body[b-gn9lixut6a] {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    min-height: 320px;
+}
+
+.orca-wizard-grid[b-gn9lixut6a] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+}
+
+.orca-wizard-field[b-gn9lixut6a] {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    min-width: 0;
+    margin: 0;
+}
+
+.orca-wizard-label[b-gn9lixut6a] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Details: labels in a left column, the field rows beside them */
+.orca-wizard-form[b-gn9lixut6a] {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: center;
+    gap: .75rem 1rem;
+}
+
+.orca-wizard-form-label[b-gn9lixut6a] {
+    margin: 0;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Several controls on one row, bottoms lined up when the Mux fields bring their own labels */
+.orca-wizard-form-row[b-gn9lixut6a] {
+    display: flex;
+    align-items: flex-end;
+    gap: .6rem;
+    min-width: 0;
+}
+
+.orca-wizard-form-grow[b-gn9lixut6a] {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+/* Field column only, under its row's label-less space */
+.orca-wizard-form-field[b-gn9lixut6a] {
+    grid-column: 2;
+}
+
+/* Mux Signal Name and Group for a Multiplexed signal, tinted so it reads as part of Mux Mode */
+.orca-wizard-mux-strip[b-gn9lixut6a] {
+    grid-column: 2;
+    display: flex;
+    align-items: flex-end;
+    gap: .6rem;
+    min-width: 0;
+    padding: .6rem .75rem;
+    border-left: 3px solid var(--orca-color-primary);
+    border-radius: 0 4px 4px 0;
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+}
+
+.orca-wizard-mux-group[b-gn9lixut6a] {
+    width: 4.5rem;
+    flex: none;
+}
+
+.orca-wizard-readonly[b-gn9lixut6a] {
+    padding: .3rem 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.orca-wizard-hint[b-gn9lixut6a] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-wizard-kind[b-gn9lixut6a] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem;
+}
+
+/* Two-way switch, like the Hex/Dec toggle */
+.orca-wizard-seg[b-gn9lixut6a] {
+    display: inline-flex;
+    padding: 2px;
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+    background: var(--orca-color-surface);
+}
+
+    .orca-wizard-seg button[b-gn9lixut6a] {
+        padding: .2rem .9rem;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--orca-color-text-muted);
+        font: inherit;
+        font-size: var(--orca-font-size-sm);
+        cursor: pointer;
+    }
+
+    .orca-wizard-seg .orca-wizard-seg-on[b-gn9lixut6a] {
+        background: var(--orca-color-primary);
+        color: var(--orca-color-text-on-primary);
+    }
+
+    /* Locked by the unit */
+    .orca-wizard-seg button:disabled[b-gn9lixut6a] {
+        cursor: default;
+    }
+
+        .orca-wizard-seg button:disabled:not(.orca-wizard-seg-on)[b-gn9lixut6a] {
+            opacity: .45;
+        }
+
+/* Fixed layout so the columns share the dialog's width instead of growing past it */
+.orca-wizard-table[b-gn9lixut6a] {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+    .orca-wizard-table .orca-node-input[b-gn9lixut6a] {
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .orca-wizard-table th[b-gn9lixut6a] {
+        padding: .25rem .3rem;
+        border-bottom: 1px solid var(--orca-color-border);
+        font-size: var(--orca-font-size-sm);
+        font-weight: 600;
+        color: var(--orca-color-text-muted);
+        text-align: left;
+    }
+
+    .orca-wizard-table td[b-gn9lixut6a] {
+        padding: .2rem .3rem;
+    }
+
+.orca-wizard-col-value[b-gn9lixut6a] {
+    width: 80px;
+}
+
+.orca-wizard-col-remove[b-gn9lixut6a] {
+    width: 40px;
+}
+
+.orca-wizard-note[b-gn9lixut6a] {
+    padding: .4rem .65rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+    color: var(--orca-color-primary-dark);
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-wizard-note-good[b-gn9lixut6a] {
+    background: color-mix(in srgb, var(--orca-color-success) 12%, transparent);
+    color: color-mix(in srgb, var(--orca-color-success) 60%, var(--orca-color-text));
+}
+
+.orca-wizard-note-warn[b-gn9lixut6a] {
+    background: color-mix(in srgb, var(--orca-color-warning) 15%, transparent);
+    color: color-mix(in srgb, var(--orca-color-warning) 55%, var(--orca-color-text));
+}
+
+/* The message's bits, 8 to a row (one byte) */
+.orca-wizard-bits[b-gn9lixut6a] {
+    display: grid;
+    grid-template-columns: repeat(8, 22px);
+    gap: 3px;
+}
+
+.orca-wizard-bit[b-gn9lixut6a] {
+    display: inline-block;
+    width: 22px;
+    height: 14px;
+    border-radius: 3px;
+    background: var(--orca-color-faded-light);
+}
+
+.orca-wizard-bit-used[b-gn9lixut6a] {
+    background: var(--orca-color-faded-medium);
+}
+
+.orca-wizard-bit-new[b-gn9lixut6a] {
+    background: var(--orca-color-primary);
+}
+
+.orca-wizard-bit-clash[b-gn9lixut6a] {
+    background: var(--orca-color-error);
+}
+
+.orca-wizard-legend[b-gn9lixut6a] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .35rem .6rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+    .orca-wizard-legend .orca-wizard-bit[b-gn9lixut6a] {
+        width: 12px;
+        height: 12px;
+    }
+
+.orca-wizard-footer[b-gn9lixut6a] {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    width: 100%;
+}
+
+.orca-wizard-footer-gap[b-gn9lixut6a] {
+    flex: 1;
+}
+
+.orca-wizard-cancel[b-gn9lixut6a] {
+    padding-left: 0;
+    color: var(--orca-color-text-muted);
+    text-decoration: none;
+}
+
+    .orca-wizard-cancel:hover[b-gn9lixut6a] {
+        color: var(--orca-color-text);
+    }
+
+/* Shows the Kind came from the unit; gone once Value or Enum is clicked */
+.orca-wizard-auto[b-gn9lixut6a] {
+    padding: .05rem .5rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--orca-color-primary) 12%, transparent);
+    color: var(--orca-color-primary-dark);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.orca-wizard-header[b-gn9lixut6a] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* Placed against the dialog, see orca-wizard-dialog-tabbed */
+.orca-wizard-progress-tab[b-gn9lixut6a] {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 4px;
+    border: 1px solid #cfe0f1;
+    border-left: 0;
+    border-radius: 0 6px 6px 0;
+    background: #e4eef8;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, .12);
+    color: var(--orca-color-primary-dark);
+    font-family: var(--orca-font-content);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+    .orca-wizard-progress-tab:hover[b-gn9lixut6a] {
+        background: #d6e6f5;
+    }
+
+    .orca-wizard-progress-tab span[b-gn9lixut6a] {
+        writing-mode: vertical-rl;
+    }
+
+    .orca-wizard-progress-tab svg[b-gn9lixut6a] {
+        width: 12px;
+        height: 12px;
+        transition: transform .2s ease;
+    }
+
+.orca-wizard-progress-tab-shown svg[b-gn9lixut6a] {
+    transform: rotate(180deg);
+}
+
+.orca-wizard-field > .orca-wizard-seg[b-gn9lixut6a] {
+    align-self: flex-start;
 }
 /* _content/Orca.UI/CAN/CanSignal_Matrix.razor.rz.scp.css */
 .orca-signal-panel[b-scsje8ckyn] {
@@ -1208,6 +1898,177 @@
     font-weight: 600;
     color: var(--orca-color-text);
 }
+/* _content/Orca.UI/CAN/DBC/DbcExport.razor.rz.scp.css */
+.orca-dbc-export[b-7ijyeie9i7] {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+    .orca-dbc-export p[b-7ijyeie9i7] {
+        margin: 0;
+    }
+
+.orca-dbc-export-field[b-7ijyeie9i7] {
+    display: flex;
+    flex-direction: column;
+}
+
+.orca-dbc-export-top[b-7ijyeie9i7] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem 1.25rem;
+}
+
+.orca-dbc-export-transmitter[b-7ijyeie9i7] {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+/* Same file row as the Import wizard's first step */
+.orca-dbc-file-row[b-7ijyeie9i7] {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .25rem;
+}
+
+.orca-dbc-file-path[b-7ijyeie9i7] {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.orca-dbc-export-version[b-7ijyeie9i7] {
+    width: 160px;
+}
+
+.orca-dbc-folder[b-7ijyeie9i7] {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    gap: .4rem;
+    min-width: 0;
+}
+
+/* line-height 1 keeps the font icon centred on the text */
+.orca-dbc-folder-icon[b-7ijyeie9i7] {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--orca-color-primary);
+}
+
+.orca-dbc-browse[b-7ijyeie9i7] {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: .35rem;
+}
+
+    .orca-dbc-browse .e-icons[b-7ijyeie9i7] {
+        font-size: 14px;
+        line-height: 1;
+    }
+
+.orca-dbc-folder-path[b-7ijyeie9i7] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-dbc-places[b-7ijyeie9i7] {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.orca-dbc-place[b-7ijyeie9i7] {
+    display: flex;
+    align-items: center;
+    border-left: 3px solid transparent;
+}
+
+.orca-dbc-place-on[b-7ijyeie9i7] {
+    border-left-color: var(--orca-color-primary);
+    background: color-mix(in srgb, var(--orca-color-primary) 10%, transparent);
+}
+
+.orca-dbc-place-pick[b-7ijyeie9i7] {
+    display: flex;
+    flex: 1;
+    align-items: baseline;
+    gap: .6rem;
+    min-width: 0;
+    padding: .3rem .6rem;
+    border: 0;
+    background: none;
+    color: var(--orca-color-text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+    .orca-dbc-place-pick:hover[b-7ijyeie9i7] {
+        background: color-mix(in srgb, var(--orca-color-primary) 8%, transparent);
+    }
+
+.orca-dbc-place-name[b-7ijyeie9i7] {
+    flex: none;
+    font-weight: 600;
+}
+
+.orca-dbc-place-location[b-7ijyeie9i7] {
+    min-width: 0;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orca-dbc-place-remove[b-7ijyeie9i7] {
+    visibility: hidden;
+    margin-right: .3rem;
+    padding: 0 .35rem;
+    border: 0;
+    background: none;
+    color: var(--orca-color-text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.orca-dbc-place:hover .orca-dbc-place-remove[b-7ijyeie9i7],
+.orca-dbc-place-remove:focus-visible[b-7ijyeie9i7] {
+    visibility: visible;
+}
+
+.orca-dbc-export-warning[b-7ijyeie9i7] {
+    padding: .4rem .65rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--orca-color-warning) 15%, transparent);
+    color: color-mix(in srgb, var(--orca-color-warning) 55%, var(--orca-color-text));
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-dbc-file-status[b-7ijyeie9i7] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-dbc-open-folder[b-7ijyeie9i7] {
+    padding: 0 0 0 .4rem;
+    vertical-align: baseline;
+}
+/* _content/Orca.UI/CAN/DBC/DbcExportDialog.razor.rz.scp.css */
+/* Title with the help button beside it */
+.orca-dbc-export-header[b-5vkrm0qei3] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
 /* _content/Orca.UI/CAN/DBC/DbcImport_MapUnits.razor.rz.scp.css */
 .orca-map-units-progress[b-zqtp5r3hyz] {
     margin: 0 0 .5rem;
@@ -1285,6 +2146,10 @@
 .orca-map-units-grid-wrap[b-lx39uwsd2v]  .e-recordplusexpand,
 .orca-map-units-grid-wrap[b-lx39uwsd2v]  .e-recordpluscollapse {
     background: #e8f0f8;
+}
+
+.orca-tip-cell[b-lx39uwsd2v] {
+    display: block;
 }
 /* _content/Orca.UI/CAN/DBC/DbcImport_OpenFile.razor.rz.scp.css */
 .orca-dbc-file-row[b-qz1clwhxq2] {
@@ -1402,6 +2267,14 @@
     overflow: hidden;
 }
 
+.orca-po-inputs-enum[b-nl4kol8qjg] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+    .orca-po-inputs-enum .orca-po-input[b-nl4kol8qjg] {
+        color: var(--orca-color-text-muted);
+    }
+
 .orca-po-field[b-nl4kol8qjg] {
     display: flex;
     flex-direction: column;
@@ -1516,6 +2389,12 @@
     border-color: var(--po-good);
 }
 
+/* Guided Add: the picked card gets a primary ring on top of any "Smaller" colour */
+.orca-po-card-picked[b-nl4kol8qjg] {
+    border-color: var(--orca-color-primary);
+    box-shadow: 0 0 0 2px var(--orca-color-primary);
+}
+
 .orca-po-card-head[b-nl4kol8qjg] {
     display: flex;
     align-items: center;
@@ -1603,7 +2482,7 @@
 
 .orca-po-values[b-nl4kol8qjg] {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: .4rem;
     margin: 0;
     padding-top: .45rem;
@@ -1616,8 +2495,11 @@
         color: var(--orca-color-text-muted);
     }
 
+    /* The main result of the card */
     .orca-po-values dd[b-nl4kol8qjg] {
         margin: 0;
+        font-size: 1.25rem;
+        line-height: 1.2;
         font-weight: 600;
         font-variant-numeric: tabular-nums;
         color: var(--orca-color-text);
@@ -1626,7 +2508,8 @@
         text-overflow: ellipsis;
     }
 
-.orca-po-dbc[b-nl4kol8qjg] {
+/* Secondary: small, where the DBC preview used to be */
+.orca-po-raw[b-nl4kol8qjg] {
     display: block;
     padding: .15rem .4rem;
     font-family: var(--bs-font-monospace, Consolas, ui-monospace, monospace);
@@ -2235,6 +3118,31 @@
         flex: 1;
         width: auto;
     }
+}
+/* _content/Orca.UI/DeviceSummary.razor.rz.scp.css */
+/* Shown in place of the grid while the project has no devices */
+.orca-devices-empty[b-413y1v6ejz] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+    margin-top: 1rem;
+    padding: 2.5rem 1.5rem;
+    border: 1px dashed var(--orca-color-border);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.orca-devices-empty-icon[b-413y1v6ejz] {
+    width: 44px;
+    height: 44px;
+    color: var(--orca-color-primary);
+}
+
+.orca-devices-empty-title[b-413y1v6ejz] {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .4rem;
 }
 /* _content/Orca.UI/DocumentationLinkDetail.razor.rz.scp.css */
 /* Fills whatever vertical space Explorer's content pane actually has, instead
@@ -6144,8 +7052,64 @@
         flex: 1 1 auto;
         min-height: 0;
     }
-/* _content/Orca.UI/PayloadAndMaskMatrix.razor.rz.scp.css */
+/* _content/Orca.UI/PayloadHexAndBinaryMatrix.razor.rz.scp.css */
 /* CSS for PayloadAndMaskMatrix component */
+.orca-signal-matrix-wrap[b-j5sgj9p7a0] {
+    display: inline-block;
+    background-color: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.orca-signal-matrix[b-j5sgj9p7a0] {
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+    font-size: 0.9rem;
+    color: #1f2328;
+}
+
+    .orca-signal-matrix th[b-j5sgj9p7a0],
+    .orca-signal-matrix td[b-j5sgj9p7a0] {
+        border: 1px solid #e1e4e8;
+        padding: 4px 8px;
+        text-align: center;
+        min-width: 24px;
+    }
+
+    /* Header row */
+    .orca-signal-matrix thead th[b-j5sgj9p7a0] {
+        background-color: #f6f8fa;
+        font-family: system-ui, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: #57606a;
+    }
+
+    /* Byte and hex columns */
+    .orca-signal-matrix .col-byte[b-j5sgj9p7a0] {
+        color: #57606a;
+        font-weight: 600;
+    }
+
+    .orca-signal-matrix .col-hex[b-j5sgj9p7a0] {
+        font-weight: 600;
+        border-right: 2px solid #d0d7de;
+    }
+
+    /* Row hover */
+    .orca-signal-matrix tbody tr:hover td[b-j5sgj9p7a0] {
+        background-color: #f3f8ff;
+    }
+
+    /* Selected bits (placed after hover so selection wins) */
+    .orca-signal-matrix td.bit-selected[b-j5sgj9p7a0],
+    .orca-signal-matrix tbody tr:hover td.bit-selected[b-j5sgj9p7a0] {
+        background-color: #0969da;
+        color: #ffffff;
+    }
 /* _content/Orca.UI/SensorCalibration.razor.rz.scp.css */
 .orca-sc-head[b-1xwhcbzflm] {
     display: flex;
@@ -6642,3 +7606,94 @@
     margin: 12px;
     color: var(--orca-color-text-muted);
 }
+/* _content/Orca.UI/WizardProgressWindow.razor.rz.scp.css */
+.orca-wizard-progress-window[b-tdwxz8v0g3] {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding: .75rem;
+    font-size: var(--orca-font-size-sm);
+}
+
+.orca-wizard-progress-empty[b-tdwxz8v0g3] {
+    color: var(--orca-color-text-muted);
+}
+
+.orca-wizard-progress-title[b-tdwxz8v0g3] {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.orca-wizard-progress-step[b-tdwxz8v0g3] {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    padding: .45rem .6rem;
+    border: 1px solid var(--orca-color-border);
+    border-left: 3px solid var(--orca-color-success);
+    border-radius: 4px;
+}
+
+.orca-wizard-progress-now[b-tdwxz8v0g3] {
+    border-color: var(--orca-color-primary);
+    background: color-mix(in srgb, var(--orca-color-primary) 8%, transparent);
+}
+
+.orca-wizard-progress-later[b-tdwxz8v0g3] {
+    border-style: dashed;
+    border-left-color: var(--orca-color-border);
+    opacity: .6;
+}
+
+.orca-wizard-progress-heading[b-tdwxz8v0g3] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--orca-color-success);
+}
+
+.orca-wizard-progress-now .orca-wizard-progress-heading[b-tdwxz8v0g3] {
+    color: var(--orca-color-primary);
+}
+
+.orca-wizard-progress-later .orca-wizard-progress-heading[b-tdwxz8v0g3] {
+    color: var(--orca-color-text-muted);
+}
+
+.orca-wizard-progress-edit[b-tdwxz8v0g3] {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--orca-color-primary);
+    font: inherit;
+    font-weight: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    cursor: pointer;
+}
+
+    .orca-wizard-progress-edit:hover[b-tdwxz8v0g3] {
+        text-decoration: underline;
+    }
+
+.orca-wizard-progress-rows[b-tdwxz8v0g3] {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: .15rem .6rem;
+    margin: 0;
+}
+
+    .orca-wizard-progress-rows dt[b-tdwxz8v0g3] {
+        font-weight: normal;
+        color: var(--orca-color-text-muted);
+    }
+
+    .orca-wizard-progress-rows dd[b-tdwxz8v0g3] {
+        margin: 0;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+    }

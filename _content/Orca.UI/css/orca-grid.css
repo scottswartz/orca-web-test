@@ -200,17 +200,13 @@
 
 /* Horizontal scrolling - grids with many fixed-width columns (e.g. CAN
    signals/messages) overflow their container on purpose; give the scrollbar
-   itself the app's accent color so it reads as an affordance, not a fluke. */
-.e-grid .e-gridcontent,
-.e-grid .e-content {
-    scrollbar-width: thin;
-    scrollbar-color: var(--orca-color-primary) var(--orca-color-faded-light);
-}
-
+   itself the app's accent color so it reads as an affordance, not a fluke.
+   No scrollbar-width/scrollbar-color here: Chromium (WebView2) ignores the
+   ::-webkit-scrollbar rules when they are set, and "thin" was too hard to grab. */
     .e-grid .e-gridcontent::-webkit-scrollbar,
     .e-grid .e-content::-webkit-scrollbar {
-        height: 10px;
-        width: 10px;
+        height: 14px;
+        width: 14px;
     }
 
     .e-grid .e-gridcontent::-webkit-scrollbar-track,
@@ -218,10 +214,24 @@
         background: var(--orca-color-faded-light);
     }
 
+    /* Border in the track colour keeps a gap round the thumb but leaves the whole 14px clickable */
     .e-grid .e-gridcontent::-webkit-scrollbar-thumb,
     .e-grid .e-content::-webkit-scrollbar-thumb {
+        min-width: 40px;
+        min-height: 40px;
+        border: 2px solid var(--orca-color-faded-light);
+        border-radius: 999px;
         background: var(--orca-color-primary);
-        border-radius: var(--orca-border-radius);
+    }
+
+        .e-grid .e-gridcontent::-webkit-scrollbar-thumb:hover,
+        .e-grid .e-content::-webkit-scrollbar-thumb:hover {
+            background: var(--orca-color-primary-dark);
+        }
+
+    .e-grid .e-gridcontent::-webkit-scrollbar-corner,
+    .e-grid .e-content::-webkit-scrollbar-corner {
+        background: var(--orca-color-faded-light);
     }
 
 /* Single-record form (not a grid) - e.g. CanNodeForm/DeviceEdit. */
@@ -443,6 +453,24 @@ select.orca-node-input {
         min-width: 0;
     }
 
+    /* Mux Mode cell: the mode takes the room, the group stays small */
+    .orca-cell-input-row > .orca-cell-select {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .orca-cell-input-row > .orca-mux-group {
+        flex: none;
+        width: 3.5rem;
+    }
+
+/* Mux problems on the Signals grid and the Signal form (CanMuxView) */
+.orca-mux-warning {
+    color: color-mix(in srgb, var(--orca-color-warning) 55%, var(--orca-color-text));
+    font-size: var(--orca-font-size-sm);
+    white-space: normal;
+}
+
 /* Number box without up/down arrows (e.g. signal Min/Max, which have a Limit button instead) */
 .orca-no-spin {
     appearance: textfield;
@@ -509,6 +537,23 @@ textarea.orca-node-input {
 .orca-wizard-dialog .e-dlg-content {
     padding-top: 4px;
 }
+
+/* Guided Add's Progress tab sits outside the dialog */
+.orca-wizard-dialog-tabbed.e-dialog {
+    overflow: visible;
+}
+
+    .orca-wizard-dialog-tabbed .e-dlg-content {
+        position: static;
+    }
+
+    .orca-wizard-dialog-tabbed .e-dlg-header-content {
+        border-radius: 6px 6px 0 0;
+    }
+
+    .orca-wizard-dialog-tabbed .e-footer-content {
+        border-radius: 0 0 6px 6px;
+    }
 
 /* Dropdown / ComboBox popup lists - the selected item's default highlight is
    a very pale theme tint; make it the app's accent blue so it actually reads

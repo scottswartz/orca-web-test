@@ -340,8 +340,31 @@ table {
             border-color: var(--orca-color-primary);
         }
 
+/* One shade for every dialog backdrop, Syncfusion's modal overlay and ModalBackdrop */
+:root {
+    --orca-dialog-backdrop: rgba(0, 0, 0, 0.5);
+}
+
 .e-dlg-overlay {
-    background: rgba(0, 0, 0, 0.35);
+    background: var(--orca-dialog-backdrop);
+}
+
+/* ModalBackdrop: under the dialog (Syncfusion never puts one below 1000) */
+.orca-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: var(--orca-dialog-backdrop);
+}
+
+/* Help (F1, the help icon) is lifted between the backdrop and the dialog, docked or floating, so it stays usable */
+body:has(.orca-modal-backdrop) [data-dock-group]:has(.orca-help-window, .orca-wizard-progress-window) {
+    position: relative;
+    z-index: 999;
+}
+
+body:has(.orca-modal-backdrop) [data-dock-window]:has(.orca-help-window, .orca-wizard-progress-window) {
+    z-index: 999;
 }
 
 /* ConfirmDialog (Orca.UI/Components) - small, centered "are you sure?" card

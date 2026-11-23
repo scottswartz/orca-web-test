@@ -43,7 +43,15 @@ export function pickFile(accept) {
 
 // Downloads text as a file.
 export function downloadText(name, text) {
-    const blob = new Blob([text], { type: "application/octet-stream" });
+    download(name, new Blob([text], { type: "application/octet-stream" }));
+}
+
+// Downloads bytes as a file; a .NET byte[] arrives as a Uint8Array.
+export function downloadBytes(name, bytes) {
+    download(name, new Blob([bytes], { type: "application/octet-stream" }));
+}
+
+function download(name, blob) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
