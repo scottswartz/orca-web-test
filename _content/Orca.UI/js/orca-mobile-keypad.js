@@ -6,6 +6,32 @@ window.orcaKeypad = (() => {
     let field = null;
     let edited = false;
     let hideTimer = 0;
+    // A history entry added while the keypad is open, so the phone's Back closes the keypad first
+    let backEntryAdded = false;
+
+    function addBackEntry() {
+        if (backEntryAdded)
+            return;
+        history.pushState({ orcaKeypad: true }, "", location.href);
+        backEntryAdded = true;
+    }
+
+    // Keypad closed some other way: drop the entry, unless a tap already went to another page
+    function removeBackEntry() {
+        if (!backEntryAdded)
+            return;
+        backEntryAdded = false;
+        if (history.state?.orcaKeypad)
+            history.back();
+    }
+
+    function onPopState() {
+        if (!backEntryAdded)
+            return;
+        // Back used up the entry, so only the keypad closes
+        backEntryAdded = false;
+        field?.blur();
+    }
 
     // Returns the keypad mode, and turns the phone keyboard off for that field
     function prepare(el) {
@@ -38,6 +64,7 @@ window.orcaKeypad = (() => {
         if (field !== e.target)
             edited = false;
         field = e.target;
+        addBackEntry();
         host?.invokeMethodAsync("Show", mode);
     }
 
@@ -54,6 +81,7 @@ window.orcaKeypad = (() => {
         field = null;
         // Short wait, so going straight to the next number field doesn't flash the keypad
         hideTimer = setTimeout(() => {
+            removeBackEntry();
             document.documentElement.style.removeProperty("--orca-keypad-height");
             host?.invokeMethodAsync("Hide");
         }, 50);
@@ -78,11 +106,15 @@ window.orcaKeypad = (() => {
             document.addEventListener("pointerdown", onPointerDown, true);
             document.addEventListener("focusin", onFocusIn);
             document.addEventListener("focusout", onFocusOut);
+            window.addEventListener("popstate", onPopState);
         },
         detach() {
             host = null;
             field = null;
             clearTimeout(hideTimer);
+            window.removeEventListener("popstate", onPopState);
+            // Leaving the page; the entry stays behind as the same page, which is harmless
+            backEntryAdded = false;
             document.removeEventListener("mousedown", onMouseDown, true);
             document.removeEventListener("pointerdown", onPointerDown, true);
             document.removeEventListener("focusin", onFocusIn);
