@@ -3783,6 +3783,33 @@
     font-size: .75rem;
     color: var(--orca-color-text-muted);
 }
+/* _content/Orca.UI/Help/CheckForUpdates.razor.rz.scp.css */
+.orca-updates[b-fmc3vktqxd] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .25rem .25rem .75rem;
+    font-family: var(--orca-font-nav);
+    color: var(--orca-color-text);
+}
+
+.orca-updates p[b-fmc3vktqxd] {
+    margin: 0;
+}
+
+.orca-updates-note[b-fmc3vktqxd] {
+    color: var(--orca-color-text-muted);
+    font-size: .875rem;
+}
+
+.orca-updates-error[b-fmc3vktqxd] {
+    color: var(--orca-color-error);
+}
+
+.orca-updates-actions[b-fmc3vktqxd] {
+    display: flex;
+    gap: .5rem;
+}
 /* _content/Orca.UI/Help/HelpButton.razor.rz.scp.css */
 /* Same look as the navigate button (primary colour, soft tint on hover), so the header icons read as one set */
 .orca-help-btn[b-g5dd2jvde3] {
