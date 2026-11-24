@@ -7693,15 +7693,6 @@
     gap: .5rem;
 }
 
-/* An output has no height of its own when empty, so it gets the input's line height */
-.orca-sign-readonly[b-4wfqy4fcbf] {
-    cursor: default;
-}
-
-.orca-sign-readonly .orca-base-value[b-4wfqy4fcbf] {
-    min-height: calc(1.5em + 2.3rem + 2 * var(--orca-border-size));
-    line-height: 1.5;
-}
 /* _content/Orca.UI/ValidationMessagesView.razor.rz.scp.css */
 /* Fills whatever holds it, so Height="100%" fills the dock window */
 .orca-validation-grid[b-luuyl45d4x] {
