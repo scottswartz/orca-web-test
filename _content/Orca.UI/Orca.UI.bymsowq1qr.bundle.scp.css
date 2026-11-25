@@ -163,19 +163,23 @@
     font-weight: 600;
 }
 
-.orca-base-encoding-label + .orca-format-toggle\\\{
-    margin-right: .5rem;[b-yjyt9w0j3g]
+.orca-base-encoding-group[b-yjyt9w0j3g] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-right: .5rem;
+    white-space: nowrap;
 }
 
-/* chip like DEC/HEX, same corner for both byte orders, under the digits so it never covers them */
+/* dark gray chip, quieter than DEC/HEX, same corner for both byte orders, under the digits so it never covers them */
 .orca-base-lsb[b-yjyt9w0j3g] {
     position: absolute;
     right: .55rem;
     bottom: .35rem;
     padding: .05rem .35rem;
     border-radius: var(--orca-border-radius);
-    background: var(--orca-color-primary-dark);
-    color: var(--orca-color-text-on-primary);
+    background: var(--orca-color-text-muted);
+    color: var(--orca-color-bg);
     font-family: Consolas, "Cascadia Mono", monospace;
     font-size: .75rem;
     font-weight: 700;
@@ -6658,45 +6662,6 @@
 }
 /* _content/Orca.UI/Looms/SearchCavitiess.razor.rz.scp.css */
 /* CSS for SearchConnections component */
-/* _content/Orca.UI/Looms/SensorCalibrationExportDialog.razor.rz.scp.css */
-/* CSS for SensorCalibrationExportDialog component */
-
-.calibration-export-header[b-g20rglgzo9] {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-}
-
-/* SfSwitch is inline, so stack it under its label like the selects */
-.calibration-export-switch-field[b-g20rglgzo9] {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.calibration-export-status[b-g20rglgzo9] {
-    margin-top: .5rem;
-    font-size: var(--orca-font-size-sm);
-    color: var(--orca-color-text-muted);
-}
-
-/* A wide export scrolls here rather than stretching the dialog */
-.calibration-export-preview[b-g20rglgzo9] {
-    overflow: auto;
-    max-height: 60vh;
-}
-
-.calibration-export-table[b-g20rglgzo9] {
-    border-collapse: collapse;
-    font-size: .875rem;
-    font-family: Consolas, "Cascadia Mono", monospace;
-}
-
-.calibration-export-table td[b-g20rglgzo9] {
-    padding: .1rem .75rem;
-    border: 1px solid var(--orca-color-border);
-    white-space: nowrap;
-}
 /* _content/Orca.UI/Mobile/MobileHome.razor.rz.scp.css */
 .orca-mobile-home-header[b-mqfyn4xnt5] {
     display: flex;
@@ -7184,8 +7149,11 @@
         background-color: #0969da;
         color: #ffffff;
     }
-/* _content/Orca.UI/SensorCalibration.razor.rz.scp.css */
-.orca-sc-head[b-1xwhcbzflm] {
+/* _content/Orca.UI/Sensor/Calibration/CalibrationForm.razor.rz.scp.css */
+/* CalibrationForm. Layout only: colours, fonts and spacing come from the --orca-* theme variables,
+   and the chip / pull-up / table styles match the SensorCalibration page. */
+
+.orca-cal-head[b-iqaerqpimp] {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -7194,39 +7162,46 @@
     margin-bottom: .75rem;
 }
 
-.orca-sc-pullup[b-1xwhcbzflm] {
+.orca-cal-options[b-iqaerqpimp] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: .75rem 2rem;
+}
+
+.orca-cal-pullup[b-iqaerqpimp] {
     display: flex;
     flex-direction: column;
     gap: .4rem;
 }
 
-.orca-sc-pullup-switch[b-1xwhcbzflm] {
+.orca-cal-switch[b-iqaerqpimp] {
     display: inline-flex;
     align-items: center;
     gap: .6rem;
     margin: 0;
 }
 
-    .orca-sc-pullup-switch .orca-field-label[b-1xwhcbzflm] {
+    .orca-cal-switch .orca-field-label[b-iqaerqpimp] {
         margin: 0;
     }
 
 /* Keeps its space when hidden so the grid doesn't move */
-.orca-sc-pullup-ohms[b-1xwhcbzflm] {
+.orca-cal-pullup-ohms[b-iqaerqpimp] {
     visibility: hidden;
     opacity: 0;
     transform: translateY(-4px);
     transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
 }
 
-    .orca-sc-pullup-ohms.orca-sc-open[b-1xwhcbzflm] {
+    .orca-cal-pullup-ohms.orca-cal-open[b-iqaerqpimp] {
         visibility: visible;
         opacity: 1;
         transform: none;
         transition: opacity .15s ease, transform .15s ease;
     }
 
-.orca-sc-actions[b-1xwhcbzflm] {
+.orca-cal-actions[b-iqaerqpimp] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -7234,26 +7209,50 @@
     margin-left: auto;
 }
 
-    .orca-sc-actions .btn[b-1xwhcbzflm] {
+    .orca-cal-actions .btn[b-iqaerqpimp] {
         display: inline-flex;
         align-items: center;
         gap: .35rem;
     }
 
-.orca-sc-chart[b-1xwhcbzflm] {
+/* Paste / Create Data Points message, with Undo after a paste */
+.orca-cal-status[b-iqaerqpimp] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .75rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-cal-grid[b-iqaerqpimp] {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.orca-cal-grid-note[b-iqaerqpimp] {
+    max-width: 240px;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-error-text);
+}
+
+.orca-cal-chart[b-iqaerqpimp] {
     display: flex;
     flex-direction: column;
     gap: .5rem;
     min-width: 0;
 }
 
-.orca-sc-summary[b-1xwhcbzflm] {
+.orca-cal-summary[b-iqaerqpimp] {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: .4rem;
 }
 
-.orca-sc-chip[b-1xwhcbzflm] {
+.orca-cal-chip[b-iqaerqpimp] {
     display: inline-flex;
     align-items: center;
     gap: .3rem;
@@ -7265,22 +7264,281 @@
     border-radius: 999px;
 }
 
-    .orca-sc-chip strong[b-1xwhcbzflm] {
+    .orca-cal-chip strong[b-iqaerqpimp] {
         font-variant-numeric: tabular-nums;
         color: var(--orca-color-text);
     }
 
-/* Mixed steps: no resolution for the optimizer */
-.orca-sc-chip-warn[b-1xwhcbzflm] {
+/* Plot and Y Axis toggles, on the right of the chips */
+.orca-cal-tools[b-iqaerqpimp] {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem .6rem;
+    margin-left: auto;
+}
+
+    .orca-cal-tools .orca-field-label[b-iqaerqpimp] {
+        margin: 0;
+    }
+
+.orca-cal-note[b-iqaerqpimp] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+/* Horizontal values: scrolls sideways, row labels stay put */
+.orca-cal-values[b-iqaerqpimp] {
+    overflow-x: auto;
+}
+
+.orca-cal-table[b-iqaerqpimp] {
+    border-collapse: collapse;
+    font-size: var(--orca-font-size-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+    .orca-cal-table th[b-iqaerqpimp],
+    .orca-cal-table td[b-iqaerqpimp] {
+        padding: .1rem .75rem;
+        border: 1px solid var(--orca-color-border);
+        white-space: nowrap;
+    }
+
+    .orca-cal-table th[b-iqaerqpimp] {
+        position: sticky;
+        left: 0;
+        font-weight: 600;
+        text-align: left;
+        background: var(--orca-color-surface);
+    }
+
+    .orca-cal-table td[b-iqaerqpimp] {
+        text-align: right;
+    }
+
+    .orca-cal-table .orca-cal-missing[b-iqaerqpimp] {
+        color: var(--orca-color-faded);
+    }
+
+@media (prefers-reduced-motion: reduce) {
+    .orca-cal-pullup-ohms[b-iqaerqpimp],
+    .orca-cal-pullup-ohms.orca-cal-open[b-iqaerqpimp] {
+        transition: none;
+    }
+}
+/* _content/Orca.UI/Sensor/Calibration/CreateDataPointsDialog.razor.rz.scp.css */
+/* Create Data Points dialog. Colours and fonts from the --orca-* theme variables;
+   the chips match the SensorCalibration page's. */
+
+.orca-cdp-field[b-4fr7ina9sm] {
+    flex: 1 1 120px;
+}
+
+.orca-cdp-summary[b-4fr7ina9sm] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: 1rem;
+}
+
+.orca-cdp-chip[b-4fr7ina9sm] {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .15rem .65rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+}
+
+    .orca-cdp-chip strong[b-4fr7ina9sm] {
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-color-text);
+    }
+
+.orca-cdp-message[b-4fr7ina9sm] {
+    margin-top: .75rem;
+    padding: .4rem .65rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+}
+
+.orca-cdp-error[b-4fr7ina9sm] {
+    color: var(--orca-color-error-text);
+    border-color: var(--orca-color-error);
+}
+
+.orca-cdp-warn[b-4fr7ina9sm] {
     border-color: var(--orca-color-warning);
     background: color-mix(in srgb, var(--orca-color-warning) 12%, transparent);
 }
+/* _content/Orca.UI/Sensor/Export/CalibrationExportForm.razor.rz.scp.css */
+/* Calibration Export dialog. Layout only: colours, fonts and spacing come from the --orca-* theme variables;
+   tabs, fields and toggles use the app's orca-tabs, orca-node-fields and orca-format-toggle. */
 
-@media (prefers-reduced-motion: reduce) {
-    .orca-sc-pullup-ohms[b-1xwhcbzflm],
-    .orca-sc-pullup-ohms.orca-sc-open[b-1xwhcbzflm] {
-        transition: none;
+.orca-cex-header[b-dx5jh3do61] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.orca-cex-subtitle[b-dx5jh3do61] {
+    margin-bottom: .75rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-cex-body[b-dx5jh3do61] {
+    flex-wrap: wrap;
+}
+
+.orca-cex-settings[b-dx5jh3do61] {
+    width: 300px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Three read-only range boxes on one line */
+.orca-cex-range[b-dx5jh3do61] {
+    gap: .5rem;
+    flex-wrap: nowrap;
+}
+
+    .orca-cex-range .orca-node-field[b-dx5jh3do61] {
+        flex: 1 1 0;
+        min-width: 0;
     }
+
+.orca-cex-fields[b-dx5jh3do61] {
+    gap: .9rem 1.25rem;
+}
+
+    .orca-cex-fields .orca-node-field[b-dx5jh3do61] {
+        flex: 0 1 auto;
+    }
+
+    .orca-cex-fields .orca-node-field.orca-node-field-full[b-dx5jh3do61] {
+        flex: 1 1 100%;
+    }
+
+.orca-cex-hint[b-dx5jh3do61] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-cex-order-btn .e-icons[b-dx5jh3do61] {
+    font-size: 14px;
+}
+
+.orca-cex-preview[b-dx5jh3do61] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    min-width: 320px;
+}
+
+.orca-cex-summary[b-dx5jh3do61] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.orca-cex-chip[b-dx5jh3do61] {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .15rem .65rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: 999px;
+}
+
+    .orca-cex-chip strong[b-dx5jh3do61] {
+        font-variant-numeric: tabular-nums;
+        color: var(--orca-color-text);
+    }
+
+/* A long export scrolls here rather than stretching the dialog */
+.orca-cex-view[b-dx5jh3do61] {
+    overflow: auto;
+    max-height: 60vh;
+}
+
+.orca-cex-table[b-dx5jh3do61] {
+    border-collapse: collapse;
+    font-size: var(--orca-font-size-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+    .orca-cex-table th[b-dx5jh3do61],
+    .orca-cex-table td[b-dx5jh3do61] {
+        padding: .1rem .75rem;
+        border: 1px solid var(--orca-color-border);
+        white-space: nowrap;
+    }
+
+    .orca-cex-table th[b-dx5jh3do61] {
+        font-weight: 600;
+        text-align: left;
+        background: var(--orca-color-surface);
+    }
+
+    .orca-cex-table thead th[b-dx5jh3do61] {
+        position: sticky;
+        top: 0;
+    }
+
+    .orca-cex-table td[b-dx5jh3do61] {
+        text-align: right;
+    }
+
+.orca-cex-htable th[b-dx5jh3do61] {
+    position: sticky;
+    left: 0;
+}
+
+.orca-cex-graph-tools[b-dx5jh3do61] {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+}
+
+    .orca-cex-graph-tools .orca-field-label[b-dx5jh3do61] {
+        margin: 0;
+    }
+
+.orca-cex-raw[b-dx5jh3do61] {
+    margin: 0;
+    padding: .5rem .75rem;
+    font-family: var(--orca-font-content);
+    font-size: var(--orca-font-size-sm);
+    white-space: pre;
+    tab-size: 12;
+    background: var(--orca-color-surface);
+    border: 1px solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+}
+
+.orca-cex-status[b-dx5jh3do61] {
+    margin-top: .5rem;
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-text-muted);
+}
+
+.orca-cex-error[b-dx5jh3do61] {
+    font-size: var(--orca-font-size-sm);
+    color: var(--orca-color-error-text);
 }
 /* _content/Orca.UI/UnitConverter.razor.rz.scp.css */
 /* Scoped CSS (CSS isolation): page-specific grid tweaks go here (::deep is
@@ -7662,19 +7920,23 @@
     font-weight: 600;
 }
 
-.orca-base-encoding-label + .orca-format-toggle[b-gynk9y7sea] {
+.orca-base-encoding-group[b-gynk9y7sea] {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
     margin-right: .5rem;
+    white-space: nowrap;
 }
 
-/* chip like the DEC/HEX ones, under the digits so it never covers them */
+/* dark gray chip, quieter than DEC/HEX, under the digits so it never covers them */
 .orca-base-lsb[b-gynk9y7sea] {
     position: absolute;
     right: .55rem;
     bottom: .35rem;
     padding: .05rem .35rem;
     border-radius: var(--orca-border-radius);
-    background: var(--orca-color-primary-dark);
-    color: var(--orca-color-text-on-primary);
+    background: var(--orca-color-text-muted);
+    color: var(--orca-color-bg);
     font-family: Consolas, "Cascadia Mono", monospace;
     font-size: .75rem;
     font-weight: 700;
@@ -7792,216 +8054,6 @@
 .orca-mobile-mode .orca-base-lsb[b-gynk9y7sea] {
     right: 3.4rem;
 }
-/* _content/Orca.UI/Utilities/SignedUnsignedConverter.razor.rz.scp.css */
-/* Rows copied from Calculator.razor.css so both tools look the same (CSS isolation keeps them apart) */
-
-.orca-base-list[b-4wfqy4fcbf] {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-.orca-base-row[b-4wfqy4fcbf] {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    margin: 0;
-    cursor: text;
-}
-
-.orca-base-name[b-4wfqy4fcbf] {
-    position: absolute;
-    z-index: 1;
-    top: .3rem;
-    left: .55rem;
-    font-size: .875rem;
-    font-weight: 600;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.orca-base-name small[b-4wfqy4fcbf] {
-    margin-left: .15rem;
-    padding: .05rem .35rem;
-    border-radius: var(--orca-border-radius);
-    background: var(--orca-color-primary-dark);
-    color: var(--orca-color-text-on-primary);
-    font-family: Consolas, "Cascadia Mono", monospace;
-    font-size: .8125rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-}
-
-.orca-base-field[b-4wfqy4fcbf] {
-    position: relative;
-    display: block;
-    font-family: Consolas, "Cascadia Mono", monospace;
-    font-size: 1.35rem;
-}
-
-.orca-base-value[b-4wfqy4fcbf] {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 0;
-    /* Equal side padding keeps the number centred and clear of the copy icon */
-    padding: 1.95rem 2.25rem .35rem;
-    border: var(--orca-border-size) solid var(--orca-color-border);
-    border-radius: var(--orca-border-radius);
-    outline: 0;
-    background: color-mix(in srgb, var(--orca-color-border) 40%, var(--orca-color-bg));
-    color: inherit;
-    font: inherit;
-    text-align: center;
-}
-
-.orca-base-row:hover .orca-base-value[b-4wfqy4fcbf] {
-    border-color: var(--orca-color-primary-light);
-}
-
-.orca-base-value:focus[b-4wfqy4fcbf],
-.orca-base-row:hover .orca-base-value:focus[b-4wfqy4fcbf] {
-    border-color: var(--orca-color-primary);
-    background: var(--orca-color-bg);
-    box-shadow: 0 0 0 1px var(--orca-color-primary);
-}
-
-.orca-base-value[b-4wfqy4fcbf]::placeholder {
-    color: var(--orca-color-faded);
-    opacity: 1;
-}
-
-.orca-base-note[b-4wfqy4fcbf] {
-    text-align: center;
-    color: var(--orca-color-text-muted);
-    font-family: Consolas, "Cascadia Mono", monospace;
-}
-
-.orca-base-note:empty[b-4wfqy4fcbf] {
-    display: none;
-}
-
-/* A square button centred at the box's right edge; the value's side padding leaves room for it */
-.orca-base-copy[b-4wfqy4fcbf] {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: .5rem;
-    width: 1.75rem;
-    height: 1.75rem;
-    display: grid;
-    place-items: center;
-    padding: 0;
-    border: 0;
-    border-radius: var(--orca-border-radius);
-    background: color-mix(in srgb, var(--orca-color-primary) 20%, var(--orca-color-bg));
-    color: var(--orca-color-primary-dark);
-    cursor: pointer;
-    visibility: hidden;
-}
-
-.orca-base-row:hover .orca-base-copy[b-4wfqy4fcbf] {
-    visibility: visible;
-}
-
-/* The grid display above would otherwise override the hidden attribute on empty rows */
-.orca-base-copy[hidden][b-4wfqy4fcbf] {
-    display: none;
-}
-
-.orca-base-copy:hover[b-4wfqy4fcbf] {
-    background: color-mix(in srgb, var(--orca-color-primary) 35%, var(--orca-color-bg));
-}
-
-.orca-base-copy span[b-4wfqy4fcbf] {
-    font-size: 1.1rem;
-    line-height: 1;
-}
-
-/* Mobile page: no hover on a phone, so the copy buttons always show and are finger-sized */
-.orca-mobile-mode .orca-base-copy[b-4wfqy4fcbf] {
-    visibility: visible;
-    width: 2.5rem;
-    height: 2.5rem;
-}
-
-.orca-mobile-mode .orca-base-value[b-4wfqy4fcbf] {
-    padding-right: 3.25rem;
-    padding-left: 3.25rem;
-}
-
-/* 64 bits is 79 characters in binary, too wide for the normal size */
-.orca-base-field.orca-sign-long[b-4wfqy4fcbf] {
-    font-size: .8rem;
-}
-
-/* Bit length bar */
-
-.orca-sign-bits[b-4wfqy4fcbf] {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: .5rem;
-    padding-bottom: .25rem;
-}
-
-.orca-sign-bits-label[b-4wfqy4fcbf] {
-    font-size: .875rem;
-    font-weight: 600;
-}
-
-.orca-sign-bits-input[b-4wfqy4fcbf] {
-    width: 3.25rem;
-    padding: .2rem .4rem;
-    border: var(--orca-border-size) solid var(--orca-color-border);
-    border-radius: var(--orca-border-radius);
-    background: var(--orca-color-bg);
-    color: inherit;
-    font-family: Consolas, "Cascadia Mono", monospace;
-    text-align: center;
-}
-
-.orca-sign-bits-input:focus[b-4wfqy4fcbf] {
-    border-color: var(--orca-color-primary);
-    outline: 0;
-    box-shadow: 0 0 0 1px var(--orca-color-primary);
-}
-
-.orca-sign-bits-input.orca-sign-bits-invalid[b-4wfqy4fcbf] {
-    border-color: var(--orca-color-error);
-}
-
-.orca-sign-bits-note[b-4wfqy4fcbf] {
-    color: var(--orca-color-text-muted);
-    font-size: .8125rem;
-}
-
-.orca-sign-clear[b-4wfqy4fcbf] {
-    margin-left: auto;
-}
-
-/* Value that doesn't fit */
-
-.orca-base-value.orca-sign-error[b-4wfqy4fcbf],
-.orca-base-row:hover .orca-base-value.orca-sign-error[b-4wfqy4fcbf] {
-    border-color: var(--orca-color-error);
-}
-
-.orca-base-note.orca-sign-error[b-4wfqy4fcbf] {
-    color: var(--orca-color-error);
-    font-weight: 600;
-}
-
-/* Intel and Motorola side by side, stacked on a narrow window */
-
-.orca-sign-bytes[b-4wfqy4fcbf] {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    gap: .5rem;
-}
-
 /* _content/Orca.UI/ValidationMessagesView.razor.rz.scp.css */
 /* Fills whatever holds it, so Height="100%" fills the dock window */
 .orca-validation-grid[b-luuyl45d4x] {
