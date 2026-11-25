@@ -163,8 +163,8 @@
     font-weight: 600;
 }
 
-.orca-base-encoding-label + .orca-format-toggle[b-yjyt9w0j3g] {
-    margin-right: .5rem;
+.orca-base-encoding-label + .orca-format-toggle\\\{
+    margin-right: .5rem;[b-yjyt9w0j3g]
 }
 
 /* chip like DEC/HEX, same corner for both byte orders, under the digits so it never covers them */
