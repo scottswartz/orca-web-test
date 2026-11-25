@@ -151,6 +151,48 @@
     opacity: 1;
 }
 
+.orca-base-encoding[b-yjyt9w0j3g] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem .5rem;
+}
+
+.orca-base-encoding-label[b-yjyt9w0j3g] {
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+.orca-base-encoding-label + .orca-format-toggle[b-yjyt9w0j3g] {
+    margin-right: .5rem;
+}
+
+/* chip like DEC/HEX, same corner for both byte orders, under the digits so it never covers them */
+.orca-base-lsb[b-yjyt9w0j3g] {
+    position: absolute;
+    right: .55rem;
+    bottom: .35rem;
+    padding: .05rem .35rem;
+    border-radius: var(--orca-border-radius);
+    background: var(--orca-color-primary-dark);
+    color: var(--orca-color-text-on-primary);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: .04em;
+    pointer-events: none;
+}
+
+.orca-base-field:has(.orca-base-lsb) .orca-base-value[b-yjyt9w0j3g] {
+    padding-bottom: 1.6rem;
+}
+
+/* 64 bits of binary doesn't fit at the normal size */
+.orca-base-field.orca-base-long[b-yjyt9w0j3g] {
+    font-size: .8rem;
+}
+
 .orca-base-note[b-yjyt9w0j3g] {
     text-align: center;
     color: var(--orca-color-text-muted);
@@ -243,6 +285,11 @@
     visibility: visible;
     width: 2.5rem;
     height: 2.5rem;
+}
+
+/* left of the bigger copy button */
+.orca-mobile-mode .orca-base-lsb[b-yjyt9w0j3g] {
+    right: 3.4rem;
 }
 
 .orca-mobile-mode .orca-base-value[b-yjyt9w0j3g] {
@@ -7509,6 +7556,241 @@
 
 .orca-mobile-mode .orca-ascii-value[b-yyaqjm2jem] {
     padding-right: 3.25rem;
+}
+/* _content/Orca.UI/Utilities/NegativeUnsignedConverter.razor.rz.scp.css */
+/* same rows as the Calculator */
+
+.orca-base-list[b-gynk9y7sea] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.orca-base-row[b-gynk9y7sea] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    cursor: text;
+}
+
+.orca-base-name[b-gynk9y7sea] {
+    position: absolute;
+    z-index: 1;
+    top: .3rem;
+    left: .55rem;
+    font-size: .875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.orca-base-name small[b-gynk9y7sea] {
+    margin-left: .15rem;
+    padding: .05rem .35rem;
+    border-radius: var(--orca-border-radius);
+    background: var(--orca-color-primary-dark);
+    color: var(--orca-color-text-on-primary);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: .8125rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.orca-base-field[b-gynk9y7sea] {
+    position: relative;
+    display: block;
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: 1.35rem;
+}
+
+.orca-base-field.orca-base-long[b-gynk9y7sea] {
+    font-size: .8rem;
+}
+
+.orca-base-value[b-gynk9y7sea] {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 1.95rem 2.25rem .35rem;
+    border: var(--orca-border-size) solid var(--orca-color-border);
+    border-radius: var(--orca-border-radius);
+    outline: 0;
+    background: color-mix(in srgb, var(--orca-color-border) 40%, var(--orca-color-bg));
+    color: inherit;
+    font: inherit;
+    text-align: center;
+}
+
+.orca-base-row:hover .orca-base-value[b-gynk9y7sea] {
+    border-color: var(--orca-color-primary-light);
+}
+
+.orca-base-value:focus[b-gynk9y7sea],
+.orca-base-row:hover .orca-base-value:focus[b-gynk9y7sea] {
+    border-color: var(--orca-color-primary);
+    background: var(--orca-color-bg);
+    box-shadow: 0 0 0 1px var(--orca-color-primary);
+}
+
+.orca-base-value[b-gynk9y7sea]::placeholder {
+    color: var(--orca-color-faded);
+    opacity: 1;
+}
+
+.orca-base-note[b-gynk9y7sea] {
+    text-align: center;
+    color: var(--orca-color-text-muted);
+    font-family: Consolas, "Cascadia Mono", monospace;
+}
+
+.orca-base-note:empty[b-gynk9y7sea] {
+    display: none;
+}
+
+.orca-base-encoding[b-gynk9y7sea] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem .5rem;
+}
+
+.orca-base-encoding-label[b-gynk9y7sea] {
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+.orca-base-encoding-label + .orca-format-toggle[b-gynk9y7sea] {
+    margin-right: .5rem;
+}
+
+/* chip like the DEC/HEX ones, under the digits so it never covers them */
+.orca-base-lsb[b-gynk9y7sea] {
+    position: absolute;
+    right: .55rem;
+    bottom: .35rem;
+    padding: .05rem .35rem;
+    border-radius: var(--orca-border-radius);
+    background: var(--orca-color-primary-dark);
+    color: var(--orca-color-text-on-primary);
+    font-family: Consolas, "Cascadia Mono", monospace;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: .04em;
+    pointer-events: none;
+}
+
+.orca-base-field:has(.orca-base-lsb) .orca-base-value[b-gynk9y7sea] {
+    padding-bottom: 1.6rem;
+}
+
+.orca-base-copy[b-gynk9y7sea] {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: .5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--orca-border-radius);
+    background: color-mix(in srgb, var(--orca-color-primary) 20%, var(--orca-color-bg));
+    color: var(--orca-color-primary-dark);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.orca-base-row:hover .orca-base-copy[b-gynk9y7sea] {
+    visibility: visible;
+}
+
+.orca-base-copy[hidden][b-gynk9y7sea] {
+    display: none;
+}
+
+.orca-base-copy:hover[b-gynk9y7sea] {
+    background: color-mix(in srgb, var(--orca-color-primary) 35%, var(--orca-color-bg));
+}
+
+.orca-base-copy span[b-gynk9y7sea] {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.orca-neg-warning[b-gynk9y7sea] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .25rem .5rem;
+    padding: .45rem .65rem;
+    border-left: 4px solid var(--orca-color-warning);
+    border-radius: var(--orca-border-radius);
+    background: color-mix(in srgb, var(--orca-color-warning) 15%, var(--orca-color-bg));
+    font-size: .875rem;
+}
+
+.orca-neg-help[b-gynk9y7sea] {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--orca-color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.orca-neg-results[b-gynk9y7sea] {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+/* results aren't typed into */
+.orca-neg-results .orca-base-row[b-gynk9y7sea] {
+    cursor: default;
+}
+
+/* a negative value doesn't arrive as typed unless the receiver reads it as signed */
+.orca-neg-negative .orca-base-value[b-gynk9y7sea],
+.orca-neg-negative .orca-base-row:hover .orca-base-value[b-gynk9y7sea] {
+    border-color: var(--orca-color-warning);
+    background: color-mix(in srgb, var(--orca-color-warning) 12%, var(--orca-color-bg));
+}
+
+.orca-neg-negative .orca-base-note[b-gynk9y7sea] {
+    color: var(--orca-color-text);
+    font-weight: 600;
+}
+
+.orca-base-value.orca-neg-error[b-gynk9y7sea],
+.orca-base-row:hover .orca-base-value.orca-neg-error[b-gynk9y7sea] {
+    border-color: var(--orca-color-error);
+}
+
+.orca-base-note.orca-neg-error[b-gynk9y7sea] {
+    color: var(--orca-color-error);
+    font-weight: 600;
+}
+
+/* no hover on a phone, so the copy buttons always show and are finger-sized */
+.orca-mobile-mode .orca-base-copy[b-gynk9y7sea] {
+    visibility: visible;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.orca-mobile-mode .orca-base-value[b-gynk9y7sea] {
+    padding-right: 3.25rem;
+    padding-left: 3.25rem;
+}
+
+.orca-mobile-mode .orca-base-lsb[b-gynk9y7sea] {
+    right: 3.4rem;
 }
 /* _content/Orca.UI/Utilities/SignedUnsignedConverter.razor.rz.scp.css */
 /* Rows copied from Calculator.razor.css so both tools look the same (CSS isolation keeps them apart) */
